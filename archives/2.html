@@ -1,0 +1,1189 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>瑞吉外卖-Day03 | 姜小白程序</title><meta name="author" content="姜小白"><meta name="copyright" content="姜小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="瑞吉外卖-Day03课程内容 公共字段自动填充 新增分类 分类信息分页查询 删除分类 修改分类  1. 公共字段自动填充1.1 问题分析前面我们已经完成了后台系统的员工管理功能的开发，在新增员工时需要设置创建时间、创建人、修改时间、修改人等字段，在编辑员工时需要设置修改时间、修改人等字段。这些字段属于公共字段，也就是也就是在我们的系统中很多表中都会有这些字段，如下：   而针对于这些字段，我们的赋">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瑞吉外卖-Day03">
+<meta property="og:url" content="https://zyziga.github.io/archives/2.html">
+<meta property="og:site_name" content="姜小白程序">
+<meta property="og:description" content="瑞吉外卖-Day03课程内容 公共字段自动填充 新增分类 分类信息分页查询 删除分类 修改分类  1. 公共字段自动填充1.1 问题分析前面我们已经完成了后台系统的员工管理功能的开发，在新增员工时需要设置创建时间、创建人、修改时间、修改人等字段，在编辑员工时需要设置修改时间、修改人等字段。这些字段属于公共字段，也就是也就是在我们的系统中很多表中都会有这些字段，如下：   而针对于这些字段，我们的赋">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png">
+<meta property="article:published_time" content="2023-04-02T10:30:00.000Z">
+<meta property="article:modified_time" content="2023-06-17T07:34:14.607Z">
+<meta property="article:author" content="姜小白">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zyziga.github.io/archives/2.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 姜小白","link":"链接: ","source":"来源: 姜小白程序","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '瑞吉外卖-Day03',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-17 15:34:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/milos.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png')"><nav id="nav"><span id="blog-info"><a href="/" title="姜小白程序"><span class="site-name">姜小白程序</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">瑞吉外卖-Day03</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-02T10:30:00.000Z" title="发表于 2023-04-02 18:30:00">2023-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-17T07:34:14.607Z" title="更新于 2023-06-17 15:34:14">2023-06-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">17k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>58分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="瑞吉外卖-Day03"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="瑞吉外卖-Day03"><a href="#瑞吉外卖-Day03" class="headerlink" title="瑞吉外卖-Day03"></a>瑞吉外卖-Day03</h1><h2 id="课程内容"><a href="#课程内容" class="headerlink" title="课程内容"></a>课程内容</h2><ul>
+<li>公共字段自动填充</li>
+<li>新增分类</li>
+<li>分类信息分页查询</li>
+<li>删除分类</li>
+<li>修改分类</li>
+</ul>
+<h2 id="1-公共字段自动填充"><a href="#1-公共字段自动填充" class="headerlink" title="1. 公共字段自动填充"></a>1. 公共字段自动填充</h2><h3 id="1-1-问题分析"><a href="#1-1-问题分析" class="headerlink" title="1.1 问题分析"></a>1.1 问题分析</h3><p>前面我们已经完成了后台系统的员工管理功能的开发，在新增员工时需要设置创建时间、创建人、修改时间、修改人等字段，在编辑员工时需要设置修改时间、修改人等字段。这些字段属于公共字段，也就是也就是在我们的系统中很多表中都会有这些字段，如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021836685.png" alt="image-20210801085103062"> </p>
+<p>而针对于这些字段，我们的赋值方式为： </p>
+<p>A. 在新增数据时, 将createTime、updateTime 设置为当前时间, createUser、updateUser设置为当前登录用户ID。</p>
+<p>B. 在更新数据时, 将updateTime 设置为当前时间, updateUser设置为当前登录用户ID。</p>
+<p>目前,在我们的项目中处理这些字段都是在每一个业务方法中进行赋值操作,如下:</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021837660.png" alt="image-20210801085615162" style="zoom:80%;" /> 
+
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021837820.png" alt="image-20210801085715419" style="zoom:80%;" /> 
+
+
+
+<p>如果都按照上述的操作方式来处理这些公共字段, 需要在每一个业务方法中进行操作, 编码相对冗余、繁琐，那能不能对于这些公共字段在某个地方统一处理，来简化开发呢？</p>
+<p><strong>答案是可以的，我们使用Mybatis Plus提供的公共字段自动填充功能。</strong></p>
+<h3 id="1-2-基本功能实现"><a href="#1-2-基本功能实现" class="headerlink" title="1.2 基本功能实现"></a>1.2 基本功能实现</h3><h4 id="1-2-1-思路分析"><a href="#1-2-1-思路分析" class="headerlink" title="1.2.1 思路分析"></a>1.2.1 思路分析</h4><p>Mybatis Plus公共字段自动填充，也就是在插入或者更新的时候为指定字段赋予指定的值，使用它的好处就是可以统一对这些字段进行处理，避免了重复代码。在上述的问题分析中，我们提到有四个公共字段，需要在新增&#x2F;更新中进行赋值操作, 具体情况如下: </p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>赋值时机</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>createTime</td>
+<td>插入(INSERT)</td>
+<td>当前时间</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>插入(INSERT) , 更新(UPDATE)</td>
+<td>当前时间</td>
+</tr>
+<tr>
+<td>createUser</td>
+<td>插入(INSERT)</td>
+<td>当前登录用户ID</td>
+</tr>
+<tr>
+<td>updateUser</td>
+<td>插入(INSERT) , 更新(UPDATE)</td>
+<td>当前登录用户ID</td>
+</tr>
+</tbody></table>
+<p>实现步骤：</p>
+<p>1、在实体类的属性上加入@TableField注解，指定自动填充的策略。</p>
+<p>2、按照框架要求编写元数据对象处理器，在此类中统一为公共字段赋值，此类需要实现MetaObjectHandler接口。</p>
+<h4 id="1-2-2-代码实现"><a href="#1-2-2-代码实现" class="headerlink" title="1.2.2 代码实现"></a>1.2.2 代码实现</h4><p><strong>1). 实体类的属性上加入@TableField注解，指定自动填充的策略。</strong></p>
+<p>在员工Employee实体类的公共字段属性上, 加上注解, 指定填充策略。(<font color='red'>ps.在资料中提供的实体类,已经添加了该注解,并指定了填充策略</font>)</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021837252.png" alt="image-20210801092157093" style="zoom:80%;" /> 
+
+<blockquote>
+<p>FieldFill.INSERT: 插入时填充该属性值</p>
+<p>FieldFill.INSERT_UPDATE: 插入&#x2F;更新时填充该属性值</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.common;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.apache.ibatis.reflection.MetaObject;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 自定义元数据对象处理器</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">@Slf4j</span><br><span class="line">public class MyMetaObjecthandler  implements MetaObjectHandler &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 插入操作，自动填充</span><br><span class="line">     * @param metaObject</span><br><span class="line">     */</span><br><span class="line">    @Override</span><br><span class="line">    public void insertFill(MetaObject metaObject) &#123;</span><br><span class="line"></span><br><span class="line">        log.info(&quot;公共字段自动填充[insert]...&quot;);</span><br><span class="line">        log.info(metaObject.toString());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 更新操作，自动填充</span><br><span class="line">     * @param metaObject</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void updateFill(MetaObject metaObject) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        log.info(&quot;公共字段自动填充[update]...&quot;);</span><br><span class="line">        log.info(metaObject.toString());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171458989.png" alt="image-20230614221526109"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171458623.png" alt="image-20230614221634833"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171458031.png" alt="image-20230614221705077"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306142211442.png" alt="image-20230614221133086"></p>
+<p><strong>2). 按照框架要求编写元数据对象处理器，在此类中统一为公共字段赋值，此类需要实现MetaObjectHandler接口。</strong></p>
+<p>所属包: com.itheima.reggie.common</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.reflection.MetaObject;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义元数据对象处理器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyMetaObjecthandler</span> <span class="keyword">implements</span> <span class="title class_">MetaObjectHandler</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插入操作，自动填充</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> metaObject</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">insertFill</span><span class="params">(MetaObject metaObject)</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;公共字段自动填充[insert]...&quot;</span>);</span><br><span class="line">        log.info(metaObject.toString());</span><br><span class="line">        </span><br><span class="line">        metaObject.setValue(<span class="string">&quot;createTime&quot;</span>, LocalDateTime.now());</span><br><span class="line">        metaObject.setValue(<span class="string">&quot;updateTime&quot;</span>,LocalDateTime.now());</span><br><span class="line">        metaObject.setValue(<span class="string">&quot;createUser&quot;</span>,<span class="keyword">new</span> <span class="title class_">Long</span>(<span class="number">1</span>));</span><br><span class="line">        metaObject.setValue(<span class="string">&quot;updateUser&quot;</span>,<span class="keyword">new</span> <span class="title class_">Long</span>(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新操作，自动填充</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> metaObject</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateFill</span><span class="params">(MetaObject metaObject)</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;公共字段自动填充[update]...&quot;</span>);</span><br><span class="line">        log.info(metaObject.toString());</span><br><span class="line"></span><br><span class="line">        metaObject.setValue(<span class="string">&quot;updateTime&quot;</span>,LocalDateTime.now());</span><br><span class="line">        metaObject.setValue(<span class="string">&quot;updateUser&quot;</span>,<span class="keyword">new</span> <span class="title class_">Long</span>(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="1-2-3-功能测试"><a href="#1-2-3-功能测试" class="headerlink" title="1.2.3 功能测试"></a>1.2.3 功能测试</h4><p>编写完了元数据对象处理器之后，我们就可以将之前在新增和修改方法中手动赋值的代码删除或注释掉。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021837307.png" alt="image-20210801093623217" style="zoom: 80%;" />  
+
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304022119749.png" alt="image-20210801093747896" style="zoom:80%;" /> 
+
+
+
+<p>然后，我们启动项目，在员工管理模块中，测试增加&#x2F;更新员工信息功能，然后通过debug 或者 直接查询数据库数据变更的形式，看看我们在新增&#x2F;修改数据时，这些公共字段数据是否能够完成自动填充。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171459880.png" alt="image-20230614224122599"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171519871.png" alt="image-20230614224201542"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171459935.png" alt="image-20230614224238582"></p>
+<p>代码解释1</p>
+<p>以上代码是一个自定义的元数据对象处理器（MyMetaObjecthandler），它实现了MyBatis-Plus框架中的MetaObjectHandler接口。MetaObjectHandler接口提供了插入和更新操作时自动填充字段的方法。</p>
+<p>该处理器使用了Spring框架的@Component注解，表示它是一个由Spring容器管理的组件。同时，它还使用了Lombok的@Slf4j注解，用于自动生成日志记录相关的代码。</p>
+<p>在该处理器中，有两个方法需要实现：insertFill和updateFill。</p>
+<p>insertFill方法用于在插入操作时自动填充字段的值。在该方法中，首先通过日志记录打印相关信息，然后通过调用MetaObject的setValue方法为metaObject对象设置字段值。具体设置了以下字段的值：</p>
+<ul>
+<li>createTime：设置为当前的LocalDateTime.now()，即当前时间。  创建时间</li>
+<li>updateTime：设置为当前的LocalDateTime.now()，即当前时间。  更新时间</li>
+<li>createUser：设置为1L，即创建用户的ID。</li>
+<li>updateUser：设置为1L，即更新用户的ID。</li>
+</ul>
+<p>updateFill方法用于在更新操作时自动填充字段的值。在该方法中，同样先通过日志记录打印相关信息，然后通过调用MetaObject的setValue方法为metaObject对象设置字段值。具体设置了以下字段的值：</p>
+<ul>
+<li>updateTime：设置为当前的LocalDateTime.now()，即当前时间。</li>
+<li>updateUser：设置为1L，即更新用户的ID。</li>
+</ul>
+<p>这样，在进行插入和更新操作时，就会自动填充指定的字段值，无需手动设置，提高了代码的简洁性和开发效率。</p>
+<p>代码解释2</p>
+<p>以上代码是一个自定义的元数据对象处理器（MetaObjectHandler），用于在进行数据库操作（插入和更新）时，自动填充指定的公共字段。</p>
+<p>代码中的注解<code>@Component</code>表示该类是一个Spring组件，会被Spring容器进行管理。</p>
+<p><code>@Slf4j</code>是一个Lombok注解，用于生成日志相关的代码。</p>
+<p>该类实现了MyBatis-Plus框架的<code>MetaObjectHandler</code>接口，这个接口定义了在数据库操作时填充元数据对象的方法。</p>
+<p>在该类中，有两个方法：<code>insertFill</code>和<code>updateFill</code>。这两个方法分别在插入和更新操作时被调用。</p>
+<p><code>insertFill</code>方法用于在插入数据时自动填充字段。方法的参数<code>metaObject</code>表示元数据对象，可以通过该对象操作对应实体类的属性。</p>
+<p>在方法中，首先通过日志输出一条提示信息，表示当前是插入操作，并输出元数据对象的信息。</p>
+<p>接下来，通过<code>metaObject.setValue</code>方法给元数据对象的字段赋值。具体来说，给<code>createTime</code>和<code>updateTime</code>字段赋值为当前时间（使用<code>LocalDateTime.now()</code>获取当前时间），给<code>createUser</code>和<code>updateUser</code>字段赋值为1（使用<code>new Long(1)</code>表示1的长整型值）。</p>
+<p><code>updateFill</code>方法与<code>insertFill</code>方法类似，用于在更新数据时自动填充字段。</p>
+<p>在方法中，同样通过日志输出一条提示信息，表示当前是更新操作，并输出元数据对象的信息。</p>
+<p>然后，给元数据对象的<code>updateTime</code>字段赋值为当前时间，给<code>updateUser</code>字段赋值为1。</p>
+<p>通过在插入和更新操作时调用这两个方法，就能够实现自动填充公共字段的功能，避免在每次操作时手动设置这些字段的值。</p>
+<p>总结起来，以上代码实现了一个自定义的元数据对象处理器，用于在进行数据库插入和更新操作时，自动填充指定的公共字段（如创建时间、更新时间、创建用户、更新用户）。通过该处理器，可以简化数据库操作代码，提高开发效率。</p>
+<p>代码解释3</p>
+<p>这段代码的作用是为数据库操作（插入和更新）提供自动填充功能，即在执行数据库操作时，自动为指定的公共字段赋予特定的值，而无需手动设置这些字段的值。</p>
+<p>这里使用的是MyBatis-Plus框架提供的<code>MetaObjectHandler</code>接口来实现自动填充功能。该接口定义了两个方法：<code>insertFill</code>和<code>updateFill</code>，分别用于插入和更新操作。</p>
+<p>在<code>insertFill</code>方法中，通过传入的<code>metaObject</code>参数来操作元数据对象。首先，使用日志输出一条提示信息，表示当前执行的是插入操作，并打印元数据对象的信息。接下来，通过<code>metaObject.setValue</code>方法给元数据对象的字段赋值。在这段代码中，给<code>createTime</code>字段和<code>updateTime</code>字段设置了当前的时间（使用<code>LocalDateTime.now()</code>获取当前时间），给<code>createUser</code>字段和<code>updateUser</code>字段设置了值为1的<code>Long</code>类型数据（使用<code>new Long(1)</code>表示1的长整型值）。</p>
+<p><code>updateFill</code>方法与<code>insertFill</code>方法类似，用于在执行更新操作时进行字段填充。同样，它也会打印日志信息表示当前执行的是更新操作，并操作元数据对象，将<code>updateTime</code>字段设置为当前时间，将<code>updateUser</code>字段设置为1。</p>
+<p>通过在插入和更新操作前后调用这两个方法，就可以实现自动填充公共字段的功能，无需手动处理这些字段的赋值操作。</p>
+<p>总之，这段代码的作用是在进行数据库插入和更新操作时，自动为指定的公共字段赋予特定的值，提供了方便和简化数据库操作的功能。</p>
+<p>代码解释3</p>
+<p>以上代码是一个自定义的元数据对象处理器 <code>MyMetaObjecthandler</code>,它实现了 <code>com.baomidou.mybatisplus.core.handlers.MetaObjectHandler</code> 接口，该接口定义了在插入和更新操作时如何自动填充元数据的方法。</p>
+<p>在 <code>insertFill</code> 和 <code>updateFill</code> 方法中，分别实现了 <code>MetaObjectHandler</code> 接口中的 <code>insertFill</code> 和 <code>updateFill</code> 方法。</p>
+<p><code>insertFill</code> 方法在插入操作时自动填充元数据，其中 <code>metaObject</code> 参数是待填充的元数据对象。该方法中首先打印了消息 <code>公共字段自动填充 [insert]...</code>,并输出了 <code>metaObject</code> 对象的 toString 方法输出。然后，通过 <code>metaObject.setValue</code> 方法设置了创建时间和更新时间字段的值，以及插入用户的 ID 值 (这里使用了 <code>new Long(1)</code> 创建了一个新的 Long 对象)。</p>
+<p><code>updateFill</code> 方法在更新操作时自动填充元数据，其中 <code>metaObject</code> 参数是待填充的元数据对象。该方法中同样首先打印了消息 <code>公共字段自动填充 [update]...</code>,并输出了 <code>metaObject</code> 对象的 toString 方法输出。然后，通过 <code>metaObject.setValue</code> 方法设置了更新时间和更新用户的 ID 值，均为当前时间。</p>
+<p>需要注意的是，以上代码中的 <code>MetaObjectHandler</code> 实例是由 Spring 框架提供的，不需要手动创建。同时，该实例是在整个应用程序生命周期内保持的，因此可以适用于不同的插入和更新操作。</p>
+<p>代码解释</p>
+<p>以上代码实现了一个自定义的元数据对象处理器 <code>MyMetaObjecthandler</code>,它的作用是在插入和更新操作时自动填充元数据。具体来说，该元数据对象处理器实现了 <code>com.baomidou.mybatisplus.core.handlers.MetaObjectHandler</code> 接口，该接口定义了在插入和更新操作时如何自动填充元数据的方法。</p>
+<p>在 <code>insertFill</code> 和 <code>updateFill</code> 方法中，分别实现了 <code>MetaObjectHandler</code> 接口中的 <code>insertFill</code> 和 <code>updateFill</code> 方法。这些方法的作用是在进行插入或更新操作时，自动填充元数据中的相关字段。</p>
+<p>具体来说，<code>insertFill</code> 方法在插入操作时自动填充元数据，其中 <code>metaObject</code> 参数是待填充的元数据对象。该方法中首先打印了消息 <code>公共字段自动填充 [insert]...</code>,并输出了 <code>metaObject</code> 对象的 toString 方法输出。然后，通过 <code>metaObject.setValue</code> 方法设置了创建时间和更新时间字段的值，以及插入用户的 ID 值 (这里使用了 <code>new Long(1)</code> 创建了了一个新的 Long 对象)。这里需要注意的是，<code>setValue</code> 方法是用来设置元数据中的字段值的，它会覆盖原有的值。</p>
+<p><code>updateFill</code> 方法在更新操作时自动填充元数据，其中 <code>metaObject</code> 参数是待填充的元数据对象。该方法中同样打印了消息 <code>公共字段自动填充 [update]...</code>,并输出了 <code>metaObject</code> 对象的 toString 方法输出。然后，通过 <code>metaObject.setValue</code> 方法设置了更新时间和更新用户的 ID 值，均为当前时间。这里需要注意的是，<code>setValue</code> 方法是用来设置元数据中的字段值的，它会覆盖原有的值。</p>
+<p>需要注意的是，以上代码中的 <code>MetaObjectHandler</code> 实例是由 Spring 框架提供的，不需要手动创建。同时，该实例是在整个应用程序生命周期内保持的，因此可以适用于不同的插入和更新操作。</p>
+<p>总的来说，以上代码的作用是自动填充元数据中的相关字段，以便在插入和更新操作时能够正确地设置数据。这使得开发人员可以减少手动设置元数据的工作，从而更加轻松地编写和维护代码。</p>
+<h3 id="1-3-功能完善"><a href="#1-3-功能完善" class="headerlink" title="1.3 功能完善"></a>1.3 功能完善</h3><h4 id="1-3-1-思路分析"><a href="#1-3-1-思路分析" class="headerlink" title="1.3.1 思路分析"></a>1.3.1 思路分析</h4><p>前面我们已经完成了公共字段自动填充功能的代码开发，但是还有一个问题没有解决，就是我们在自动填充createUser和updateUser时设置的用户id是固定值，现在我们需要完善，改造成动态获取当前登录用户的id。</p>
+<p>大家可能想到，用户登录成功后我们将用户id存入了HttpSession中，现在我从HttpSession中获取不就行了？</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021837683.png" alt="image-20210801131449863" style="zoom:80%;" /> 
+
+<p>注意，我们在MyMetaObjectHandler类中是不能直接获得HttpSession对象的，所以我们需要通过其他方式来获取登录用户id。</p>
+<p>那么我先搞清楚一点,当我们在修改员工信息时, 我们业务的执行流程是什么样子的,如下图:</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021838876.png" alt="image-20210801133531663" style="zoom:80%;" />  
+
+<p>客户端发送的每次http请求，对应的在服务端都会分配一个新的线程来处理，在处理过程中涉及到下面类中的方法都属于相同的一个线程：</p>
+<p>1). LoginCheckFilter的doFilter方法</p>
+<p>2). EmployeeController的update方法</p>
+<p>3). MyMetaObjectHandler的updateFill方法</p>
+<p>我们可以在上述类的方法中加入如下代码(获取当前线程ID,并输出):</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">id</span> <span class="operator">=</span> Thread.currentThread().getId();</span><br><span class="line">log.info(<span class="string">&quot;线程id为：&#123;&#125;&quot;</span>,id);</span><br></pre></td></tr></table></figure>
+
+<p>1). LoginCheckFilter的doFilter方法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171459400.png" alt="image-20230615090437854"></p>
+<p>2). EmployeeController的update方法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171459759.png" alt="image-20230615090602354"></p>
+<p>3). MyMetaObjectHandler的updateFill方法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171459919.png" alt="image-20230615090721509"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171500191.png" alt="image-20230615090934429"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171500487.png" alt="image-20230615091006747"></p>
+<p>清理控制台</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171500711.png" alt="image-20230615091135657"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171500823.png" alt="image-20230615091223121"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171500783.png" alt="image-20230615091253528"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171501407.png" alt="image-20230615091643429"></p>
+<p>执行编辑员工功能进行验证，通过观察控制台输出可以发现，一次请求对应的线程id是相同的：</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021838740.png" alt="image-20210801133827264" style="zoom:80%;" />  
+
+
+
+<p>经过上述的分析之后,发现我们可以使用JDK提供的一个类, 来解决此问题,它是JDK中提供的 ThreadLocal。</p>
+<h4 id="1-3-2-ThreadLocal"><a href="#1-3-2-ThreadLocal" class="headerlink" title="1.3.2 ThreadLocal"></a>1.3.2 ThreadLocal</h4><p>ThreadLocal并不是一个Thread，而是Thread的局部变量。当使用ThreadLocal维护变量时，ThreadLocal为每个使用该变量的线程提供独立的变量副本，所以每一个线程都可以独立地改变自己的副本，而不会影响其它线程所对应的副本。</p>
+<p>ThreadLocal为每个线程提供单独一份存储空间，具有线程隔离的效果，只有在线程内才能获取到对应的值，线程外则不能访问当前线程对应的值。</p>
+<p><strong>ThreadLocal常用方法：</strong></p>
+<p>A. public void set(T value) : 设置当前线程的线程局部变量的值</p>
+<p>B. public T get() : 返回当前线程所对应的线程局部变量的值</p>
+<p>C. public void remove() : 删除当前线程所对应的线程局部变量的值 </p>
+<p>我们可以在LoginCheckFilter的doFilter方法中获取当前登录用户id，并调用ThreadLocal的set方法来设置当前线程的线程局部变量的值（用户id），然后在MyMetaObjectHandler的updateFill方法中调用ThreadLocal的get方法来获得当前线程所对应的线程局部变量的值（用户id）。 如果在后续的操作中, 我们需要在Controller &#x2F; Service中要使用当前登录用户的ID, 可以直接从ThreadLocal直接获取。</p>
+<h4 id="1-3-3-操作步骤"><a href="#1-3-3-操作步骤" class="headerlink" title="1.3.3 操作步骤"></a>1.3.3 操作步骤</h4><p>实现步骤：</p>
+<p>1). 编写BaseContext工具类，基于ThreadLocal封装的工具类</p>
+<p>2). 在LoginCheckFilter的doFilter方法中调用BaseContext来设置当前登录用户的id</p>
+<p>3). 在MyMetaObjectHandler的方法中调用BaseContext获取登录用户的id</p>
+<h4 id="1-3-4-代码实现"><a href="#1-3-4-代码实现" class="headerlink" title="1.3.4 代码实现"></a>1.3.4 代码实现</h4><p><strong>1). BaseContext工具类</strong></p>
+<p>所属包: com.itheima.reggie.common</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基于ThreadLocal封装工具类，用户保存和获取当前登录用户id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BaseContext</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Long&gt; threadLocal = <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 设置值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setCurrentId</span><span class="params">(Long id)</span>&#123;</span><br><span class="line">        threadLocal.set(id);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取值</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Long <span class="title function_">getCurrentId</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> threadLocal.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171501136.png" alt="image-20230615092655419"></p>
+<p>代码解释1</p>
+<p>以上代码是一个基于ThreadLocal封装的工具类，用于保存和获取当前登录用户的ID。下面逐行解释代码的含义：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class BaseContext &#123;   //这是定义了一个名为BaseContext的类。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//在这里，我们创建了一个私有的静态ThreadLocal变量threadLocal。ThreadLocal是Java中的一个线程本地变量，它提供了线程局部变量的功能。每个线程都有自己的副本，互不干扰。</span><br><span class="line">private static ThreadLocal&lt;Long&gt; threadLocal = new ThreadLocal&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 这是一个公共的静态方法setCurrentId，它接受一个Long类型的参数id。该方法将传入的id值存储到当前线程的threadLocal变量中。</span><br><span class="line"> public static void setCurrentId(Long id)&#123;</span><br><span class="line">       threadLocal.set(id);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//这是另一个公共的静态方法getCurrentId，它返回当前线程的threadLocal变量中存储的值。</span><br><span class="line">public static Long getCurrentId()&#123;</span><br><span class="line">     return threadLocal.get();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>综上所述，通过使用ThreadLocal封装，我们可以在应用程序中的任何位置设置和获取当前登录用户的ID。该工具类提供了一种在多线程环境中保存和访问用户ID的便捷方式，每个线程都可以独立地存储和访问自己的ID值，避免了线程安全问题。</p>
+<p>代码解释2</p>
+<p>以上代码是一个基于 <code>ThreadLocal</code> 的封装工具类，用于保存和获取当前登录用户的 ID。具体来说，该工具类实现了 <code>ThreadLocal</code> 接口，并将 <code>ThreadLocal</code> 的 <code>set</code> 和 <code>get</code> 方法封装起来，以便在线程中保存和获取当前登录用户的 ID。</p>
+<p>在 <code>BaseContext</code> 类中，创建了一个 <code>ThreadLocal</code> 对象 <code>threadLocal</code>,该对象保存了一个 <code>Long</code> 类型的值，用于存储当前登录用户的 ID。<code>setCurrentId</code> 方法用于设置当前登录用户的 ID，它将 <code>id</code> 参数传递给 <code>threadLocal.set</code> 方法，将新的 ID 值保存在 <code>threadLocal</code> 对象中。</p>
+<p><code>getCurrentId</code> 方法用于获取当前登录用户的 ID，它调用 <code>threadLocal.get</code> 方法获取 <code>threadLocal</code> 对象中的值，即当前登录用户的 ID。由于 <code>threadLocal</code> 对象是线程安全的，因此可以在多个线程之间共享该对象，从而确保同一线程中的多个请求能够获得相同的当前登录用户 ID。</p>
+<p>总的来说，以上代码的作用是提供一个封装工具类，以便在线程中保存和获取当前登录用户的 ID。这使得开发人员可以在多个线程之间共享当前登录用户 ID，而不需要在每次请求时手动获取 ID，从而简化了代码的编写和维护。</p>
+<p><strong>2).LoginCheckFilter中存放当前登录用户到ThreadLocal</strong></p>
+<p>在doFilter方法中, 判定用户是否登录, 如果用户登录, 在放行之前, 获取HttpSession中的登录用户信息, 调用BaseContext的setCurrentId方法将当前登录用户ID存入ThreadLocal。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Long</span> <span class="variable">empId</span> <span class="operator">=</span> (Long) request.getSession().getAttribute(<span class="string">&quot;employee&quot;</span>);</span><br><span class="line">BaseContext.setCurrentId(empId);</span><br></pre></td></tr></table></figure>
+
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021838548.png" alt="image-20210801162053581" style="zoom:80%;" /> 
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171501904.png" alt="image-20230615093854098"></p>
+<p><strong>3). MyMetaObjectHandler中从ThreadLocal中获取</strong></p>
+<p>将之前在代码中固定的当前登录用户1， 修改为动态调用BaseContext中的getCurrentId方法获取当前登录用户ID</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    /**</span><br><span class="line">     * 插入操作，自动填充</span><br><span class="line">     * @param metaObject</span><br><span class="line">     */</span><br><span class="line">metaObject.setValue(&quot;createUser&quot;,BaseContext.getCurrentId());</span><br><span class="line">metaObject.setValue(&quot;updateUser&quot;,BaseContext.getCurrentId());</span><br><span class="line"> </span><br><span class="line">     /**</span><br><span class="line">     * 更新操作，自动填充</span><br><span class="line">     * @param metaObject</span><br><span class="line">     */</span><br><span class="line"></span><br><span class="line">metaObject.setValue(&quot;updateUser&quot;,BaseContext.getCurrentId());</span><br></pre></td></tr></table></figure>
+
+
+
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021838221.png" alt="image-20210801162345846" style="zoom:80%;" /> 
+
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021838677.png" alt="image-20210801162436740" style="zoom:80%;" /> 
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171501376.png" alt="image-20230615094208839"></p>
+<h4 id="1-3-5-功能测试"><a href="#1-3-5-功能测试" class="headerlink" title="1.3.5 功能测试"></a>1.3.5 功能测试</h4><p>完善了元数据对象处理器之后，我们就可以重新启动项目，完成登录操作后, 在员工管理模块中，测试增加&#x2F;更新员工信息功能, 直接查询数据库数据变更，看看我们在新增&#x2F;修改数据时，这些公共字段数据是否能够完成自动填充, 并且看看填充的create_user 及 update_user字段值是不是本地登录用户的ID。</p>
+<p>打断点</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171501592.png" alt="image-20230615094650184"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171519735.png" alt="image-20230615094714038"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171501743.png" alt="image-20230615094855916"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502512.png" alt="image-20230615094919159"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502311.png" alt="image-20230615094942074"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502439.png" alt="image-20230615095206658"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502727.png" alt="image-20230615095231212"></p>
+<p>F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502000.png" alt="image-20230615095337529"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502911.png" alt="image-20230615095438928"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502584.png" alt="image-20230615095501402"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171502400.png" alt="image-20230615095622661"></p>
+<p>6次F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503103.png" alt="image-20230615095706703"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171520575.png" alt="image-20230615095741018"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503751.png" alt="image-20230615095823916"></p>
+<p> 在重新保存一份</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503991.png" alt="image-20230615163529138"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503598.png" alt="image-20230615163617341"></p>
+<p>F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503094.png" alt="image-20230615163659305"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503463.png" alt="image-20230615163741555"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503327.png" alt="image-20230615163807191"></p>
+<p>现在都是空的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171503046.png" alt="image-20230615163843729"></p>
+<p>6次F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504311.png" alt="image-20230615163948297"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504646.png" alt="image-20230615164125504"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504303.png" alt="image-20230615164202319"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171528758.png" alt="image-20230615164247287"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504534.png" alt="image-20230615170520307"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504062.png" alt="image-20230615170501467"></p>
+<p>切换用户</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504415.png" alt="image-20230615170707982"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504200.png" alt="image-20230615170734216"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504343.png" alt="image-20230615171034701"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171504615.png" alt="image-20230615171113998"></p>
+<p>6次F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171505115.png" alt="image-20230615171201503"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171505462.png" alt="image-20230615171224143"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171505710.png" alt="image-20230615171306864"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171505335.png" alt="image-20230615171401214"></p>
+<h2 id="2-新增分类"><a href="#2-新增分类" class="headerlink" title="2. 新增分类"></a>2. 新增分类</h2><h3 id="2-1-需求分析"><a href="#2-1-需求分析" class="headerlink" title="2.1 需求分析"></a>2.1 需求分析</h3><p>后台系统中可以管理分类信息，分类包括两种类型，分别是 <strong>菜品分类</strong> 和 <strong>套餐分类</strong> 。当我们在后台系统中添加菜品时需要选择一个菜品分类，当我们在后台系统中添加一个套餐时需要选择一个套餐分类，在移动端也会按照菜品分类和套餐分类来展示对应的菜品和套餐。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171505948.png" alt="image-20210801163745391" style="zoom:80%;" /> 
+
+
+
+<p>在分类管理中,我们新增分类时, 可以选择新增菜品分类(川菜、湘菜、粤菜…), 也可以选择新增套餐分类(营养早餐、超值午餐…)。 在添加套餐的时候, 输入的排序字段, 控制的是移动端套餐列表的展示顺序。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021839548.png" alt="image-20210801165118745" style="zoom:80%;" /> 
+
+
+
+<h3 id="2-2-数据模型"><a href="#2-2-数据模型" class="headerlink" title="2.2 数据模型"></a>2.2 数据模型</h3><p>新增分类，其实就是将我们新增窗口录入的分类数据,插入到category表，具体表结构如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021839901.png" alt="image-20210801165801665"> </p>
+<p>我们添加的套餐名称，是唯一的，不能够重复的，所以在设计表结构时，已经针对于name字段建立了唯一索引，如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021839052.png" alt="image-20210801165921450"> </p>
+<h3 id="2-3-前端页面分析"><a href="#2-3-前端页面分析" class="headerlink" title="2.3 前端页面分析"></a>2.3 前端页面分析</h3><p>在开发代码之前，需要梳理一下整个程序的执行过程：</p>
+<p>1). 在页面(backend&#x2F;page&#x2F;category&#x2F;list.html)的新增分类表单中填写数据，点击 “确定” 发送ajax请求，将新增分类窗口输入的数据以json形式提交到服务端</p>
+<p>2). 服务端Controller接收页面提交的数据并调用Service将数据进行保存</p>
+<p>3). Service调用Mapper操作数据库，保存数据</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171505031.png" alt="image-20230615205829505"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506030.png" alt="image-20230615210256323"></p>
+<p>这个页面是以下这个页面  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506894.png" alt="image-20230615210339733"></p>
+<p>输入完之后   点击确定  就会发送一个发送ajax请求  将新增分类窗口输入的数据以json形式提交到服务端</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506526.png" alt="image-20230615210522228"></p>
+<p>F12</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506623.png" alt="image-20230615210741767"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506503.png" alt="image-20230615211002764"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506240.png" alt="image-20230615211022573"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506606.png" alt="image-20230615211156185"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171506215.png" alt="image-20230615211240146"></p>
+<p>可以看到新增菜品分类和新增套餐分类请求的服务端地址和提交的json数据结构相同，所以服务端只需要提供一个方法统一处理即可：</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021840093.png" alt="image-20210801171125255" style="zoom:80%;" /> 
+
+<p>具体请求信息整理如下: </p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;category</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>json格式 - {“name”:”川菜”,”type”:”1”,”sort”:2}</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-代码实现"><a href="#2-4-代码实现" class="headerlink" title="2.4 代码实现"></a>2.4 代码实现</h3><p>代码实现的具体步骤如下: </p>
+<ul>
+<li><p>实体类Category（直接从课程资料中导入即可）</p>
+</li>
+<li><p>Mapper接口CategoryMapper</p>
+</li>
+<li><p>业务层接口CategoryService</p>
+</li>
+<li><p>业务层实现类CategoryServiceImpl</p>
+</li>
+<li><p>控制层CategoryController</p>
+</li>
+</ul>
+<p><strong>1). 实体类Category</strong></p>
+<p>所属包: com.itheima.reggie.entity</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.FieldFill;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Category</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//类型 1 菜品分类 2 套餐分类</span></span><br><span class="line">    <span class="keyword">private</span> Integer type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分类名称</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//顺序</span></span><br><span class="line">    <span class="keyword">private</span> Integer sort;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建时间</span></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//更新时间</span></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime updateTime;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建人</span></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> Long createUser;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//修改人</span></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> Long updateUser;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). Mapper接口CategoryMapper</strong></p>
+<p>所属包: com.itheima.reggie.mapper</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Category;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">CategoryMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;Category&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3). 业务层接口CategoryService</strong></p>
+<p>所属包: com.itheima.reggie.service</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Category;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">CategoryService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;Category&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>4). 业务层实现类CategoryServiceImpl</strong></p>
+<p>所属包: com.itheima.reggie.service.impl</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Category;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.mapper.CategoryMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.CategoryService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CategoryServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;CategoryMapper,Category&gt; <span class="keyword">implements</span> <span class="title class_">CategoryService</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>5). 控制层CategoryController</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.itheima.reggie.common.R;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Category;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.CategoryService;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分类管理</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/category&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CategoryController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryService categoryService;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新增分类</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;String&gt; <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span> Category category)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;category:&#123;&#125;&quot;</span>,category);</span><br><span class="line">        categoryService.save(category);</span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;新增分类成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<p>代码解释1</p>
+<p>以上代码是一个Java类，表示一个分类管理的控制器（Controller）。下面是对代码的详细解释：</p>
+<ol>
+<li><code>@RestController</code>: 这是一个注解，用于声明这个类是一个RESTful风格的控制器。它是Spring MVC框架的一部分，用于处理HTTP请求和响应。</li>
+<li><code>@RequestMapping(&quot;/category&quot;)</code>: 这是一个注解，指定了处理请求的URL路径。在这个例子中，所有与分类相关的请求都将以”&#x2F;category”作为根路径。</li>
+<li><code>@Slf4j</code>: 这是一个Lombok注解，自动生成日志记录器。<code>log</code>对象可以在代码中用于输出日志信息。</li>
+<li><code>public class CategoryController</code>: 这是一个Java类的定义，表示一个分类管理的控制器。</li>
+<li><code>@Autowired</code>: 这是一个Spring框架的注解，用于自动装配（注入）依赖对象。在这个例子中，<code>CategoryService</code>类的一个实例将被自动注入到<code>categoryService</code>字段中。</li>
+<li><code>@PostMapping</code>: 这是一个注解，表示这个方法处理HTTP POST请求。</li>
+<li><code>public R&lt;String&gt; save(@RequestBody Category category)</code>: 这是一个处理POST请求的方法。它接受一个<code>Category</code>对象作为请求的主体（RequestBody），并返回一个<code>R&lt;String&gt;</code>对象作为响应。<code>R</code>是一个自定义的泛型类，用于封装响应结果。</li>
+<li><code>log.info(&quot;category:&#123;&#125;&quot;,category)</code>: 这是一个日志输出语句，使用<code>log</code>对象输出日志信息。<code>&#123;&#125;</code>是占位符，将<code>category</code>对象的值插入到日志消息中。</li>
+<li><code>categoryService.save(category)</code>: 这是调用<code>categoryService</code>对象的<code>save</code>方法，将传入的<code>category</code>对象保存到数据库或进行相应的业务处理。</li>
+<li><code>return R.success(&quot;新增分类成功&quot;)</code>: 这是方法的返回语句，返回一个成功的<code>R</code>对象，并设置响应消息为”新增分类成功”。</li>
+</ol>
+<p>总结：以上代码定义了一个分类管理的控制器，包含了一个处理新增分类请求的方法。当收到POST请求时，它会接受一个<code>Category</code>对象作为请求主体，并将该对象保存到数据库或进行其他业务处理。最后，它返回一个包含成功消息的<code>R</code>对象作为响应。</p>
+<p>代码解释2</p>
+<p>当我们开发一个Web应用程序时，通常需要有一些类来处理不同的功能。在这个例子中，我们正在开发一个分类管理的功能。</p>
+<p>首先，我们声明了一个类<code>CategoryController</code>，这个类被注解为<code>@RestController</code>，这意味着它是一个用于处理HTTP请求和响应的控制器。它扮演着接收请求、处理逻辑和返回响应的角色。</p>
+<p>在类的顶部，我们使用了一个注解<code>@RequestMapping(&quot;/category&quot;)</code>，这是用来指定处理请求的URL路径。也就是说，当我们的应用程序接收到以<code>/category</code>开头的HTTP请求时，将由这个控制器来处理。</p>
+<p>接下来，我们注入了一个<code>CategoryService</code>对象到<code>categoryService</code>字段中，这是通过<code>@Autowired</code>注解来实现的。这意味着我们可以直接在控制器中使用<code>categoryService</code>对象，而不需要手动创建它。</p>
+<p>在控制器中，有一个名为<code>save</code>的方法，被注解为<code>@PostMapping</code>，表示它处理HTTP POST请求。这个方法接受一个<code>Category</code>对象作为参数，这个对象是通过请求的主体（RequestBody）传递的。主要用途是保存分类信息到数据库或进行其他相关的业务处理。</p>
+<p>在方法的开始处，我们使用日志记录器<code>log</code>输出一条日志信息。这条日志信息包含了接收到的<code>category</code>对象的内容，它会显示在日志文件中，方便我们在开发过程中进行调试和跟踪。</p>
+<p>接着，我们调用<code>categoryService</code>对象的<code>save</code>方法，将传入的<code>category</code>对象保存到数据库或进行相应的业务处理。这是一个根据具体业务逻辑实现的方法，我们需要根据实际需求在<code>CategoryService</code>类中进行定义。</p>
+<p>最后，我们使用<code>R.success(&quot;新增分类成功&quot;)</code>创建一个成功的响应对象，并将其作为方法的返回值。<code>R</code>对象是一个自定义的泛型类，它封装了响应的数据和状态信息。在这里，我们将成功消息设置为”新增分类成功”，并返回给客户端。</p>
+<p>总结起来，以上代码是一个分类管理的控制器，它接收HTTP POST请求，保存分类信息到数据库或进行相关的业务处理，并返回一个成功的响应消息给客户端。通过日志记录器，我们可以在开发过程中跟踪和调试代码。</p>
+<p>代码解释3</p>
+<p>以上代码是一个基于 Spring Boot 框架的 Web 应用程序中的 CategoryController 类。以下是对该代码的详细解释:</p>
+<p>@RestController - 声明了一个 RestController 类，该类该类用于处理 Web 请求。</p>
+<p>@RequestMapping(“&#x2F;category”) - 指定了请求的 URL 路径为 &#x2F;category，表示该路径是分类管理的响应请求。</p>
+<p>@Slf4j - 声明了一个 slf4j 日志管理器，用于记录日志信息。</p>
+<p>public class CategoryController { - 定义了一个公共类 CategoryController，该类包含一个内部类 CategoryService。</p>
+<p>@Autowired - 自动注入了一个 CategoryService 服务类，该服务类是由 Spring 容器提供的。</p>
+<p>save(@RequestBody Category category) - 定义了一个 save 方法，该方法接收一个 Category 对象作为参数。</p>
+<p>log.info(“category:{}”,category); - 在方法内部使用了 log.info() 方法来记录一条日志信息，其中 category 是一个 Category 对象，它将作为日志信息的参数。</p>
+<p>categoryService.save(category); - 将 Category 对象保存到数据库中。</p>
+<p>return R.success(“新增分类成功”); - 在方法返回值中使用 R.success() 方法返回一个字符串值，表示分类新增成功。</p>
+<p>}</p>
+<p>前端分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507415.png" alt="image-20230615222038412"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507095.png" alt="image-20230615222212087"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171521744.png" alt="image-20230615222350703"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//数据提交</span><br><span class="line">     submitForm(st) &#123;</span><br><span class="line">         const classData = this.classData</span><br><span class="line">         const valid = (classData.name === 0 ||classData.name)  &amp;&amp; (classData.sort === 0 || classData.sort)</span><br><span class="line">         if (this.action === &#x27;add&#x27;) &#123;</span><br><span class="line">           if (valid) &#123;</span><br><span class="line">             const reg = /^\d+$/</span><br><span class="line">             if (reg.test(classData.sort)) &#123;</span><br><span class="line">               addCategory(&#123;&#x27;name&#x27;: classData.name,&#x27;type&#x27;:this.type, sort: classData.sort&#125;).then(res =&gt; &#123;</span><br><span class="line">                 console.log(res)</span><br><span class="line">                 if (res.code === 1) &#123;</span><br><span class="line">                   this.$message.success(&#x27;分类添加成功！&#x27;)</span><br><span class="line">                   if (!st) &#123;</span><br><span class="line">                     this.classData.dialogVisible = false</span><br><span class="line">                   &#125; else &#123;</span><br><span class="line">                     this.classData.name = &#x27;&#x27;</span><br><span class="line">                     this.classData.sort = &#x27;&#x27;</span><br><span class="line">                   &#125;</span><br><span class="line">                   this.handleQuery()</span><br><span class="line">                 &#125; else &#123;</span><br><span class="line">                   this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">                 &#125;</span><br><span class="line">               &#125;).catch(err =&gt; &#123;</span><br><span class="line">                 this.$message.error(&#x27;请求出错了：&#x27; + err)</span><br><span class="line">               &#125;)</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">               this.$message.error(&#x27;排序只能输入数字类型&#x27;)</span><br><span class="line">             &#125;</span><br><span class="line">             </span><br><span class="line">         &#125; else &#123;</span><br><span class="line">             this.$message.error(&#x27;请输入分类名称或排序&#x27;)</span><br><span class="line">         &#125;</span><br><span class="line">       &#125; else if (valid) &#123;</span><br><span class="line">         const reg = /^\d+$/</span><br><span class="line">         if (reg.test(this.classData.sort)) &#123;</span><br><span class="line">           editCategory(&#123;&#x27;id&#x27;:this.classData.id,&#x27;name&#x27;: this.classData.name, sort: this.classData.sort&#125;).then(res =&gt; &#123;</span><br><span class="line">             if (res.code === 1) &#123;</span><br><span class="line">               this.$message.success(&#x27;分类修改成功！&#x27;)</span><br><span class="line">               this.classData.dialogVisible = false</span><br><span class="line">               this.handleQuery()</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">               this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;).catch(err =&gt; &#123;</span><br><span class="line">             this.$message.error(&#x27;请求出错了：&#x27; + err)</span><br><span class="line">           &#125;)</span><br><span class="line">         &#125; else &#123;</span><br><span class="line">           this.$message.error(&#x27;排序只能输入数字类型&#x27;)</span><br><span class="line">         &#125;</span><br><span class="line">       &#125; else &#123;</span><br><span class="line">         this.$message.error(&#x27;请输入分类名称或排序&#x27;)</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507423.png" alt="image-20230615222701599"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171521016.png" alt="image-20230615222724856"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507199.png" alt="image-20230615222759185"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507151.png" alt="image-20230615223021447"></p>
+<h3 id="2-5-功能测试"><a href="#2-5-功能测试" class="headerlink" title="2.5 功能测试"></a>2.5 功能测试</h3><p>新增分类的代码编写完毕之后, 我们需要重新启动项目，进入管理系统访问分类管理, 然后进行新增分类测试，需要将所有情况都覆盖全，例如：</p>
+<p>1). 输入的分类名称不存在</p>
+<p>2). 输入已存在的分类名称</p>
+<p>3). 新增菜品分类</p>
+<p>4). 新增套餐分类</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507575.png" alt="image-20230615231746196"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507902.png" alt="image-20230615235406712"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171507351.png" alt="image-20230615231813059"></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508046.png" alt="image-20230615235457314"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508079.png" alt="image-20230615235513059"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508350.png" alt="image-20230615235544060"></p>
+<h2 id="3-分类信息分页查询"><a href="#3-分类信息分页查询" class="headerlink" title="3. 分类信息分页查询"></a>3. 分类信息分页查询</h2><h3 id="3-1-需求分析"><a href="#3-1-需求分析" class="headerlink" title="3.1 需求分析"></a>3.1 需求分析</h3><p>系统中的分类很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508947.png" alt="image-20210801172259439" style="zoom:80%;" /> 
+
+
+
+
+
+<h3 id="3-2-前端页面分析"><a href="#3-2-前端页面分析" class="headerlink" title="3.2 前端页面分析"></a>3.2 前端页面分析</h3><p>在开发代码之前，需要梳理一下整个程序的执行过程：</p>
+<p>1). 页面发送ajax请求，将分页查询参数(page、pageSize)提交到服务端</p>
+<p>2). 服务端Controller接收页面提交的数据并调用Service查询数据</p>
+<p>3). Service调用Mapper操作数据库，查询分页数据</p>
+<p>4). Controller将查询到的分页数据响应给页面</p>
+<p>5). 页面接收到分页数据并通过ElementUI的Table组件展示到页面上</p>
+<p>页面加载时,就会触发Vue声明周期的钩子方法,然后执行分页查询,发送异步请求到服务端,前端代码如下: </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021840405.png" alt="image-20210801172847501" style="zoom:80%;" />  
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">created() &#123;</span><br><span class="line">      this.init()</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted() &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      async init () &#123;</span><br><span class="line">        await getCategoryPage(&#123;&#x27;page&#x27;: this.page, &#x27;pageSize&#x27;: this.pageSize&#125;).then(res =&gt; &#123;</span><br><span class="line">          if (String(res.code) === &#x27;1&#x27;) &#123;</span><br><span class="line">            this.tableData = res.data.records</span><br><span class="line">            this.counts = Number(res.data.total)</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;).catch(err =&gt; &#123;</span><br><span class="line">          this.$message.error(&#x27;请求出错了：&#x27; + err)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508199.png" alt="image-20230616143150003"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508863.png" alt="image-20230616143222468"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508447.png" alt="image-20230616143328940"></p>
+<p>页面中使用的是ElementUI提供的分页组件进行分页条的展示:</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021841412.png" alt="image-20210801173229949" style="zoom:80%;" />  
+
+
+
+<p>我们通过浏览器,也可以抓取到分页查询的请求信息, 如下: </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021841084.png" alt="image-20210801172951915" style="zoom:80%;" /> 
+
+
+
+<p>具体的请求信息整理如下: </p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;category&#x2F;page</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>?page&#x3D;1&amp;pageSize&#x3D;10</td>
+</tr>
+</tbody></table>
+<h3 id="3-3-代码实现"><a href="#3-3-代码实现" class="headerlink" title="3.3 代码实现"></a>3.3 代码实现</h3><p>在CategoryController中增加分页查询的方法，在方法中传递分页条件进行查询，并且需要对查询到的结果，安排设置的套餐顺序字段sort进行排序。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分页查询</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;Page&gt; <span class="title function_">page</span><span class="params">(<span class="type">int</span> page,<span class="type">int</span> pageSize)</span>&#123;</span><br><span class="line">    <span class="comment">//分页构造器</span></span><br><span class="line">    Page&lt;Category&gt; pageInfo = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(page,pageSize);</span><br><span class="line">    <span class="comment">//条件构造器</span></span><br><span class="line">    LambdaQueryWrapper&lt;Category&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//添加排序条件，根据sort进行排序</span></span><br><span class="line">    queryWrapper.orderByAsc(Category::getSort);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分页查询</span></span><br><span class="line">    categoryService.page(pageInfo,queryWrapper);</span><br><span class="line">    <span class="keyword">return</span> R.success(pageInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释1</p>
+<ol>
+<li><code>@GetMapping(&quot;/page&quot;)</code>: 这是一个使用GET方法的请求映射注解，指定了接口的路径为”&#x2F;page”。</li>
+<li><code>public R&lt;Page&gt; page(int page, int pageSize)</code>: 这是一个公共方法，返回类型为<code>R&lt;Page&gt;</code>，其中<code>R</code>可能是一个自定义的响应对象。该方法接收两个参数<code>page</code>和<code>pageSize</code>，用于指定分页查询的页码和每页的条目数。</li>
+<li><code>Page&lt;Category&gt; pageInfo = new Page&lt;&gt;(page, pageSize)</code>: 这里创建了一个<code>Page</code>对象，用于分页查询。构造函数的参数<code>page</code>表示要查询的页码，<code>pageSize</code>表示每页的条目数。</li>
+<li><code>LambdaQueryWrapper&lt;Category&gt; queryWrapper = new LambdaQueryWrapper&lt;&gt;()</code>: 这里创建了一个<code>LambdaQueryWrapper</code>对象，用于构造查询条件。<code>Category</code>是一个实体类，可能是指定要查询的实体对象。</li>
+<li><code>queryWrapper.orderByAsc(Category::getSort)</code>: 这行代码添加了一个排序条件，按照<code>Category</code>实体类的<code>sort</code>属性进行升序排序。</li>
+<li><code>categoryService.page(pageInfo, queryWrapper)</code>: 这里调用<code>categoryService</code>的<code>page</code>方法进行分页查询。<code>page</code>方法可能是一个业务层的方法，使用传入的<code>pageInfo</code>和<code>queryWrapper</code>进行查询，并将结果封装到<code>pageInfo</code>对象中。</li>
+<li><code>return R.success(pageInfo)</code>: 返回一个响应对象，该对象可能是自定义的<code>R</code>类的静态方法<code>success</code>的调用结果，将分页查询的结果<code>pageInfo</code>作为成功的数据返回。</li>
+</ol>
+<p>总体来说，这段代码接收分页查询的参数，构建分页对象和查询条件对象，调用业务层的方法进行查询，最后将查询结果包装在响应对象中返回。</p>
+<p>代码解释2</p>
+<p>这段代码是一个用于分页查询的接口方法。它接收两个参数，即<code>page</code>和<code>pageSize</code>，用于确定要查询的页码和每页显示的数量。</p>
+<p>首先，我们创建了一个<code>Page</code>对象，用于表示分页信息。这个对象的构造函数接受两个参数：<code>page</code>表示要查询的页码，<code>pageSize</code>表示每页显示的条目数量。</p>
+<p>然后，我们创建了一个<code>LambdaQueryWrapper</code>对象，用于构建查询条件。在这里，我们添加了一个排序条件，根据实体类<code>Category</code>的<code>sort</code>属性进行升序排序。</p>
+<p>接下来，我们调用<code>categoryService</code>的<code>page</code>方法进行分页查询。这个方法可能是一个在业务逻辑层实现的方法。我们将分页对象<code>pageInfo</code>和查询条件对象<code>queryWrapper</code>作为参数传递给该方法。</p>
+<p>最后，我们将查询结果封装在响应对象中并返回。响应对象可能是一个自定义的类，使用<code>R.success(pageInfo)</code>来表示查询成功，并将查询结果<code>pageInfo</code>作为成功的数据返回。</p>
+<p>总的来说，这段代码实现了一个分页查询的功能，根据指定的页码和每页显示的数量进行查询，并按照指定的排序方式返回查询结果。希望这样解释更容易理解！</p>
+<p>代码解释3</p>
+<p>以上代码实现了一个分页查询的方法，其参数为页面页码和每页大小。具体解释如下:</p>
+<ol>
+<li><code>@GetMapping(&quot;/page&quot;)</code>:指定请求路径为&#x2F;page，表示这是一个 GET 请求。</li>
+<li><code>public R&lt;Page&gt;</code>:定义返回类型为<code>R</code>,表示一个通用响应类，这里使用<code>Page</code>作为响应类类型，表示查询结果集。<code>&lt;Page&gt;</code>表示<code>Page</code>是一个泛型类型。</li>
+<li><code>page(int page, int pageSize)</code>:定义一个<code>page</code>方法，接收两个参数<code>page</code>和<code>pageSize</code>,分别表示页面页码和每页大小。</li>
+<li><code>//分页构造器</code>:注释中提到的分页构造器，用于创建一个<code>Page</code>对象，该对象表示查询结果集的页面。<code>new Page&lt;&gt;(page,pageSize)</code>表示创建一个<code>Page</code>对象，其中<code>page</code>表示页面页码，<code>pageSize</code>表示每页大小。</li>
+<li><code>//条件构造器</code>:注释中提到的条件构造器，用于创建一个<code>LambdaQueryWrapper</code>对象，该对象表示查询条件。<code>new LambdaQueryWrapper&lt;&gt;();</code>表示创建一个<code>LambdaQueryWrapper</code>对象。</li>
+<li><code>//添加排序条件，根据 sort 进行排序</code>:注释中提到的添加排序条件，根据<code>sort</code>字段进行排序。<code>queryWrapper.orderByAsc(Category::getSort)</code>表示按照<code>Category</code>对象的<code>sort</code>字段进行升序排序。</li>
+<li><code>//分页查询</code>:注释中提到的分页查询，调用<code>categoryService.page(pageInfo,queryWrapper)</code>方法进行查询。</li>
+<li><code>return R.success(pageInfo)</code>:返回一个<code>R</code>对象，其中<code>success</code>表示成功，<code>pageInfo</code>表示查询结果集。</li>
+</ol>
+<p>总之，以上代码实现了一个分页查询的方法，接收页面页码和每页大小作为参数，创建了一个<code>Page</code>对象表示查询结果集，并添加了排序条件。最后，调用<code>categoryService.page(pageInfo,queryWrapper)</code>方法进行查询，并将查询结果集返回给客户端。</p>
+<p>代码解释4</p>
+<p>这段代码是一个Spring Boot的控制器方法，主要功能是进行分页查询。具体解释如下：</p>
+<ol>
+<li>@GetMapping(“&#x2F;page”) 表示这个方法是一个GET请求，访问路径为”&#x2F;page”。</li>
+<li>int page, int pageSize 表示方法的两个参数，用于指定查询的页码和每页记录数。</li>
+<li>Page<Category> pageInfo &#x3D; new Page&lt;&gt;(page,pageSize); 创建了一个Mybatis-Plus的分页查询对象Page，用于查询指定页码和每页记录数的数据。</li>
+<li>LambdaQueryWrapper<Category> queryWrapper &#x3D; new LambdaQueryWrapper&lt;&gt;(); 创建了一个Mybatis-Plus的条件查询构造器LambdaQueryWrapper，用于指定查询的条件。</li>
+<li>queryWrapper.orderByAsc(Category::getSort); 指定查询结果按照Category实体类的sort字段升序排序。</li>
+<li>categoryService.page(pageInfo,queryWrapper); 调用service层的方法，进行分页查询，查询结果保存在pageInfo对象中。</li>
+<li>return R.success(pageInfo); 将查询结果封装成自定义的返回结果类型R，并返回查询结果。</li>
+</ol>
+<h3 id="3-4-功能测试"><a href="#3-4-功能测试" class="headerlink" title="3.4 功能测试"></a>3.4 功能测试</h3><p>分页查询的代码编写完毕之后, 我们需要重新启动项目，然后登陆系统后台，点击分类管理，查询分类列表是否可以正常展示。测试过程中可以使用浏览器的监控工具查看页面和服务端的数据交互细节。</p>
+<p>测试完毕后，大家会发现，我们查询数据库返回的类型为 1 或者 2， 但是实际展示到页面上的却是 “菜品分类” 或 “套餐分类”，这一块是在前端页面中进行处理的，处理代码如下： </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021841989.png" alt="image-20210801173758580" style="zoom:80%;" /> 
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171508935.png" alt="image-20230616144629334"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509791.png" alt="image-20230616144652765"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509135.png" alt="image-20230616144821061"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509950.png" alt="image-20230616144902559"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509766.png" alt="image-20230616145117354"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509598.png" alt="image-20230616145304915"></p>
+<h2 id="4-删除分类"><a href="#4-删除分类" class="headerlink" title="4. 删除分类"></a>4. 删除分类</h2><h3 id="4-1-需求分析"><a href="#4-1-需求分析" class="headerlink" title="4.1 需求分析"></a>4.1 需求分析</h3><p>在分类管理列表页面，可以对某个分类进行删除操作。需要注意的是当分类关联了菜品或者套餐时，此分类不允许删除。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021841652.png" alt="image-20210801220637396" style="zoom:80%;" /> 
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509311.png" alt="image-20230616180403144"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171509870.png" alt="image-20230616180511018"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510006.png" alt="image-20230616180755456"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510951.png" alt="image-20230616180914146"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//删除</span><br><span class="line">      deleteHandle(id) &#123;</span><br><span class="line">        this.$confirm(&#x27;此操作将永久删除该文件, 是否继续?&#x27;, &#x27;提示&#x27;, &#123;</span><br><span class="line">          &#x27;confirmButtonText&#x27;: &#x27;确定&#x27;,</span><br><span class="line">          &#x27;cancelButtonText&#x27;: &#x27;取消&#x27;,</span><br><span class="line">          &#x27;type&#x27;: &#x27;warning&#x27;</span><br><span class="line">        &#125;).then(() =&gt; &#123;</span><br><span class="line">          deleCategory(id).then(res =&gt; &#123;</span><br><span class="line">            if (res.code === 1) &#123;</span><br><span class="line">              this.$message.success(&#x27;删除成功！&#x27;)</span><br><span class="line">              this.handleQuery()</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">              this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;).catch(err =&gt; &#123;</span><br><span class="line">            this.$message.error(&#x27;请求出错了：&#x27; + err)</span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果点击确定  会执行deleCategory(id)  方法  然后把id带过来</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510302.png" alt="image-20230616181150085"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510750.png" alt="image-20230616181237016"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 删除当前列的接口</span><br><span class="line">const deleCategory = (ids) =&gt; &#123;</span><br><span class="line">  return $axios(&#123;</span><br><span class="line">    url: &#x27;/category&#x27;,</span><br><span class="line">    method: &#x27;delete&#x27;,</span><br><span class="line">    params: &#123; ids &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-2-前端页面分析"><a href="#4-2-前端页面分析" class="headerlink" title="4.2 前端页面分析"></a>4.2 前端页面分析</h3><p>在前端页面中，点击 “删除” 按钮，就会触发定义的方法，然后往服务端发送异步请求，并传递参数id，执行删除分类操作。</p>
+ <img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021841964.png" alt="image-20210801221049176" style="zoom:80%;" />  
+
+<p>删除操作的具体执行流程如下： </p>
+<p>1). 点击删除，页面发送ajax请求，将参数(id)提交到服务端</p>
+<p>2). 服务端Controller接收页面提交的数据并调用Service删除数据</p>
+<p>3). Service调用Mapper操作数据库</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021841405.png" alt="image-20210801221343539" style="zoom:80%;" /> 
+
+
+
+<p>从上述的分析中，我们可以得到请求的信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>DELETE</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;category</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>?id&#x3D;1395291114922618881</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-代码实现"><a href="#4-3-代码实现" class="headerlink" title="4.3 代码实现"></a>4.3 代码实现</h3><p>在CategoryController中增加根据ID删除的方法，在方法中接收页面传递参数id，然后执行删除操作。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据id删除分类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">delete</span><span class="params">(Long id)</span>&#123;</span><br><span class="line">    log.info(<span class="string">&quot;删除分类，id为：&#123;&#125;&quot;</span>,id);</span><br><span class="line">    categoryService.removeById(id);</span><br><span class="line">    <span class="keyword">return</span> R.success(<span class="string">&quot;分类信息删除成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际操作时 没有删除成功  是因为传入后端的是ids 所以要把id修改成ids</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510494.png" alt="image-20230616203535352"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510078.png" alt="image-20230616203606328"></p>
+<p>或者把前端里面deleCategory()方法里面的ids修改回id也可以</p>
+<p>代码解释1</p>
+<p>以上代码是一个Java Spring Boot控制器（Controller）中的一个方法，用于根据给定的id删除分类信息。让我逐步解释代码的功能和结构。</p>
+<ol>
+<li><p>方法签名：代码开头的注释部分是对该方法的说明，指出了该方法的功能和参数。根据注释，该方法接受一个Long类型的id参数，并返回一个泛型为R<String>的对象。</p>
+</li>
+<li><p>@DeleteMapping：这是一个Spring框架的注解，用于将HTTP DELETE请求映射到该方法。这意味着当客户端发送一个DELETE请求到相应的URL时，该方法将被调用。</p>
+</li>
+<li><p>方法实现：方法体中的代码是实际的方法实现逻辑。</p>
+<p>a. 日志记录：第一行代码使用了一个日志记录框架（可能是log4j或其他类似的框架）来记录一条信息。该日志语句将打印出一个带有id的删除分类的信息。</p>
+<p>b. 分类删除：接下来的一行代码调用了一个名为categoryService的服务或业务逻辑组件的removeById方法，传递了id参数。这个方法的功能是根据给定的id从数据库或其他数据存储中删除相应的分类信息。</p>
+<p>c. 返回结果：最后一行代码使用了一个自定义的R类（可能是一个封装了响应结果的实用类）创建了一个成功的响应对象，并包含一条消息，指示分类信息删除成功。</p>
+</li>
+</ol>
+<p>总结：以上代码实现了一个HTTP DELETE请求处理方法，它接收一个id参数，并在日志中记录删除操作，然后调用分类服务的removeById方法删除相应的分类信息，并返回一个带有成功消息的响应对象。请注意，这只是代码的一部分，还可能包含其他方法和类来实现完整的控制器功能。</p>
+<p>代码解释2</p>
+<p>以上代码实现了一个根据 ID 删除分类的方法。具体解释如下:</p>
+<ol>
+<li><code>@DeleteMapping</code>:指定删除请求的映射路径，这里使用<code>@DeleteMapping</code>注解标记在方法上，表示该方法处理删除请求。</li>
+<li><code>public R&lt;String&gt;</code>:定义返回类型为<code>R</code>,表示一个通用响应类，这里使用<code>R</code>作为响应类类型，表示返回一个字符串。<code>&lt;String&gt;</code>表示<code>R</code>的泛型类型是一个字符串类型的类型。</li>
+<li><code>delete(Long id)</code>:定义一个<code>delete</code>方法，接收一个参数<code>id</code>,表示要删除的分类的 ID。</li>
+<li><code>log.info(&quot;删除分类，id 为:&#123;&#125;&quot;,id);</code>:在日志中记录一条信息，表示删除的分类的 ID 为<code>id</code>。</li>
+<li><code>categoryService.removeById(id);</code>:调用<code>categoryService</code>的<code>removeById</code>方法，该方法接收一个参数<code>id</code>,表示要删除的分类的 ID。</li>
+<li><code>return R.success(&quot;分类信息删除成功&quot;);</code>:返回一个<code>R</code>对象，其中<code>success</code>表示成功，返回字符串<code>&quot;分类信息删除成功&quot;</code>表示删除分类成功。</li>
+</ol>
+<p>总之，以上代码实现了一个根据 ID 删除分类的方法，通过日志记录的方式记录删除的分类的 ID，然后调用<code>categoryService</code>的<code>removeById</code>方法进行删除操作，最后返回一个成功响应字符串表示删除成功。</p>
+<p>代码解释3</p>
+<p>这是一个Spring Boot的控制器类，用来处理删除分类信息的请求。具体解释如下：</p>
+<ol>
+<li><p>@DeleteMapping：这是一个注解，表示这个方法是用来处理删除请求的，相当于HTTP的DELETE方法。</p>
+</li>
+<li><p>public R<String> delete(Long id)：这个方法的返回值是一个R对象，其中包含了操作结果的状态码、消息以及数据。参数id表示要删除的分类的id。</p>
+</li>
+<li><p>log.info(“删除分类，id为：{}”,id)：这是一个日志记录语句，用来记录删除操作的日志信息，其中{}表示占位符，会被后面的参数id所替代。</p>
+</li>
+<li><p>categoryService.removeById(id)：这行代码是调用分类服务的removeById方法来删除指定id的分类信息。</p>
+</li>
+<li><p>return R.success(“分类信息删除成功”)：这行代码返回一个成功的操作结果，其中包含了一条成功消息，表示分类信息删除成功。</p>
+</li>
+</ol>
+<p>总之，这段代码实现了删除分类信息的功能，并且通过日志记录和返回操作结果的方式，让操作变得更加可控和可预测</p>
+<h3 id="4-4-功能测试"><a href="#4-4-功能测试" class="headerlink" title="4.4 功能测试"></a>4.4 功能测试</h3><p>基本的删除操作代码实现完毕后，重启项目，进行测试。可以通过debug断点调试进行测试，同时结合浏览器监控工具查看请求和响应的具体数据。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510535.png" alt="image-20230616183045212"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171510101.png" alt="image-20230616183117557"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511710.png" alt="image-20230616183227196"></p>
+<h3 id="4-5-功能完善"><a href="#4-5-功能完善" class="headerlink" title="4.5 功能完善"></a>4.5 功能完善</h3><h4 id="4-5-1-思路分析"><a href="#4-5-1-思路分析" class="headerlink" title="4.5.1 思路分析"></a>4.5.1 思路分析</h4><p>在上述的测试中，我们看到分类数据是可以正常删除的。但是并没有检查删除的分类是否关联了菜品或者套餐，所以我们需要进行功能完善。完善后的逻辑为：</p>
+<ul>
+<li>根据当前分类的ID，查询该分类下是否存在菜品，如果存在，则提示错误信息</li>
+<li>根据当前分类的ID，查询该分类下是否存在套餐，如果存在，则提示错误信息</li>
+<li>执行正常的删除分类操作</li>
+</ul>
+<p>那么在这里又涉及到我们后面要用到的两张表结构 dish(菜品表) 和 setmeal(套餐表)。具体的表结构，我们目前先了解一下： </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511981.png" alt="image-20210802001302912" style="zoom:80%;" /> 
+
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021842741.png" alt="image-20210802001348928" style="zoom:80%;" /> 
+
+
+
+
+
+<h4 id="4-5-2-准备工作"><a href="#4-5-2-准备工作" class="headerlink" title="4.5.2 准备工作"></a>4.5.2 准备工作</h4><p><strong>1). 准备菜品(Dish)及套餐(Setmeal)实体类(课程资料中直接拷贝)</strong></p>
+<p>所属包: com.itheima.reggie.entity</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.FieldFill;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 菜品</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dish</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜品名称</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜品分类id</span></span><br><span class="line">    <span class="keyword">private</span> Long categoryId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//菜品价格</span></span><br><span class="line">    <span class="keyword">private</span> BigDecimal price;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//商品码</span></span><br><span class="line">    <span class="keyword">private</span> String code;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//图片</span></span><br><span class="line">    <span class="keyword">private</span> String image;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//描述信息</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//0 停售 1 起售</span></span><br><span class="line">    <span class="keyword">private</span> Integer status;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//顺序</span></span><br><span class="line">    <span class="keyword">private</span> Integer sort;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime updateTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> Long createUser;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> Long updateUser;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.FieldFill;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 套餐</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Setmeal</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分类id</span></span><br><span class="line">    <span class="keyword">private</span> Long categoryId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//套餐名称</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//套餐价格</span></span><br><span class="line">    <span class="keyword">private</span> BigDecimal price;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//状态 0:停用 1:启用</span></span><br><span class="line">    <span class="keyword">private</span> Integer status;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//编码</span></span><br><span class="line">    <span class="keyword">private</span> String code;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//描述信息</span></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//图片</span></span><br><span class="line">    <span class="keyword">private</span> String image;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime updateTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> Long createUser;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> Long updateUser;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). Mapper接口DishMapper和SetmealMapper</strong></p>
+<p>所属包: com.itheima.reggie.mapper</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Dish;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DishMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;Dish&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Setmeal;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">SetmealMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;Setmeal&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3). Service接口DishService和SetmealService</strong></p>
+<p>所属包: com.itheima.reggie.service</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Dish;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DishService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;Dish&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Setmeal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">SetmealService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;Setmeal&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>4). Service实现类DishServiceImpl和SetmealServiceImpl</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Dish;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.mapper.DishMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.DishService;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;DishMapper,Dish&gt; <span class="keyword">implements</span> <span class="title class_">DishService</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Setmeal;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.mapper.SetmealMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.SetmealService;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SetmealServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;SetmealMapper,Setmeal&gt; <span class="keyword">implements</span> <span class="title class_">SetmealService</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-5-3-代码实现"><a href="#4-5-3-代码实现" class="headerlink" title="4.5.3 代码实现"></a>4.5.3 代码实现</h4><p><strong>1). 创建自定义异常</strong></p>
+<p>在业务逻辑操作过程中,如果遇到一些业务参数、操作异常的情况下，我们直接抛出此异常。</p>
+<p>所在包: com.itheima.reggie.common</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义业务异常类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomException</span> <span class="keyword">extends</span> <span class="title class_">RuntimeException</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CustomException</span><span class="params">(String message)</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). 在CategoryService中扩展remove方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">CategoryService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;Category&gt; &#123;</span><br><span class="line">	<span class="comment">//根据ID删除分类</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(Long id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511127.png" alt="image-20230616185727281"></p>
+<p><strong>3). 在CategoryServiceImpl中实现remove方法</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> DishService dishService;</span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> SetmealService setmealService;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据id删除分类，删除之前需要进行判断</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    <span class="comment">//添加查询条件，根据分类id进行查询菜品数据</span></span><br><span class="line">    LambdaQueryWrapper&lt;Dish&gt; dishLambdaQueryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    dishLambdaQueryWrapper.eq(Dish::getCategoryId,id);</span><br><span class="line">    <span class="type">int</span> <span class="variable">count1</span> <span class="operator">=</span> dishService.count(dishLambdaQueryWrapper);</span><br><span class="line">    <span class="comment">//如果已经关联，抛出一个业务异常</span></span><br><span class="line">    <span class="keyword">if</span>(count1 &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CustomException</span>(<span class="string">&quot;当前分类下关联了菜品，不能删除&quot;</span>);<span class="comment">//已经关联菜品，抛出一个业务异常</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查询当前分类是否关联了套餐，如果已经关联，抛出一个业务异常</span></span><br><span class="line">    LambdaQueryWrapper&lt;Setmeal&gt; setmealLambdaQueryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    setmealLambdaQueryWrapper.eq(Setmeal::getCategoryId,id);</span><br><span class="line">    <span class="type">int</span> <span class="variable">count2</span> <span class="operator">=</span> setmealService.count(setmealLambdaQueryWrapper);</span><br><span class="line">    <span class="keyword">if</span>(count2 &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CustomException</span>(<span class="string">&quot;当前分类下关联了套餐，不能删除&quot;</span>);<span class="comment">//已经关联套餐，抛出一个业务异常</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//正常删除分类</span></span><br><span class="line">    <span class="built_in">super</span>.removeById(id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么在上述的业务逻辑中，当分类下关联的有菜品或者套餐时，我们在业务代码中抛出了自定义异常，并且在异常中封装了错误提示信息，那这个错误提示信息如何提示给页面呢？</p>
+<p>异常抛出之后，会被异常处理器捕获，我们只需要在异常处理器中捕获这一类的异常，然后给页面返回对应的提示信息即可。</p>
+<p>代码解释1</p>
+<p>以上代码是一个Java类<code>CategoryServiceImpl</code>，它实现了<code>CategoryService</code>接口，并继承了<code>ServiceImpl&lt;CategoryMapper, Category&gt;</code>类。</p>
+<p>该类的作用是对分类进行操作，其中包括根据ID删除分类，并在删除之前进行一些判断。</p>
+<p>代码中使用了Spring框架的<code>@Autowired</code>注解，通过依赖注入的方式获取了<code>DishService</code>和<code>SetmealService</code>的实例，这两个服务类用于对菜品和套餐进行操作。</p>
+<p>在<code>remove(Long id)</code>方法中，首先通过分类ID查询是否存在关联的菜品数据，使用<code>LambdaQueryWrapper</code>构建查询条件，然后调用<code>dishService.count(dishLambdaQueryWrapper)</code>方法获取关联菜品的数量。如果数量大于0，表示当前分类下存在关联的菜品，会抛出一个自定义的业务异常(<code>CustomException</code>)，提示无法删除分类。</p>
+<p>接着，代码查询当前分类是否关联了套餐，方法与上述类似。如果存在关联的套餐，同样会抛出一个业务异常。</p>
+<p>如果以上两个判断都通过，即分类下既没有关联的菜品也没有关联的套餐，那么会调用<code>super.removeById(id)</code>方法，利用继承自<code>ServiceImpl</code>的方法实现正常删除分类的操作。</p>
+<p>总结：以上代码实现了对分类进行删除操作，但在删除之前会先判断分类下是否有关联的菜品和套餐，如果存在关联数据，则会抛出业务异常，否则会执行删除操作。</p>
+<p>代码解释2</p>
+<p>当删除一个分类时，以上代码会进行一些判断和操作。</p>
+<p>首先，代码会检查该分类是否与菜品关联。它会查询与该分类ID相关联的菜品数量。如果数量大于0，表示该分类与一些菜品有关联，就无法删除该分类。这是为了避免删除分类时，与之相关的菜品信息丢失。</p>
+<p>接下来，代码会检查该分类是否与套餐关联。它会查询与该分类ID相关联的套餐数量。如果数量大于0，表示该分类与一些套餐有关联，同样无法删除该分类。这是为了确保与分类相关联的套餐信息不会丢失。</p>
+<p>如果以上两个检查都通过，即分类既没有关联的菜品也没有关联的套餐，那么该分类可以被安全地删除。代码会执行删除操作，将该分类从数据库中删除。</p>
+<p>总结：以上代码在删除分类时，先检查是否有关联的菜品或套餐。如果有关联数据，则无法删除；如果没有关联数据，则可以安全删除。这样可以确保数据的完整性和一致性。</p>
+<p>代码解释3</p>
+<ol>
+<li><p>首先，通过<code>@Autowired</code>注解，注入了<code>DishService</code>和<code>SetmealService</code>的实例，这样就可以使用这两个服务类提供的方法来对菜品和套餐进行操作。</p>
+</li>
+<li><p><code>remove(Long id)</code>方法是删除分类的方法。它接受一个分类ID作为参数。</p>
+</li>
+<li><p>在删除分类之前，代码会先进行两个判断：</p>
+<p>a. 判断是否有关联的菜品：通过创建一个<code>LambdaQueryWrapper&lt;Dish&gt;</code>对象，指定查询条件为菜品的<code>categoryId</code>等于当前分类的ID。然后调用<code>dishService.count(dishLambdaQueryWrapper)</code>方法，统计满足条件的菜品数量。如果数量大于0，表示当前分类下有关联的菜品，就会抛出一个自定义的业务异常(<code>CustomException</code>)，并提示无法删除该分类。</p>
+<p>b. 判断是否有关联的套餐：通过创建一个<code>LambdaQueryWrapper&lt;Setmeal&gt;</code>对象，指定查询条件为套餐的<code>categoryId</code>等于当前分类的ID。然后调用<code>setmealService.count(setmealLambdaQueryWrapper)</code>方法，统计满足条件的套餐数量。如果数量大于0，表示当前分类下有关联的套餐，同样会抛出一个业务异常，提示无法删除该分类。</p>
+</li>
+<li><p>如果以上两个判断都通过，即当前分类既没有关联的菜品也没有关联的套餐，那么就可以安全地删除该分类。代码调用<code>super.removeById(id)</code>方法，利用继承自<code>ServiceImpl</code>的方法来删除数据库中对应的分类记录。</p>
+</li>
+</ol>
+<p>通过这样的判断和操作，代码确保了在删除分类之前，先检查是否存在关联的菜品或套餐。如果有关联数据，就阻止删除操作，以保护数据的完整性。只有当没有关联数据时，才会执行删除操作。这样可以避免意外删除关联数据，并确保系统的数据一致性。</p>
+<p><strong>4). 在GlobalExceptionHandler中处理自定义异常</strong></p>
+<p>在全局异常处理器中增加方法，用于捕获我们自定义的异常 CustomException</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 异常处理方法</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ExceptionHandler(CustomException.class)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">exceptionHandler</span><span class="params">(CustomException ex)</span>&#123;</span><br><span class="line">    log.error(ex.getMessage());</span><br><span class="line">    <span class="keyword">return</span> R.error(ex.getMessage());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>5). 改造CategoryController的delete方法</strong></p>
+<p>注释掉原有的代码，在delete方法中直接调用categoryService中我们自定义的remove方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 根据id删除分类</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">delete</span><span class="params">(Long id)</span>&#123;</span><br><span class="line">    log.info(<span class="string">&quot;删除分类，id为：&#123;&#125;&quot;</span>,id);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//categoryService.removeById(id);</span></span><br><span class="line">    categoryService.remove(id);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.success(<span class="string">&quot;分类信息删除成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-5-4-功能测试"><a href="#4-5-4-功能测试" class="headerlink" title="4.5.4 功能测试"></a>4.5.4 功能测试</h4><p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511799.png" alt="image-20230616203322797"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511191.png" alt="image-20230616191547877"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511871.png" alt="image-20230616191603123"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171511727.png" alt="image-20230616204151858"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512623.png" alt="image-20230616204342756"></p>
+<p>2次F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512575.png" alt="image-20230616210156522"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171522239.png" alt="image-20230616210354878"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512309.png" alt="image-20230616210543082"></p>
+<p>重新删除</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512208.png" alt="image-20230616211019447"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512493.png" alt="image-20230616211056897"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512333.png" alt="image-20230616211139728"></p>
+<p>3次F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512518.png" alt="image-20230616211230743"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171512614.png" alt="image-20230616211331113"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171513733.png" alt="image-20230616211441503"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171513838.png" alt="image-20230616211505898"></p>
+<p>F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171513254.png" alt="image-20230616211559672"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171513598.png" alt="image-20230616211711486"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171513606.png" alt="image-20230616211801856"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171513991.png" alt="image-20230616211838052"></p>
+<p>功能完善的代码编写完毕之后, 我们需要重新启动项目，进入管理系统访问分类管理, 然后进行删除分类的测试，需要将所有情况都覆盖全，例如：</p>
+<p>1). 新增一个分类，然后再直接删除，检查是否可以正常删除成功。(新增的分类时没有关联菜品和套餐的)</p>
+<p>2). 在数据库表(dish&#x2F;setmeal)中，找到一个与菜品或套餐关联的分类，然后在页面中执行删除操作，检查是否可以正常的提示出对应的错误信息。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021842140.png" alt="image-20210801235124007" style="zoom:80%;" /> 
+
+
+
+
+
+<h2 id="5-修改分类"><a href="#5-修改分类" class="headerlink" title="5. 修改分类"></a>5. 修改分类</h2><h3 id="5-1-需求分析"><a href="#5-1-需求分析" class="headerlink" title="5.1 需求分析"></a>5.1 需求分析</h3><p>在分类管理列表页面点击修改按钮，弹出修改窗口，在修改窗口回显分类信息并进行修改，最后点击确定按钮完成修改操作。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021842756.png" alt="image-20210801235311435" style="zoom:80%;" /> 
+
+
+
+<h3 id="5-2-前端页面分析"><a href="#5-2-前端页面分析" class="headerlink" title="5.2 前端页面分析"></a>5.2 前端页面分析</h3><p>这里面大家会发现，修改功能我们还没有实现，但是当点击 “修改” 按钮的时候，我们并没有开发根据ID查询数据，进行页面回显的功能，但是页面的分类数据确实回显回来了。这是怎么做到的呢，我们来解析一下前端的代码实现(前端代码已经实现)：</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021842740.png" alt="image-20210802000227359" style="zoom:80%;" /> 
+
+<p>那么回显这一步的操作前端已经实现，我们就只需要开发一个方法，修改操作的方法即可。我们可以通过浏览器来抓取一下修改操作的请求信息，如图：</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202304021842996.png" alt="image-20210802000605946" style="zoom:80%;" /> 
+
+
+
+<p>具体的请求信息，整理如下：</p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>PUT</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;category</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>{id: “1399923597874081794”, name: “超值午餐”, sort: 0}</td>
+</tr>
+</tbody></table>
+<p>视频前端分析</p>
+<p>点击修改时 携带列表中的数据   scope.row</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171514238.png" alt="image-20230617001020047"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171523799.png" alt="image-20230617014225854"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171514174.png" alt="image-20230617014559727"></p>
+<h3 id="5-3-代码实现"><a href="#5-3-代码实现" class="headerlink" title="5.3 代码实现"></a>5.3 代码实现</h3><p>html页面中相关的代码都已经提供好了，我们已经分析了请求的信息，接下来就可以来创建服务端的CategoryController方法update方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据id修改分类信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> Category category)</span>&#123;</span><br><span class="line">    log.info(<span class="string">&quot;修改分类信息：&#123;&#125;&quot;</span>,category);</span><br><span class="line">    categoryService.updateById(category);</span><br><span class="line">    <span class="keyword">return</span> R.success(<span class="string">&quot;修改分类信息成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>代码解释1</p>
+<p>以上代码是一个Java后端接口的示例，用于根据id修改分类信息。下面是对代码的解释：</p>
+<ol>
+<li><code>@PutMapping</code>：这是一个Spring框架中的注解，用于将HTTP的PUT请求映射到该方法上。</li>
+<li><code>public R&lt;String&gt; update(@RequestBody Category category)</code>：这是一个公共方法，返回类型为<code>R&lt;String&gt;</code>，即一个封装了响应数据的通用结果对象。它接受一个<code>Category</code>对象作为请求体参数，该对象包含了需要修改的分类信息。</li>
+<li><code>log.info(&quot;修改分类信息：&#123;&#125;&quot;, category)</code>：这是日志输出语句，用于在日志中记录修改的分类信息。</li>
+<li><code>categoryService.updateById(category)</code>：这是调用一个名为<code>categoryService</code>的服务（Service）类中的<code>updateById</code>方法，该方法用于根据id更新分类信息。通过传入的<code>category</code>对象，该方法将根据id找到对应的分类，并将其信息更新为<code>category</code>对象中的新信息。</li>
+<li><code>return R.success(&quot;修改分类信息成功&quot;)</code>：这是返回一个成功的响应结果，其中包含了一个成功的消息字符串”修改分类信息成功”。</li>
+</ol>
+<p>请注意，这只是一个片段代码，可能还有其他相关的类和方法。以上解释仅限于提供的代码片段，并不能完全了解代码的上下文和功能实现。</p>
+<p>代码解释2</p>
+<p>这段代码是一个后端接口的实现，用于根据给定的id来修改分类信息。让我们逐行解释：</p>
+<ol>
+<li><code>@PutMapping</code>：这是一个注解，用于将HTTP的PUT请求映射到这个方法上。PUT请求通常用于更新（修改）资源。</li>
+<li><code>public R&lt;String&gt; update(@RequestBody Category category)</code>：这是一个公共方法，返回类型为<code>R&lt;String&gt;</code>，表示响应结果对象，其中<code>&lt;String&gt;</code>是指示响应数据的类型。方法的名称是<code>update</code>，它接受一个<code>Category</code>类型的参数，被注解<code>@RequestBody</code>修饰，表示从请求体中获取数据并转换为<code>Category</code>对象。</li>
+<li><code>log.info(&quot;修改分类信息：&#123;&#125;&quot;, category)</code>：这行代码用于打印日志信息，输出”修改分类信息：”并将<code>category</code>对象的内容作为日志的参数进行占位。</li>
+<li><code>categoryService.updateById(category)</code>：这行代码调用了一个名为<code>categoryService</code>的服务类中的<code>updateById</code>方法。通过传入的<code>category</code>对象，该方法将根据id找到对应的分类，并将其信息更新为<code>category</code>对象中的新信息。</li>
+<li><code>return R.success(&quot;修改分类信息成功&quot;)</code>：这行代码返回一个成功的响应结果。<code>R.success()</code>是一个静态方法，用于创建一个成功的响应对象，其中包含了一个表示成功消息的字符串，这里是”修改分类信息成功”。</li>
+</ol>
+<p>总结一下，这段代码是一个后端接口的实现，它通过PUT请求来修改给定id的分类信息。它从请求体中获取一个<code>Category</code>对象，将其传递给<code>categoryService</code>服务类的<code>updateById</code>方法进行分类信息的更新，并返回一个成功的响应结果。在这个例子中，日志记录了正在修改的分类信息。</p>
+<p>代码解释3</p>
+<p>该代码为一个Spring Boot项目中的Controller层方法，实现了根据id修改分类信息的功能。具体解释如下：</p>
+<ol>
+<li>@PutMapping</li>
+</ol>
+<p>这是一个RequestMapping注解的派生注解，表示该方法支持HTTP的PUT请求方式，即用于更新资源。</p>
+<ol start="2">
+<li>public R<String> update(@RequestBody Category category)</li>
+</ol>
+<p>该方法的返回类型为R<String>，表示一个通用返回类型，其中的泛型String表示返回的信息类型。</p>
+<p>该方法只有一个参数，使用了@RequestBody注解，表示该参数是一个请求体中的JSON格式数据，将其转化成一个Category对象。</p>
+<ol start="3">
+<li>log.info(“修改分类信息：{}”,category);</li>
+</ol>
+<p>使用了slf4j日志门面，将修改的分类信息打印出来。</p>
+<ol start="4">
+<li>categoryService.updateById(category);</li>
+</ol>
+<p>调用分类的Service层方法，通过id更新分类信息。</p>
+<ol start="5">
+<li>return R.success(“修改分类信息成功”);</li>
+</ol>
+<p>返回一个R类型的通用返回结果，表示操作成功。</p>
+<p>代码解释4</p>
+<p>以上代码是一个简单的 Spring Boot 应用程序，它实现了一个 “&#x2F;category&#x2F;update” 端点，该端点用于根据 ID 修改分类信息。</p>
+<p>以下是代码的详细解释:</p>
+<ul>
+<li><code>@PutMapping</code> 注解指定了端点的 PUT 请求方法。</li>
+<li><code>public R&lt;String&gt;</code> 返回类型指定了返回值的类型为 <code>R</code>,这里使用 <code>R</code> 表示返回值的类型为 <code>Result</code>。<code>Result</code> 是 Spring Boot 中定义的一个结果类，它包含了请求的状态码、响应体等信息。</li>
+<li><code>@RequestBody</code> 注解指定了请求体参数的类型为 <code>Category</code>,这里使用 <code>Category</code> 表示分类信息的对象类型。</li>
+<li><code>log.info(&quot;修改分类信息:&#123;&#125;&quot;,category);</code> 代码段用于在日志中记录修改分类信息的详细信息，其中 <code>category</code> 是一个对象，它包含了分类信息的详细信息。</li>
+<li><code>categoryService.updateById(category);</code> 代码段调用分类服务中的 <code>updateById</code> 方法，该方法根据 ID 更新分类信息。</li>
+<li><code>return R.success(&quot;修改分类信息成功&quot;);</code> 代码段指定返回值的状态码为 200，并返回一个成功响应体，其中包含了分类信息的详细信息。<code>R.success</code> 方法返回一个 <code>Result</code> 对象，其中包含了成功的响应体信息。</li>
+</ul>
+<p>综上所述，以上代码实现了一个根据 ID 修改分类信息的端点，它通过调用分类服务中的 <code>updateById</code> 方法来更新分类信息，并返回成功响应体。</p>
+<p>代码解释5</p>
+<p>以上代码中，<code>@PutMapping</code> 注解指定了端点的 PUT 请求方法。<code>@RequestBody</code> 注解指定了请求体参数的类型为 <code>Category</code>,这里使用 <code>Category</code> 表示分类信息的对象类型。<code>@RequestBody</code> 注解的作用是在请求体中包含了一个对象，那么这个对象就需要在请求体中被解析出来，然后在服务端进行相应的处理。</p>
+<p><code>log.info(&quot;修改分类信息:&#123;&#125;&quot;,category);</code> 代码段用于在日志中记录修改分类信息的详细信息，其中 <code>category</code> 是一个对象，它包含了分类信息的详细信息，这里使用了 <code>info</code> 日志级别，表示打印详细信息。</p>
+<p><code>categoryService.updateById(category);</code> 代码段调用分类服务中的 <code>updateById</code> 方法，该方法根据 ID 更新分类信息。分类服务的具体实现取决于应用程序的需求，这里只是简单示例。</p>
+<p><code>return R.success(&quot;修改分类信息成功&quot;);</code> 代码段指定返回值的状态码为 200，并返回一个成功响应体，其中包含了分类信息的详细信息。<code>R.success</code> 方法返回一个 <code>Result</code> 对象，其中包含了成功的响应体信息。<code>Result</code> 对象包含了请求的状态码、响应体等信息，可以根据请求的状态码来检查请求是否成功，并根据响应体的信息来进一步处理。</p>
+<p>综上所述，以上代码实现了一个根据 ID 修改分类信息的端点，它通过调用分类服务中的 <code>updateById</code> 方法来更新分类信息，并返回成功响应体。</p>
+<h3 id="5-4-功能测试"><a href="#5-4-功能测试" class="headerlink" title="5.4 功能测试"></a>5.4 功能测试</h3><p>按照前面分析的操作流程进行测试，查看数据是否正常修改即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171514086.png" alt="image-20230617015156538"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171514462.png" alt="image-20230617015216322"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171514990.png" alt="image-20230617015229302"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day03/202306171514775.png" alt="image-20230617015349893"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zyziga.github.io">姜小白</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zyziga.github.io/archives/2.html">https://zyziga.github.io/archives/2.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zyziga.github.io" target="_blank">姜小白程序</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/1.html" title="瑞吉外卖-Day02"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">瑞吉外卖-Day02</div></div></a></div><div class="next-post pull-right"><a href="/archives/3.html" title="瑞吉外卖-Day04"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">瑞吉外卖-Day04</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/milos.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">姜小白</div><div class="author-info__description">姜小白程序</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zyziga/zyziga.github.io"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zyziga" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Hexo.zyziga.github.io" target="_blank" title="博客"><i class="fas fa-thin fa-truck"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到姜小白的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-Day03"><span class="toc-text">瑞吉外卖-Day03</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="toc-text">课程内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%AC%E5%85%B1%E5%AD%97%E6%AE%B5%E8%87%AA%E5%8A%A8%E5%A1%AB%E5%85%85"><span class="toc-text">1. 公共字段自动填充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-text">1.1 问题分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.2 基本功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90"><span class="toc-text">1.2.1 思路分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.2.2 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-3-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">1.2.3 功能测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%8A%9F%E8%83%BD%E5%AE%8C%E5%96%84"><span class="toc-text">1.3 功能完善</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90"><span class="toc-text">1.3.1 思路分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-ThreadLocal"><span class="toc-text">1.3.2 ThreadLocal</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="toc-text">1.3.3 操作步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-4-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.3.4 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-5-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">1.3.5 功能测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E5%A2%9E%E5%88%86%E7%B1%BB"><span class="toc-text">2. 新增分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">2.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.2 数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">2.3 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">2.4 代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">2.5 功能测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%86%E7%B1%BB%E4%BF%A1%E6%81%AF%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">3. 分类信息分页查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">3.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">3.2 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.3 代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">3.4 功能测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%A0%E9%99%A4%E5%88%86%E7%B1%BB"><span class="toc-text">4. 删除分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">4.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">4.2 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.3 代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">4.4 功能测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%8A%9F%E8%83%BD%E5%AE%8C%E5%96%84"><span class="toc-text">4.5 功能完善</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-1-%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90"><span class="toc-text">4.5.1 思路分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-2-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">4.5.2 准备工作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.5.3 代码实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-4-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">4.5.4 功能测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BF%AE%E6%94%B9%E5%88%86%E7%B1%BB"><span class="toc-text">5. 修改分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">5.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">5.2 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">5.3 代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">5.4 功能测试</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/16.html" title="Nacos集群搭建"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos集群搭建"/></a><div class="content"><a class="title" href="/archives/16.html" title="Nacos集群搭建">Nacos集群搭建</a><time datetime="2023-07-12T09:24:45.000Z" title="发表于 2023-07-12 17:24:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/15.html" title="Nacos安装指南"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos安装指南"/></a><div class="content"><a class="title" href="/archives/15.html" title="Nacos安装指南">Nacos安装指南</a><time datetime="2023-07-12T02:50:45.000Z" title="发表于 2023-07-12 10:50:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/14.html" title="SpringCloud02"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud02"/></a><div class="content"><a class="title" href="/archives/14.html" title="SpringCloud02">SpringCloud02</a><time datetime="2023-07-04T02:50:45.000Z" title="发表于 2023-07-04 10:50:45">2023-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/13.html" title="SpringCloud01"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud01"/></a><div class="content"><a class="title" href="/archives/13.html" title="SpringCloud01">SpringCloud01</a><time datetime="2023-07-03T02:50:45.000Z" title="发表于 2023-07-03 10:50:45">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/12.html" title="瑞吉外卖项目优化-Day03"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="瑞吉外卖项目优化-Day03"/></a><div class="content"><a class="title" href="/archives/12.html" title="瑞吉外卖项目优化-Day03">瑞吉外卖项目优化-Day03</a><time datetime="2023-07-01T09:42:45.000Z" title="发表于 2023-07-01 17:42:45">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 姜小白</div><div class="footer_custom_text"><div>很高兴认识你</div><div>欢迎来到我的博客</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script data-pjax defer src="https://npm.elemecdn.com/tzy-blog/lib/js/theme/chocolate.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

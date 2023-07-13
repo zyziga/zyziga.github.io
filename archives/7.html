@@ -1,0 +1,996 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Linux-Day01 | 姜小白程序</title><meta name="author" content="姜小白"><meta name="copyright" content="姜小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux-Day01课程内容 Linux简介 Linux安装 Linux常用命令  1. 前言1.1 什么是Linux  Linux是一套免费使用和自由传播的操作系统。说到操作系统，大家比较熟知的应该就是Windows和MacOS操作系统，我们今天所学习的Linux也是一款操作系统。 1.2 为什么要学Linux那么我们为什么要学习Linux呢，主要出于两个方面的原因。 1). 企业用人要求 以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-Day01">
+<meta property="og:url" content="https://zyziga.github.io/archives/7.html">
+<meta property="og:site_name" content="姜小白程序">
+<meta property="og:description" content="Linux-Day01课程内容 Linux简介 Linux安装 Linux常用命令  1. 前言1.1 什么是Linux  Linux是一套免费使用和自由传播的操作系统。说到操作系统，大家比较熟知的应该就是Windows和MacOS操作系统，我们今天所学习的Linux也是一款操作系统。 1.2 为什么要学Linux那么我们为什么要学习Linux呢，主要出于两个方面的原因。 1). 企业用人要求 以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png">
+<meta property="article:published_time" content="2023-06-23T01:50:00.000Z">
+<meta property="article:modified_time" content="2023-06-30T07:31:47.805Z">
+<meta property="article:author" content="姜小白">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zyziga.github.io/archives/7.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 姜小白","link":"链接: ","source":"来源: 姜小白程序","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux-Day01',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-30 15:31:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/milos.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png')"><nav id="nav"><span id="blog-info"><a href="/" title="姜小白程序"><span class="site-name">姜小白程序</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux-Day01</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-23T01:50:00.000Z" title="发表于 2023-06-23 09:50:00">2023-06-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-30T07:31:47.805Z" title="更新于 2023-06-30 15:31:47">2023-06-30</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>22分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux-Day01"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Linux-Day01"><a href="#Linux-Day01" class="headerlink" title="Linux-Day01"></a>Linux-Day01</h1><h2 id="课程内容"><a href="#课程内容" class="headerlink" title="课程内容"></a>课程内容</h2><ul>
+<li>Linux简介</li>
+<li>Linux安装</li>
+<li>Linux常用命令</li>
+</ul>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><h3 id="1-1-什么是Linux"><a href="#1-1-什么是Linux" class="headerlink" title="1.1 什么是Linux"></a>1.1 什么是Linux</h3><p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231922012.png" alt="image-20210808232140228"> </p>
+<p>Linux是一套免费使用和自由传播的操作系统。说到操作系统，大家比较熟知的应该就是Windows和MacOS操作系统，我们今天所学习的Linux也是一款操作系统。</p>
+<h3 id="1-2-为什么要学Linux"><a href="#1-2-为什么要学Linux" class="headerlink" title="1.2 为什么要学Linux"></a>1.2 为什么要学Linux</h3><p>那么我们为什么要学习Linux呢，主要出于两个方面的原因。</p>
+<p><strong>1). 企业用人要求</strong></p>
+<p>以下，是从知名招聘网站上搜索的java开发工程师的岗位要求，在很多的岗位要求中都提到了Linux操作系统的经验。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231851029.png" alt="image-20210808233115557"> </p>
+<p>为什么作为javaEE开发工程师，企业还要求我们会Linux操作系统的相关知识呢?</p>
+<p>这是因为Linux操作系统提供了很多稳定的发行版本，广泛的应用在我们的各种服务器操作系统领域，我们将来开发出来的项目，最终要上线运行，就需要将项目部署在Linux服务器中。</p>
+<p><strong>2). 个人发展需要</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231851101.png" alt="image-20210808233951662"> </p>
+<p>我们作为javaEE开发工程师，将来在企业中开发时会涉及到很多的数据库、中间件等技术，比如MySQL、Redis、MQ等技术，而这些应用软件大多都是需要安装在Linux系统中使用的。我们做为开发人员，是需要通过远程工具连接Linux操作系统，然后来操作这些软件的。而且一些小公司，可能还需要我们自己在服务器上安装这些软件。</p>
+<p>所以，不管从企业的用人需求层面，还是个人发展需要层面来讲，我们作为服务端开发工程师，Linux的基本使用是我们必不可少的技能。</p>
+<h3 id="1-3-学完Linux能干什么"><a href="#1-3-学完Linux能干什么" class="headerlink" title="1.3 学完Linux能干什么"></a>1.3 学完Linux能干什么</h3><p>学习完Linux操作系统课程之后，我们可以做以下几个方面的事情： </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231851949.png" alt="image-20210808234042174" style="zoom:80%;" /> 
+
+<p><strong>1). 环境搭建</strong></p>
+<p>系统安装 : 一般我们不会直接将Linux系统安装在本机电脑上，而会安装在公司的一台专门的服务器上。 </p>
+<p>远程连接 : 那么我们要想使用服务器，一般都是通过远程连接工具连接Linux系统进行操作。</p>
+<p><strong>2). 常用命令</strong></p>
+<p>连接上服务器之后，我们可以通过所学习的相关指令， 来操作Linux服务器，在Linux服务器中可以执行如下操作： </p>
+<p>A. 文件、目录的基本操作(查看,删除,创建等)</p>
+<p>B. 文件及文件夹的拷贝、移动、重命名</p>
+<p>C. 文件的打包、压缩、解压缩操作</p>
+<p>D. 文本的编辑</p>
+<p><strong>3). 安装软件</strong></p>
+<p>基本的常用指令学会操作之后，我们可以在Linux服务器中安装我们开发常用的软件，比如： JDK、Tomcat、MySQL的安装及配置。</p>
+<p><strong>4). 项目部署</strong></p>
+<p>把基础的软件及环境安装配置好之后，我们就可以将我们开发的项目部署在服务器中进行运行并测试。</p>
+<p>对于我们学习Linux操作系统时，Linux命令是基础，也是学习Linux系统的重点内容，虽然Linux的指令有很多，但是我们常用的指令并不多，大家在学习的时候，主要掌握这部分常用的指令就可以了，对于其他的指令，以后我们用到的时候，知道怎么查询即可。</p>
+<p><strong>对于Linux的常用指令的学习，最好的学习方法就是：<font color='red' size=7>多敲</font></strong></p>
+<h2 id="2-Linux简介"><a href="#2-Linux简介" class="headerlink" title="2. Linux简介"></a>2. Linux简介</h2><h3 id="2-1-主流操作系统"><a href="#2-1-主流操作系统" class="headerlink" title="2.1 主流操作系统"></a>2.1 主流操作系统</h3><p>不同领域的主流操作系统，主要分为以下这么几类： 桌面操作系统、服务器操作系统、移动设备操作系统、嵌入式操作系统。接下来，这几个领域中，代表性的操作系统是那些?</p>
+<p>1). 桌面操作系统</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>用户数量最多</td>
+</tr>
+<tr>
+<td>MacOS</td>
+<td>操作体验好，办公人士首选</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>用户数量少(桌面操作系统,Linux使用较少)</td>
+</tr>
+</tbody></table>
+<p>2). 服务器操作系统</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unix</td>
+<td>安全、稳定、付费</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>安全、稳定、免费、占有率高</td>
+</tr>
+<tr>
+<td>Windows Server</td>
+<td>付费、占有率低</td>
+</tr>
+</tbody></table>
+<p>3). 移动设备操作系统</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Android</td>
+<td>基于 Linux 、开源，主要用于智能手机、平板电脑和智能电视</td>
+</tr>
+<tr>
+<td>IOS</td>
+<td>苹果公司开发、不开源，用于苹果公司的产品，例如：iPhone、 iPad</td>
+</tr>
+</tbody></table>
+<p>4). 嵌入式操作系统</p>
+<table>
+<thead>
+<tr>
+<th>操作系统</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Linux</td>
+<td>机顶盒、路由器、交换机</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Linux发展历史"><a href="#2-2-Linux发展历史" class="headerlink" title="2.2 Linux发展历史"></a>2.2 Linux发展历史</h3><p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852453.png" alt="image-20210809000920156">  </p>
+<p>时间：1991年</p>
+<p>地点：芬兰赫尔辛基大学</p>
+<p>人物：Linus Torvalds（21岁）</p>
+<p>语言：C语言、汇编语言</p>
+<p>logo：企鹅</p>
+<p>特点：免费、开源(源代码开放)、多用户(同时允许多个用户操作同一个Linux系统)、多任务(同时允许多个任务执行)</p>
+<h3 id="2-3-Linux系统版本"><a href="#2-3-Linux系统版本" class="headerlink" title="2.3 Linux系统版本"></a>2.3 Linux系统版本</h3><p>Linux系统的版本分为两种，分别是： 内核版 和 发行版。</p>
+<p><strong>1). 内核版</strong></p>
+<ul>
+<li><p>由Linus Torvalds及其团队开发、维护</p>
+</li>
+<li><p>免费、开源</p>
+</li>
+<li><p>负责控制硬件</p>
+</li>
+</ul>
+<p><strong>2). 发行版</strong></p>
+<ul>
+<li><p>基于Linux内核版进行扩展</p>
+</li>
+<li><p>由各个Linux厂商开发、维护</p>
+</li>
+<li><p>有收费版本和免费版本</p>
+</li>
+</ul>
+<p>我们使用Linux操作系统，实际上选择的是Linux的发行版本。在linux系统中，有各种各样的发行版本，具体如下： </p>
+<table>
+<thead>
+<tr>
+<th>发行版本</th>
+<th>Logo</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ubuntu</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231922572.png" alt="image-20210809001838861" style="zoom:50%;" /></td>
+<td>以桌面应用为主</td>
+</tr>
+<tr>
+<td>RedHat</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231922180.png" alt="image-20210809001731378" style="zoom:50%;" /></td>
+<td>应用最广泛、收费</td>
+</tr>
+<tr>
+<td>CentOS</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231922331.png" alt="image-20210809001741238" style="zoom:50%;" /></td>
+<td>RedHat的社区版、免费</td>
+</tr>
+<tr>
+<td>openSUSE</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231922206.png" alt="image-20210809001750999" style="zoom:50%;" /></td>
+<td>对个人完全免费、图形界面华丽</td>
+</tr>
+<tr>
+<td>Fedora</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231923314.png" alt="image-20210809001800676" style="zoom:50%;" /></td>
+<td>功能完备、快速更新、免费</td>
+</tr>
+<tr>
+<td>红旗Linux</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231923371.png" alt="image-20210809001814942" style="zoom:50%;" /></td>
+<td>北京中科红旗软件技术有限公司开发</td>
+</tr>
+</tbody></table>
+<p>除了上述罗列出来的发行版，还有很多Linux发行版，这里，我们就不再一一列举了。</p>
+<h2 id="3-Linux安装"><a href="#3-Linux安装" class="headerlink" title="3. Linux安装"></a>3. Linux安装</h2><h3 id="3-1-安装方式介绍"><a href="#3-1-安装方式介绍" class="headerlink" title="3.1 安装方式介绍"></a>3.1 安装方式介绍</h3><p>Linux系统的安装方式，主要包含以下两种：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852949.png" alt="image-20210809184915617"> </p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>概述</th>
+<th>场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理机安装</td>
+<td>直接将操作系统安装到服务器硬件上</td>
+<td>企业开发中，我们使用的服务器基本都是采用这种方式</td>
+</tr>
+<tr>
+<td>虚拟机安装</td>
+<td>通过虚拟机软件安装</td>
+<td>我们在学习阶段，没有自己服务器，而我们又需要学Linux，就可以安装在虚拟机上</td>
+</tr>
+</tbody></table>
+<p><strong>虚拟机</strong>（Virtual Machine）指通过<strong>软件</strong>模拟的具有完整硬件系统功能、运行在完全隔离环境中的完整计算机系统。常用虚拟机软件： </p>
+<ul>
+<li><p>VMWare </p>
+</li>
+<li><p>VirtualBox</p>
+</li>
+<li><p>VMLite WorkStation</p>
+</li>
+<li><p>Qemu</p>
+</li>
+<li><p>HopeddotVOS</p>
+</li>
+</ul>
+<p>那么我们就可以在课程中将Linux操作系统安装在虚拟机中，我们课上选择的虚拟机软件是VMware。</p>
+<h3 id="3-2-安装VMware"><a href="#3-2-安装VMware" class="headerlink" title="3.2 安装VMware"></a>3.2 安装VMware</h3><p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306232237639.png" alt="image-20210809223354144"> </p>
+<p>在我们的课程资料中提供了VMware的安装程序。直接双击运行VMware安装程序，根据提示完成安装即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852820.png" alt="image-20210809223932893"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231857726.png" alt="image-20210809223953820"> </p>
+<p>以上就是VMware在安装时的每一步操作，基本上就是点击 “下一步” 一直进行安装。</p>
+<h3 id="3-3-安装Linux"><a href="#3-3-安装Linux" class="headerlink" title="3.3 安装Linux"></a>3.3 安装Linux</h3><p>VMware虚拟机安装完毕之后，我们就可以打开VMware，并在上面来安装Linux操作系统。具体步骤如下： </p>
+<p><strong>1). 选择创建新的虚拟机</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852892.png" alt="image-20210809224601436" style="zoom:80%;" /> 
+
+
+
+<p><strong>2). 选择”典型”配置</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852580.png" alt="image-20210809224640245"  /> 
+
+
+
+<p><strong>3). 选择”稍后安装操作系统(S)”</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852700.png" alt="image-20210809224740271"> </p>
+<p><strong>4). 选择”Linux”操作系统,”CentOS7 64位”版本</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852731.png" alt="image-20210809224851755"> </p>
+<p><strong>5). 设置虚拟机的名称及系统文件存放路径</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231852228.png" alt="image-20210809225106268"> </p>
+<p><strong>6). 设置磁盘容量</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231853237.png" alt="image-20210809225243488"> </p>
+<p><strong>7). 自定义硬件信息</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231854157.png" alt="image-20210809225706412"> </p>
+<p><strong>8). 启动上述创建的新虚拟机</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231854085.png" alt="image-20210809230230390" style="zoom:80%;" />  
+
+
+
+<p><strong>9). 选择”Install CentOS7”</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231854420.png" alt="image-20210809230720673" style="zoom:80%;" /> 
+
+<blockquote>
+<p>进入到Linux系统里面, 我们发现光标无法移动到windows操作系统中了, 这个时候, 我们可以通过快捷键 “Ctrl+Alt” 切换光标到windows系统中。</p>
+</blockquote>
+<p><strong>10). 选择语言为 “简体中文”</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231857564.png" alt="image-20210809231002444" style="zoom:80%;" /> 
+
+
+
+<p><strong>11). 选择”自动配置分区”</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231857972.png" alt="image-20210809231704202">  </p>
+<p>12). 选择”最小安装”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231857108.png" alt="image-20210809232041661"> </p>
+<p><strong>13). 设置”root”用户密码</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231923332.png" alt="image-20210809232438579"> </p>
+<p>安装完毕后，点击窗口中的蓝色的 “重启” 按钮，重启Linux系统。</p>
+<p>密码是root</p>
+<p><strong>14). 登录系统</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231858557.png" alt="image-20210809232913715"> </p>
+<blockquote>
+<p><font color='red'>注意 : 在Linux系统中，在命令行中输入密码信息，为了保证安全性，密码是不显示的(看似没有输入，实际已经输入了)；</font></p>
+</blockquote>
+<h3 id="3-4-网卡设置"><a href="#3-4-网卡设置" class="headerlink" title="3.4 网卡设置"></a>3.4 网卡设置</h3><p>服务器重启完成之后，我们可以通过linux的指令 <code>ip addr</code> 来查询Linux系统的IP地址，具体信息如下: </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231858019.png" alt="image-20210809233341574" style="zoom:80%;" /> 
+
+<p>从图中我们可以看到，并没有获取到linux系统的IP地址，这是为什么呢？这是由于启动服务器时未加载网卡，导致IP地址初始化失败而造成的。那么接下来我们就需要来修改网络初始化配置，设定网卡在系统启动时初始化。</p>
+<p><strong>具体操作步骤如下：</strong> </p>
+<p>1). 修改网卡的配置项</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">cd /				进入根目录</span><br><span class="line">cd etc				进入etc目录</span><br><span class="line">cd sysconfig		进入sysconfig目录</span><br><span class="line">cd network-scripts	进入network-scripts</span><br><span class="line">vi ifcfg-ens33		编辑ifcfg-ens33文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">进入文件后执行如下操作: </span><br><span class="line">①. 按 i 键 		 进入编辑状态</span><br><span class="line">②. 按↑↓键来移动光标, 删除no,输入yes </span><br><span class="line">③. 按 ESC 键</span><br><span class="line">④. 输入 :wq</span><br><span class="line">⑤. 按 ENTER	保存退出</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231858188.png" alt="image-20210809234131816"> </p>
+<blockquote>
+<p><font color='red'>备注: 在上述的操作中用到了Linux中的相关指令, 目前大家不用深究, 后面会详细讲解, 目前大家只需要把这个文件的配置项ONBOOT的值有no改为yes即可。</font></p>
+</blockquote>
+<p>2). 重新启动虚拟机</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231858995.png" alt="image-20210809234617798" style="zoom:80%;" /> 
+
+<p>重启之后, 再次输入root的用户名密码，登录到Linux系统之后，可以通过指令 <code>ip addr</code> 来查看IP地址。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859108.png" alt="image-20210809235056773"  /> 
+
+
+
+
+
+<h3 id="3-5-安装SSH连接工具"><a href="#3-5-安装SSH连接工具" class="headerlink" title="3.5 安装SSH连接工具"></a>3.5 安装SSH连接工具</h3><h4 id="3-5-1-SSH连接工具介绍"><a href="#3-5-1-SSH连接工具介绍" class="headerlink" title="3.5.1 SSH连接工具介绍"></a>3.5.1 SSH连接工具介绍</h4><p>Linux已经安装并且配置好了，接下来我们要来学习Linux的基本操作指令。而在学习之前，我们还需要做一件事情，由于我们企业开发时，Linux服务器一般都是在远程的机房部署的，我们要操作服务器，不会每次都跑到远程的机房里面操作，而是会直接通过SSH连接工具进行连接操作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859036.png" alt="image-20210810000224690"> </p>
+<p>SSH（Secure Shell），建立在应用层基础上的安全协议。常用的SSH连接工具: </p>
+<table>
+<thead>
+<tr>
+<th>SSH工具</th>
+<th>Logo</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>putty</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859180.png" alt="image-20210809235613688" style="zoom:15%;" /></td>
+<td>免费, 界面简单, 功能单一</td>
+</tr>
+<tr>
+<td>secureCRT</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859020.png" alt="image-20210809235723109" style="zoom:20%;" /></td>
+<td>收费, 功能强大</td>
+</tr>
+<tr>
+<td>xshell</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859324.png" alt="image-20210809235802640" style="zoom:50%;" /></td>
+<td>收费版&#x2F;免费版</td>
+</tr>
+<tr>
+<td>finalshell</td>
+<td><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859477.png" alt="image-20210809235841384" style="zoom: 67%;" /></td>
+<td>免费, 功能强大, 界面效果好 (课程中采用)</td>
+</tr>
+</tbody></table>
+<h4 id="3-5-2-FinalShell安装"><a href="#3-5-2-FinalShell安装" class="headerlink" title="3.5.2 FinalShell安装"></a>3.5.2 FinalShell安装</h4><p>在课程资料中，提供了finalShell的安装包</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306232238287.png" alt="image-20210810000309123"> </p>
+<p>双击.exe文件，然后进行正常的安装即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231859788.png" alt="image-20210810000318212"> </p>
+<h4 id="3-5-3-连接Linux"><a href="#3-5-3-连接Linux" class="headerlink" title="3.5.3 连接Linux"></a>3.5.3 连接Linux</h4><p><strong>1). 打开finalShell</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231900788.png" alt="image-20210810173004153" style="zoom:80%;" /> 
+
+
+
+<p><strong>2). 建立连接</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231900301.png" alt="image-20210810173138650" style="zoom:80%;" /> 
+
+<p> <img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231900605.png" alt="image-20210810173900140"> </p>
+<h3 id="3-6-Linux目录结构"><a href="#3-6-Linux目录结构" class="headerlink" title="3.6 Linux目录结构"></a>3.6 Linux目录结构</h3><p>登录到Linux系统之后，我们需要先来熟悉一下Linux的目录结构。在Linux系统中，也是存在目录的概念的，但是Linux的目录结构和Windows的目录结构是存在比较多的差异的 在Windows目录下，是一个一个的盘符(C盘、D盘、E盘)，目录是归属于某一个盘符的。Linux系统中的目录有以下特点： </p>
+<p><strong>A. &#x2F; 是所有目录的顶点</strong></p>
+<p><strong>B. 目录结构像一颗倒挂的树</strong></p>
+<p><strong>Linux 和 Windows的目录结构对比:</strong> </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231901741.png" alt="image-20210810174831655" style="zoom: 80%;" /> 
+
+
+
+<p>Linux的目录结构，如下： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231901486.png" alt="image-20210810174954476"> </p>
+<p>根目录&#x2F; 下各个目录的作用及含义说明:  </p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>目录</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>&#x2F;bin</td>
+<td>存放二进制可执行文件</td>
+</tr>
+<tr>
+<td>2</td>
+<td>&#x2F;boot</td>
+<td>存放系统引导时使用的各种文件</td>
+</tr>
+<tr>
+<td>3</td>
+<td>&#x2F;dev</td>
+<td>存放设备文件</td>
+</tr>
+<tr>
+<td>4</td>
+<td>&#x2F;etc</td>
+<td>存放系统配置文件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>&#x2F;home</td>
+<td>存放系统用户的文件</td>
+</tr>
+<tr>
+<td>6</td>
+<td>&#x2F;lib</td>
+<td>存放程序运行所需的共享库和内核模块</td>
+</tr>
+<tr>
+<td>7</td>
+<td>&#x2F;opt</td>
+<td>额外安装的可选应用程序包所放置的位置</td>
+</tr>
+<tr>
+<td>8</td>
+<td>&#x2F;root</td>
+<td>超级用户目录</td>
+</tr>
+<tr>
+<td>9</td>
+<td>&#x2F;sbin</td>
+<td>存放二进制可执行文件，只有root用户才能访问</td>
+</tr>
+<tr>
+<td>10</td>
+<td>&#x2F;tmp</td>
+<td>存放临时文件</td>
+</tr>
+<tr>
+<td>11</td>
+<td>&#x2F;usr</td>
+<td>存放系统应用程序</td>
+</tr>
+<tr>
+<td>12</td>
+<td>&#x2F;var</td>
+<td>存放运行时需要改变数据的文件，例如日志文件</td>
+</tr>
+</tbody></table>
+<h2 id="4-Linux常用命令"><a href="#4-Linux常用命令" class="headerlink" title="4. Linux常用命令"></a>4. Linux常用命令</h2><h3 id="4-1-Linux命令初体验"><a href="#4-1-Linux命令初体验" class="headerlink" title="4.1 Linux命令初体验"></a>4.1 Linux命令初体验</h3><h4 id="4-1-1-常用命令演示"><a href="#4-1-1-常用命令演示" class="headerlink" title="4.1.1 常用命令演示"></a>4.1.1 常用命令演示</h4><p>在这一部分中，我们主要介绍几个常用的命令，让大家快速感受以下Linux指令的操作方式。主要包含以下几个指令： </p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>对应英文</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>ls [目录名]</td>
+<td>list</td>
+<td>查看当前目录下的内容</td>
+</tr>
+<tr>
+<td>2</td>
+<td>pwd</td>
+<td>print work directory</td>
+<td>查看当前所在目录</td>
+</tr>
+<tr>
+<td>3</td>
+<td>cd [目录名]</td>
+<td>change directory</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>4</td>
+<td>touch [文件名]</td>
+<td>touch</td>
+<td>如果文件不存在,创建文件</td>
+</tr>
+<tr>
+<td>5</td>
+<td>mkdir [目录名]</td>
+<td>make directory</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>6</td>
+<td>rm [文件名]</td>
+<td>remove</td>
+<td>删除指定文件</td>
+</tr>
+</tbody></table>
+<p>接下来，我们快速的来演示一下这些常用的指令。</p>
+<p><strong>1). ls</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231901356.png" alt="image-20210810182042076"> </p>
+<blockquote>
+<p>指令解读: </p>
+<p>​	ls 	查看当前目录下的内容(文件及目录)</p>
+<p>​	ls &#x2F;   查看指定目录(&#x2F;)下的内容</p>
+</blockquote>
+<p><strong>2). pwd</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231901212.png" alt="image-20210810182335470"> </p>
+<blockquote>
+<p>指令解读: </p>
+<p>​	pwd	查看当前所在目录</p>
+</blockquote>
+<p><strong>3). cd</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231901868.png" alt="image-20210810182607821"> </p>
+<blockquote>
+<p>指令解读: </p>
+<p>​	cd  &#x2F;		切换到根目录</p>
+<p>​	cd  &#x2F;root	切换到&#x2F;root目录</p>
+</blockquote>
+<p><strong>4). touch</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231914964.png" alt="image-20210810182917750"> </p>
+<blockquote>
+<p>指令解读: </p>
+<p>​	touch  1.txt    创建文件1.txt</p>
+<p>​	touch  2.txt 3.txt 4.txt   一次性创建文件2.txt,3.txt,3.txt</p>
+</blockquote>
+<p><strong>5). mkdir</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231914892.png" alt="image-20210810183154023"> </p>
+<blockquote>
+<p>指令解读: </p>
+<p>​	mkdir 01 	创建文件夹01 </p>
+</blockquote>
+<p><strong>6). rm</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231914269.png" alt="image-20210810183522849"> </p>
+<blockquote>
+<p>指令解读: </p>
+<p>​	rm  4.txt	删除文件 (删除文件时,需要确认,输入y, 代表确定)</p>
+</blockquote>
+<p>&#x3D;&#x3D;注意:&#x3D;&#x3D; </p>
+<p>​	<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231914837.png" alt="image-20210810184600425"> </p>
+<p>​	&#x3D;&#x3D;在执行Linux命令时，提示信息如果显示为乱码，如上图所示。这是由于编码问题导致，只需要修改Linux的编码即可，命令如下：&#x3D;&#x3D;</p>
+<p>​	echo ‘LANG&#x3D;”en_US.UTF-8”‘ &gt;&gt; &#x2F;etc&#x2F;profile</p>
+<p>​	source &#x2F;etc&#x2F;profile</p>
+<h4 id="4-1-2-Linux命令使用技巧"><a href="#4-1-2-Linux命令使用技巧" class="headerlink" title="4.1.2 Linux命令使用技巧"></a>4.1.2 Linux命令使用技巧</h4><p>在我们使用Linux系统命令时，可以使用以下几个技巧： </p>
+<p>1). Tab键自动补全</p>
+<p>2). 连续两次Tab键，给出操作提示</p>
+<p>3). 使用上下箭头快速调出曾经使用过的命令</p>
+<p>4). 使用clear命令或者Ctrl+l快捷键实现清屏</p>
+<p><strong>操作示例:</strong> </p>
+<p>A. 执行指令的时候，对于操作的文件&#x2F;目录，按一下Tab会自动补全:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231914443.png" alt="image-20210810185641027"> </p>
+<p>B. 如果上述以 “1.” 开头的文件有多个，可以按两下Tab键，给出操作提示:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231914604.png" alt="image-20210810190101671"> </p>
+<p>C. 使用clear命令或者Ctrl+l快捷键实现清屏:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915478.png" alt="image-20210810190458929"></p>
+<p>清屏之后，界面就变得干净了: </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915909.png" alt="image-20210810190546209"> </p>
+<h4 id="4-1-3-Linux命令格式"><a href="#4-1-3-Linux命令格式" class="headerlink" title="4.1.3 Linux命令格式"></a>4.1.3 Linux命令格式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">command [-options] [parameter]</span><br><span class="line">	</span><br><span class="line">说明: </span><br><span class="line">	command: 	 命令名</span><br><span class="line">	[-options]:  选项，可用来对命令进行控制，也可以省略</span><br><span class="line">	[parameter]: 传给命令的参数，可以是零个、一个或者多个</span><br><span class="line">	</span><br><span class="line">注意: </span><br><span class="line">	[] 	 代表可选</span><br><span class="line">	命令名、选项、参数之间有空格进行分隔</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915021.png" alt="image-20210810192202455"> </p>
+<h3 id="4-2-文件目录操作命令"><a href="#4-2-文件目录操作命令" class="headerlink" title="4.2 文件目录操作命令"></a>4.2 文件目录操作命令</h3><h4 id="4-2-1-ls"><a href="#4-2-1-ls" class="headerlink" title="4.2.1 ls"></a>4.2.1 ls</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 显示指定目录下的内容</span><br><span class="line">语法: ls [-al] [dir]</span><br><span class="line">说明: </span><br><span class="line">	-a 显示所有文件及目录 (. 开头的隐藏文件也会列出)</span><br><span class="line">	-l 除文件名称外，同时将文件型态(d表示目录，-表示文件)、权限、拥有者、文件大小等信息详细列出</span><br><span class="line">	</span><br><span class="line">注意: </span><br><span class="line">	由于我们使用ls命令时经常需要加入-l选项，所以Linux为ls -l命令提供了一种简写方式，即ll</span><br><span class="line">	</span><br><span class="line">常见用法: </span><br><span class="line">	ls -al 	查看当前目录的所有文件及目录详细信息</span><br><span class="line">	ls -al /etc   查看/etc目录下所有文件及目录详细信息</span><br><span class="line">	ll  	查看当前目录文件及目录的详细信息 </span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915773.png" alt="image-20210810193149925"> </p>
+<p> <img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915039.png" alt="image-20210810193302047"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231924213.png" alt="image-20210810193605487"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915022.png" alt="image-20210810194129919"> </p>
+<h4 id="4-2-2-cd"><a href="#4-2-2-cd" class="headerlink" title="4.2.2 cd"></a>4.2.2 cd</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 用于切换当前工作目录，即进入指定目录</span><br><span class="line">语法: cd [dirName]</span><br><span class="line">	</span><br><span class="line">特殊说明: </span><br><span class="line">	~	表示用户的home目录</span><br><span class="line">	. 	表示目前所在的目录</span><br><span class="line">	.. 	表示目前目录位置的上级目录</span><br><span class="line">	</span><br><span class="line">举例: </span><br><span class="line">	cd 	..		切换到当前目录的上级目录</span><br><span class="line">	cd 	~		切换到用户的home目录</span><br><span class="line">	cd 	/usr/local	切换到/usr/local目录</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>备注: </p>
+<p>​	用户的home目录 </p>
+<p>​	root用户	&#x2F;root</p>
+<p>​	其他用户	&#x2F;home&#x2F;xxx</p>
+</blockquote>
+<p>操作示例: </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915668.png" alt="image-20210810230949775"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915221.png" alt="image-20210810231024129"> </p>
+<p>cd .. 切换到当前目录位置的上级目录; 可以通过 cd ..&#x2F;.. 来切换到上级目录的上级目录。</p>
+<h4 id="4-2-3-cat"><a href="#4-2-3-cat" class="headerlink" title="4.2.3 cat"></a>4.2.3 cat</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 用于显示文件内容</span><br><span class="line">语法: cat [-n] fileName</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line">	-n: 由1开始对所有输出的行数编号</span><br><span class="line"></span><br><span class="line">举例:</span><br><span class="line">	cat /etc/profile		查看/etc目录下的profile文件内容</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作演示:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915972.png" alt="image-20210810231651338"> </p>
+<p>cat 指令会一次性查看文件的所有内容，如果文件内容比较多，这个时候查看起来就不是很方便了，这个时候我们可以通过一个新的指令more。</p>
+<h4 id="4-2-4-more"><a href="#4-2-4-more" class="headerlink" title="4.2.4 more"></a>4.2.4 more</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 以分页的形式显示文件内容</span><br><span class="line">语法: more fileName</span><br><span class="line"></span><br><span class="line">操作说明:</span><br><span class="line">    回车键 	向下滚动一行</span><br><span class="line">    空格键 	向下滚动一屏</span><br><span class="line">    b 		返回上一屏</span><br><span class="line">    q或者Ctrl+C	退出more</span><br><span class="line">	</span><br><span class="line">举例：</span><br><span class="line">	more /etc/profile		以分页方式显示/etc目录下的profile文件内容</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例：</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915565.png" alt="image-20210810232212430" style="zoom:80%;" /> 
+
+<p>当我们在查看一些比较大的文件时，我们可能需要经常查询文件尾部的数据信息，那这个时候如果文件很大，我们要一直向下翻页，直到最后一页，去看最新添加的数据，这种方式就比较繁琐了，此时，我们可以借助于tail指令。</p>
+<h4 id="4-2-5-tail"><a href="#4-2-5-tail" class="headerlink" title="4.2.5 tail"></a>4.2.5 tail</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 查看文件末尾的内容</span><br><span class="line">语法: tail [-f] fileName</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line">	-f : 动态读取文件末尾内容并显示，通常用于日志文件的内容输出</span><br><span class="line">	</span><br><span class="line">举例: </span><br><span class="line">tail /etc/profile		显示/etc目录下的profile文件末尾10行的内容</span><br><span class="line">tail -20 /etc/profile	显示/etc目录下的profile文件末尾20行的内容</span><br><span class="line">tail -f /itcast/my.log	动态读取/itcast目录下的my.log文件末尾内容并显示</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例：</strong> </p>
+<p>A. 默认查询文件尾部10行记录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231915237.png" alt="image-20210810232758510"> </p>
+<p>B. 可以通过指定参数设置查询尾部指定行数的数据</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917436.png" alt="image-20210810232947018"> </p>
+<p>C. 动态读取文件尾部的数据</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917629.png" alt="image-20210810233514284"> </p>
+<p>在窗口1中执行指令 <code>tail -f 1.txt</code> 动态查看文件尾部的数据。然后在顶部的标签中右键选择 “复制标签”，打开新的窗口2 , 此时再新打开的窗口2中执行指令 <code>echo 1 &gt;&gt; 1.txt</code> , 往1.txt文件尾部追加内容，然后我们就可以在窗口1中看到最新的文件尾部的数据。</p>
+<p>如果我们不想查看文件尾部的数据了，可以直接使用快捷键 Ctrl+C ， 结束当前进程。</p>
+<h4 id="4-2-6-mkdir"><a href="#4-2-6-mkdir" class="headerlink" title="4.2.6 mkdir"></a>4.2.6 mkdir</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 创建目录</span><br><span class="line">语法: mkdir [-p] dirName</span><br><span class="line"></span><br><span class="line">说明: </span><br><span class="line">	-p: 确保目录名称存在，不存在的就创建一个。通过此选项，可以实现多层目录同时创建</span><br><span class="line"></span><br><span class="line">举例: </span><br><span class="line">    mkdir itcast  在当前目录下，建立一个名为itcast的子目录</span><br><span class="line">    mkdir -p itcast/test   在工作目录下的itcast目录中建立一个名为test的子目录，若itcast目录不存在，则建立一个</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作演示:</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917251.png" alt="image-20210810234541073"> </p>
+<h4 id="4-2-7-rmdir"><a href="#4-2-7-rmdir" class="headerlink" title="4.2.7 rmdir"></a>4.2.7 rmdir</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 删除空目录</span><br><span class="line">语法: rmdir [-p] dirName</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line">	-p: 当子目录被删除后使父目录为空目录的话，则一并删除</span><br><span class="line"></span><br><span class="line">举例:</span><br><span class="line">    rmdir itcast   删除名为itcast的空目录</span><br><span class="line">    rmdir -p itcast/test   删除itcast目录中名为test的子目录，若test目录删除后itcast目录变为空目录，则也被删除</span><br><span class="line">    rmdir itcast*   删除名称以itcast开始的空目录</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作演示:</strong> </p>
+<p>A. 删除空目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917948.png" alt="image-20210810235044921"> </p>
+<p>B. 删除非空目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917811.png" alt="image-20210810235221722"> </p>
+<p>C. 使用*通配符删除目录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917040.png" alt="image-20210810235305140"> </p>
+<blockquote>
+<p>*: 是一个通配符，代表任意字符； </p>
+<p>rmdir  itcast* : 删除以itcast开头的目录</p>
+<p>rmdir  *itcast : 删除以itcast结尾的目录</p>
+</blockquote>
+<h4 id="4-2-8-rm"><a href="#4-2-8-rm" class="headerlink" title="4.2.8 rm"></a>4.2.8 rm</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 删除文件或者目录</span><br><span class="line">语法: rm [-rf] name</span><br><span class="line"></span><br><span class="line">说明: </span><br><span class="line">    -r: 将目录及目录中所有文件（目录）逐一删除，即递归删除</span><br><span class="line">    -f: 无需确认，直接删除</span><br><span class="line">	</span><br><span class="line">举例: </span><br><span class="line">    rm -r itcast/     删除名为itcast的目录和目录中所有文件，删除前需确认</span><br><span class="line">    rm -rf itcast/    无需确认，直接删除名为itcast的目录和目录中所有文件</span><br><span class="line">    rm -f hello.txt   无需确认，直接删除hello.txt文件</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917419.png" alt="image-20210810235809473"> </p>
+<p>&#x3D;&#x3D;注意: 对于 rm -rf xxx 这样的指令，在执行的时候，一定要慎重，确认无误后再进行删除，避免误删。&#x3D;&#x3D;</p>
+<h3 id="4-3-拷贝移动命令"><a href="#4-3-拷贝移动命令" class="headerlink" title="4.3 拷贝移动命令"></a>4.3 拷贝移动命令</h3><h4 id="4-3-1-cp"><a href="#4-3-1-cp" class="headerlink" title="4.3.1 cp"></a>4.3.1 cp</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 用于复制文件或目录</span><br><span class="line">语法: cp [-r] source dest</span><br><span class="line"></span><br><span class="line">说明: </span><br><span class="line">	-r: 如果复制的是目录需要使用此选项，此时将复制该目录下所有的子目录和文件</span><br><span class="line"> </span><br><span class="line">举例: </span><br><span class="line">    cp hello.txt itcast/            将hello.txt复制到itcast目录中   </span><br><span class="line">    cp hello.txt ./hi.txt           将hello.txt复制到当前目录，并改名为hi.txt    ./hi.txt  这里面的.是指当前目录</span><br><span class="line">    cp -r itcast/ ./itheima/    	将itcast目录和目录下所有文件复制到itheima目录下</span><br><span class="line">    cp -r itcast/* ./itheima/ 	 	将itcast目录下所有文件复制到itheima目录下</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917964.png" alt="image-20210811180508369"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917620.png" alt="image-20210811180638556"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917013.png" alt="image-20210811180914417"> </p>
+<p>如果拷贝的内容是目录，需要加上参数 -r </p>
+<h4 id="4-3-2-mv"><a href="#4-3-2-mv" class="headerlink" title="4.3.2 mv"></a>4.3.2 mv</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 为文件或目录改名、或将文件或目录移动到其它位置</span><br><span class="line">语法: mv source dest</span><br><span class="line"></span><br><span class="line">举例: </span><br><span class="line">    mv hello.txt hi.txt                 将hello.txt改名为hi.txt</span><br><span class="line">    mv hi.txt itheima/                  将文件hi.txt移动到itheima目录中</span><br><span class="line">    mv hi.txt itheima/hello.txt   		将hi.txt移动到itheima目录中，并改名为hello.txt</span><br><span class="line">    mv itcast/ itheima/                 如果itheima目录不存在，将itcast目录改名为itheima</span><br><span class="line">    mv itcast/ itheima/                 如果itheima目录存在，将itcast目录移动到itheima目录中</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p>mv 命令既能够改名，又可以移动，具体是改名还是移动,系统会根据我们输入的参数进行判定(如果第二个参数dest是一个已存在的目录,将执行移动操作,其他情况都是改名)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917789.png" alt="image-20210811184240003"></p>
+<h3 id="4-4-打包压缩命令"><a href="#4-4-打包压缩命令" class="headerlink" title="4.4 打包压缩命令"></a>4.4 打包压缩命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 对文件进行打包、解包、压缩、解压</span><br><span class="line">语法: tar  [-zcxvf]  fileName  [files]</span><br><span class="line">    包文件后缀为.tar表示只是完成了打包，并没有压缩</span><br><span class="line">    包文件后缀为.tar.gz表示打包的同时还进行了压缩</span><br><span class="line"></span><br><span class="line">说明:</span><br><span class="line">    -z: z代表的是gzip，通过gzip命令处理文件，gzip可以对文件压缩或者解压</span><br><span class="line">    -c: c代表的是create，即创建新的包文件</span><br><span class="line">    -x: x代表的是extract，实现从包文件中还原文件</span><br><span class="line">    -v: v代表的是verbose，显示命令的执行过程</span><br><span class="line">    -f: f代表的是file，用于指定包文件的名称</span><br><span class="line"></span><br><span class="line">举例：</span><br><span class="line">    打包</span><br><span class="line">        tar -cvf hello.tar ./*		  		将当前目录下所有文件打包，打包后的文件名为hello.tar</span><br><span class="line">        tar -zcvf hello.tar.gz ./*		  	将当前目录下所有文件打包并压缩，打包后的文件名为hello.tar.gz</span><br><span class="line">		</span><br><span class="line">    解包</span><br><span class="line">        tar -xvf hello.tar		  			将hello.tar文件进行解包，并将解包后的文件放在当前目录</span><br><span class="line">        tar -zxvf hello.tar.gz		  		将hello.tar.gz文件进行解压，并将解压后的文件放在当前目录</span><br><span class="line">        tar -zxvf hello.tar.gz -C /usr/local     将hello.tar.gz文件进行解压，并将解压后的文件放在/usr/local目录</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p>A. 打包</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917917.png" alt="image-20210811185728541"> </p>
+<p>B. 打包并压缩</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917783.png" alt="image-20210811190035256"> </p>
+<p>C. 解包</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917236.png" alt="image-20210811190307630"> </p>
+<p>D. 解压</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917221.png" alt="image-20210811190450820"> </p>
+<p>解压到指定目录,需要加上参数 -C</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917784.png" alt="image-20210811190626414"> </p>
+<h3 id="4-5-文本编辑命令"><a href="#4-5-文本编辑命令" class="headerlink" title="4.5 文本编辑命令"></a>4.5 文本编辑命令</h3><p>文本编辑的命令，主要包含两个: vi 和 vim，两个命令的用法类似，我们课程中主要讲解vim的使用。</p>
+<h4 id="4-5-1-vi-amp-vim介绍"><a href="#4-5-1-vi-amp-vim介绍" class="headerlink" title="4.5.1 vi&amp;vim介绍"></a>4.5.1 vi&amp;vim介绍</h4><p>作用: vi命令是Linux系统提供的一个文本编辑工具，可以对文件内容进行编辑，类似于Windows中的记事本</p>
+<p>语法: vi fileName</p>
+<p>说明:<br>  1). vim是从vi发展来的一个功能更加强大的文本编辑工具，编辑文件时可以对文本内容进行着色，方便我们对文件进行编辑处理，所以实际工作中vim更加常用。<br>  2). 要使用vim命令，需要我们自己完成安装。可以使用下面的命令来完成安装：<code>yum install vim</code></p>
+<h4 id="4-5-2-vim安装"><a href="#4-5-2-vim安装" class="headerlink" title="4.5.2 vim安装"></a>4.5.2 vim安装</h4><p>命令： yum install vim</p>
+<p>我现在分配到时的yum是这个</p>
+<p>阿里</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231917549.png" alt="image-20210811192217715"> </p>
+<p>安装过程中，会有确认提示，此时输入 y，然后回车，继续安装：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231918067.png" alt="image-20210811192256269"> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231918356.png" alt="image-20210811192350907"> </p>
+<h4 id="4-5-3-vim使用"><a href="#4-5-3-vim使用" class="headerlink" title="4.5.3 vim使用"></a>4.5.3 vim使用</h4><p>作用: 对文件内容进行编辑，vim其实就是一个文本编辑器<br>语法: vim fileName<br>说明:<br>    1). 在使用vim命令编辑文件时，如果指定的文件存在则直接打开此文件。如果指定的文件不存在则新建文件。<br>    2). vim在进行文本编辑时共分为三种模式，分别是 命令模式（Command mode），插入模式（Insert mode）和底行模式（Last line mode）。这三种模式之间可以相互切换。我们在使用vim时一定要注意我们当前所处的是哪种模式。</p>
+<p>三种模式:<br>    - 命令模式<br>      A. 命令模式下可以查看文件内容、移动光标（上下左右箭头、gg、G）<br>      B. 通过vim命令打开文件后，默认进入命令模式<br>      C. 另外两种模式需要首先进入命令模式，才能进入彼此</p>
+<pre><code>  | 命令模式指令 | 含义                              |
+  | ------------ | --------------------------------- |
+  | gg           | 定位到文本内容的第一行            |
+  | G            | 定位到文本内容的最后一行          |
+  | dd           | 删除光标所在行的数据              |
+  | ndd          | 删除当前光标所在行及之后的n行数据 |
+  | u            | 撤销操作                          |
+  | shift+zz     | 保存并退出                        |
+  | i 或 a 或 o  | 进入插入模式                      |
+</code></pre>
+<p>​      </p>
+<ul>
+<li><p>插入模式<br> A. 插入模式下可以对文件内容进行编辑<br> B. 在命令模式下按下[i,a,o]任意一个，可以进入插入模式。进入插入模式后，下方会出现【insert】字样<br> C. 在插入模式下按下ESC键，回到命令模式</p>
+</li>
+<li><p>底行模式<br> A. 底行模式下可以通过命令对文件内容进行查找、显示行号、退出等操作<br> B. 在命令模式下按下[:,&#x2F;]任意一个，可以进入底行模式<br> C. 通过&#x2F;方式进入底行模式后，可以对文件内容进行查找<br> D. 通过:方式进入底行模式后，可以输入wq（保存并退出）、q!（不保存退出）、set nu（显示行号）</p>
+<table>
+<thead>
+<tr>
+<th>底行模式命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:wq</td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>不保存退出</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>显示行号</td>
+</tr>
+<tr>
+<td>:set nonu</td>
+<td>取消行号显示</td>
+</tr>
+<tr>
+<td>:n</td>
+<td>定位到第n行, 如 :10 就是定位到第10行</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<p>​     <img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231925996.png" alt="image-20210811194627474" style="zoom: 80%;" /> </p>
+<p>​	</p>
+<p><strong>操作示例:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231918612.png" alt="image-20210811200005097"> </p>
+<h3 id="4-6-查找命令"><a href="#4-6-查找命令" class="headerlink" title="4.6 查找命令"></a>4.6 查找命令</h3><h4 id="4-6-1-find"><a href="#4-6-1-find" class="headerlink" title="4.6.1 find"></a>4.6.1 find</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 在指定目录下查找文件</span><br><span class="line">语法: find dirName -option fileName</span><br><span class="line">举例:</span><br><span class="line">    find  .  –name &quot;*.java&quot;			在当前目录及其子目录下查找.java结尾文件</span><br><span class="line">    find  /itcast  -name &quot;*.java&quot;	在/itcast目录及其子目录下查找.java结尾的文件</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231918820.png" alt="image-20210811200438459"> </p>
+<h4 id="4-6-2-grep"><a href="#4-6-2-grep" class="headerlink" title="4.6.2 grep"></a>4.6.2 grep</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">作用: 从指定文件中查找指定的文本内容</span><br><span class="line">语法: grep word fileName</span><br><span class="line">举例: </span><br><span class="line">    grep Hello HelloWorld.java	查找HelloWorld.java文件中出现的Hello字符串的位置</span><br><span class="line">    grep hello *.java			查找当前目录中所有.java结尾的文件中包含hello字符串的位置</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>操作示例:</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Linux/Day01/202306231918236.png" alt="image-20210811200737596"> </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zyziga.github.io">姜小白</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zyziga.github.io/archives/7.html">https://zyziga.github.io/archives/7.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zyziga.github.io" target="_blank">姜小白程序</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/6.html" title="Git课程讲义"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git课程讲义</div></div></a></div><div class="next-post pull-right"><a href="/archives/8.html" title="Linux-Day02"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux-Day02</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/milos.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">姜小白</div><div class="author-info__description">姜小白程序</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zyziga/zyziga.github.io"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zyziga" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Hexo.zyziga.github.io" target="_blank" title="博客"><i class="fas fa-thin fa-truck"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到姜小白的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux-Day01"><span class="toc-text">Linux-Day01</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="toc-text">课程内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-text">1. 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFLinux"><span class="toc-text">1.1 什么是Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6Linux"><span class="toc-text">1.2 为什么要学Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%AD%A6%E5%AE%8CLinux%E8%83%BD%E5%B9%B2%E4%BB%80%E4%B9%88"><span class="toc-text">1.3 学完Linux能干什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Linux%E7%AE%80%E4%BB%8B"><span class="toc-text">2. Linux简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%BB%E6%B5%81%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-text">2.1 主流操作系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Linux%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-text">2.2 Linux发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Linux%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC"><span class="toc-text">2.3 Linux系统版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Linux%E5%AE%89%E8%A3%85"><span class="toc-text">3. Linux安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%AE%89%E8%A3%85%E6%96%B9%E5%BC%8F%E4%BB%8B%E7%BB%8D"><span class="toc-text">3.1 安装方式介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%AE%89%E8%A3%85VMware"><span class="toc-text">3.2 安装VMware</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%AE%89%E8%A3%85Linux"><span class="toc-text">3.3 安装Linux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E7%BD%91%E5%8D%A1%E8%AE%BE%E7%BD%AE"><span class="toc-text">3.4 网卡设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%AE%89%E8%A3%85SSH%E8%BF%9E%E6%8E%A5%E5%B7%A5%E5%85%B7"><span class="toc-text">3.5 安装SSH连接工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-1-SSH%E8%BF%9E%E6%8E%A5%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%BB%8D"><span class="toc-text">3.5.1 SSH连接工具介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-FinalShell%E5%AE%89%E8%A3%85"><span class="toc-text">3.5.2 FinalShell安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-3-%E8%BF%9E%E6%8E%A5Linux"><span class="toc-text">3.5.3 连接Linux</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-Linux%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">3.6 Linux目录结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">4. Linux常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Linux%E5%91%BD%E4%BB%A4%E5%88%9D%E4%BD%93%E9%AA%8C"><span class="toc-text">4.1 Linux命令初体验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%BC%94%E7%A4%BA"><span class="toc-text">4.1.1 常用命令演示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-Linux%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-text">4.1.2 Linux命令使用技巧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-Linux%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-text">4.1.3 Linux命令格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-text">4.2 文件目录操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-ls"><span class="toc-text">4.2.1 ls</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-cd"><span class="toc-text">4.2.2 cd</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-cat"><span class="toc-text">4.2.3 cat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-more"><span class="toc-text">4.2.4 more</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-tail"><span class="toc-text">4.2.5 tail</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-6-mkdir"><span class="toc-text">4.2.6 mkdir</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-7-rmdir"><span class="toc-text">4.2.7 rmdir</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-8-rm"><span class="toc-text">4.2.8 rm</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%8B%B7%E8%B4%9D%E7%A7%BB%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">4.3 拷贝移动命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-cp"><span class="toc-text">4.3.1 cp</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-mv"><span class="toc-text">4.3.2 mv</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%89%93%E5%8C%85%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4"><span class="toc-text">4.4 打包压缩命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%91%BD%E4%BB%A4"><span class="toc-text">4.5 文本编辑命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-1-vi-amp-vim%E4%BB%8B%E7%BB%8D"><span class="toc-text">4.5.1 vi&amp;vim介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-2-vim%E5%AE%89%E8%A3%85"><span class="toc-text">4.5.2 vim安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-3-vim%E4%BD%BF%E7%94%A8"><span class="toc-text">4.5.3 vim使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E6%9F%A5%E6%89%BE%E5%91%BD%E4%BB%A4"><span class="toc-text">4.6 查找命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-1-find"><span class="toc-text">4.6.1 find</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-2-grep"><span class="toc-text">4.6.2 grep</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/16.html" title="Nacos集群搭建"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos集群搭建"/></a><div class="content"><a class="title" href="/archives/16.html" title="Nacos集群搭建">Nacos集群搭建</a><time datetime="2023-07-12T09:24:45.000Z" title="发表于 2023-07-12 17:24:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/15.html" title="Nacos安装指南"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos安装指南"/></a><div class="content"><a class="title" href="/archives/15.html" title="Nacos安装指南">Nacos安装指南</a><time datetime="2023-07-12T02:50:45.000Z" title="发表于 2023-07-12 10:50:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/14.html" title="SpringCloud02"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud02"/></a><div class="content"><a class="title" href="/archives/14.html" title="SpringCloud02">SpringCloud02</a><time datetime="2023-07-04T02:50:45.000Z" title="发表于 2023-07-04 10:50:45">2023-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/13.html" title="SpringCloud01"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud01"/></a><div class="content"><a class="title" href="/archives/13.html" title="SpringCloud01">SpringCloud01</a><time datetime="2023-07-03T02:50:45.000Z" title="发表于 2023-07-03 10:50:45">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/12.html" title="瑞吉外卖项目优化-Day03"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="瑞吉外卖项目优化-Day03"/></a><div class="content"><a class="title" href="/archives/12.html" title="瑞吉外卖项目优化-Day03">瑞吉外卖项目优化-Day03</a><time datetime="2023-07-01T09:42:45.000Z" title="发表于 2023-07-01 17:42:45">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 姜小白</div><div class="footer_custom_text"><div>很高兴认识你</div><div>欢迎来到我的博客</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script data-pjax defer src="https://npm.elemecdn.com/tzy-blog/lib/js/theme/chocolate.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

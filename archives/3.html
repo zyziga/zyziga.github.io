@@ -1,0 +1,1288 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>瑞吉外卖-Day04 | 姜小白程序</title><meta name="author" content="姜小白"><meta name="copyright" content="姜小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="瑞吉外卖-Day04课程内容 文件上传下载 菜品新增 菜品分页查询 菜品修改  1. 文件上传下载1.1 上传介绍1.1.1 概述文件上传，也称为upload，是指将本地图片、视频、音频等文件上传到服务器上，可以供其他用户浏览或下载的过程。文件上传在项目中应用非常广泛，我们经常发微博、发微信朋友圈都用到了文件上传功能。      文件上传时，对页面的form表单有如下要求：    表单属性 取值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="瑞吉外卖-Day04">
+<meta property="og:url" content="https://zyziga.github.io/archives/3.html">
+<meta property="og:site_name" content="姜小白程序">
+<meta property="og:description" content="瑞吉外卖-Day04课程内容 文件上传下载 菜品新增 菜品分页查询 菜品修改  1. 文件上传下载1.1 上传介绍1.1.1 概述文件上传，也称为upload，是指将本地图片、视频、音频等文件上传到服务器上，可以供其他用户浏览或下载的过程。文件上传在项目中应用非常广泛，我们经常发微博、发微信朋友圈都用到了文件上传功能。      文件上传时，对页面的form表单有如下要求：    表单属性 取值">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png">
+<meta property="article:published_time" content="2023-04-02T11:30:00.000Z">
+<meta property="article:modified_time" content="2023-06-18T16:24:17.333Z">
+<meta property="article:author" content="姜小白">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zyziga.github.io/archives/3.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 姜小白","link":"链接: ","source":"来源: 姜小白程序","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '瑞吉外卖-Day04',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-19 00:24:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/milos.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png')"><nav id="nav"><span id="blog-info"><a href="/" title="姜小白程序"><span class="site-name">姜小白程序</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">瑞吉外卖-Day04</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-02T11:30:00.000Z" title="发表于 2023-04-02 19:30:00">2023-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-18T16:24:17.333Z" title="更新于 2023-06-19 00:24:17">2023-06-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">18.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>66分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="瑞吉外卖-Day04"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="瑞吉外卖-Day04"><a href="#瑞吉外卖-Day04" class="headerlink" title="瑞吉外卖-Day04"></a>瑞吉外卖-Day04</h1><h2 id="课程内容"><a href="#课程内容" class="headerlink" title="课程内容"></a>课程内容</h2><ul>
+<li>文件上传下载</li>
+<li>菜品新增</li>
+<li>菜品分页查询</li>
+<li>菜品修改</li>
+</ul>
+<h2 id="1-文件上传下载"><a href="#1-文件上传下载" class="headerlink" title="1. 文件上传下载"></a>1. 文件上传下载</h2><h3 id="1-1-上传介绍"><a href="#1-1-上传介绍" class="headerlink" title="1.1 上传介绍"></a>1.1 上传介绍</h3><h4 id="1-1-1-概述"><a href="#1-1-1-概述" class="headerlink" title="1.1.1 概述"></a>1.1.1 概述</h4><p>文件上传，也称为upload，是指将本地图片、视频、音频等文件上传到服务器上，可以供其他用户浏览或下载的过程。文件上传在项目中应用非常广泛，我们经常发微博、发微信朋友圈都用到了文件上传功能。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022137162.png" alt="image-20210803081955246" style="zoom:80%;" /> 
+
+
+
+<p>文件上传时，对页面的form表单有如下要求：</p>
+<table>
+<thead>
+<tr>
+<th>表单属性</th>
+<th>取值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>method</td>
+<td>post</td>
+<td>必须选择post方式提交</td>
+</tr>
+<tr>
+<td>enctype</td>
+<td>multipart&#x2F;form-data</td>
+<td>采用multipart格式上传文件</td>
+</tr>
+<tr>
+<td>type</td>
+<td>file</td>
+<td>使用input的file控件上传</td>
+</tr>
+</tbody></table>
+<h4 id="1-1-2-前端介绍"><a href="#1-1-2-前端介绍" class="headerlink" title="1.1.2 前端介绍"></a>1.1.2 前端介绍</h4><p><strong>1). 简单html页面表单</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">action</span>=<span class="string">&quot;/common/upload&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">&quot;myFile&quot;</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span>  /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;提交&quot;</span> /&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). ElementUI中提供的upload上传组件</strong></p>
+<p>目前一些前端组件库也提供了相应的上传组件，但是底层原理还是基于form表单的文件上传。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140476.png" alt="image-20210803084742416"> </p>
+<h4 id="1-1-3-服务端介绍"><a href="#1-1-3-服务端介绍" class="headerlink" title="1.1.3 服务端介绍"></a>1.1.3 服务端介绍</h4><p>服务端要接收客户端页面上传的文件，通常都会使用Apache的两个组件：</p>
+<ul>
+<li><p>commons-fileupload</p>
+</li>
+<li><p>commons-io</p>
+</li>
+</ul>
+<p>而Spring框架在spring-web包中对文件上传进行了封装，大大简化了服务端代码，我们只需要在Controller的方法中声明一个MultipartFile类型的参数即可接收上传的文件，例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 文件上传</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping(&quot;/upload&quot;)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">upload</span><span class="params">(MultipartFile file)</span>&#123;</span><br><span class="line">    System.out.println(file);</span><br><span class="line">    <span class="keyword">return</span> R.success(fileName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-下载介绍"><a href="#1-2-下载介绍" class="headerlink" title="1.2 下载介绍"></a>1.2 下载介绍</h3><p>文件下载，也称为download，是指将文件从服务器传输到本地计算机的过程。通过浏览器进行文件下载，通常有两种表现形式：</p>
+<p><strong>1). 以附件形式下载，弹出保存对话框，将文件保存到指定磁盘目录</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140330.png" alt="image-20210803123858691"> </p>
+<p><strong>2). 直接在浏览器中打开</strong></p>
+<p>而我们在今天所需要实现的菜品展示，表现形式为在浏览器中直接打开。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140466.png" alt="image-20210803124220869">  </p>
+<p>通过浏览器进行文件下载，本质上就是服务端将文件以流的形式写回浏览器的过程。</p>
+<h3 id="1-3-上传代码实现"><a href="#1-3-上传代码实现" class="headerlink" title="1.3 上传代码实现"></a>1.3 上传代码实现</h3><h4 id="1-3-1-前端代码"><a href="#1-3-1-前端代码" class="headerlink" title="1.3.1 前端代码"></a>1.3.1 前端代码</h4><p>文件上传，我们作为服务端工程师，主要关注服务端代码实现。对于前端页面，可以使用ElementUI提供的上传组件。可以直接使用资料中提供的上传页面，位置：资料&#x2F;文件上传下载页面&#x2F;upload.html，将其拷贝到项目的目录(resources&#x2F;backend&#x2F;page&#x2F;demo)下，启动项目，访问上传页面。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://localhost:8080/backend/page/demo/upload.html</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182335733.png" alt="image-20230617160907397"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182335112.png" alt="image-20230617160946756"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182337340.png" alt="image-20230617161137316"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;el-upload class=&quot;avatar-uploader&quot; </span><br><span class="line">                action=&quot;/common/upload&quot;    //地址</span><br><span class="line">                :show-file-list=&quot;false&quot;</span><br><span class="line">                :on-success=&quot;handleAvatarSuccess&quot;</span><br><span class="line">                :before-upload=&quot;beforeUpload&quot;</span><br><span class="line">                ref=&quot;upload&quot;&gt;</span><br><span class="line">            &lt;img v-if=&quot;imageUrl&quot; :src=&quot;imageUrl&quot; class=&quot;avatar&quot;&gt;&lt;/img&gt;</span><br><span class="line">            &lt;i v-else class=&quot;el-icon-plus avatar-uploader-icon&quot;&gt;&lt;/i&gt;</span><br><span class="line">        &lt;/el-upload&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182335941.png" alt="image-20230617161555194"></p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/backend/page/demo/upload.html">http://localhost:8080/backend/page/demo/upload.html</a></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140297.png" alt="image-20210803125619732" style="zoom:80%;" /> 
+
+
+
+<p>在上述的浏览器抓取的网络请求中，上传文件的调用url，在哪里配置的呢，这个时候，我们需要去看一下前端上传组件。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140595.png" alt="image-20210803125942295" style="zoom:80%;" /> 
+
+<p>虽然上述是ElementUI封装的代码，但是实际上最终还通过file域上传文件，如果未指定上传文件的参数名，默认为file。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140793.png" alt="image-20210803130455590" style="zoom:80%;" /> 
+
+
+
+<p>视频分析</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"> </span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line">      //file是一个临时文件，需要转存到指定位置，否则本次请求完成后临时文件会删除</span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">		return null;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182336374.png" alt="image-20230617163730948"></p>
+<p>这里面明明加了断点 可是并没有走到这边过来    这是因为在过滤器这边就已经被打回了</p>
+<p>NOTLOGIN是从哪里来的  </p>
+<p>没有登录的话  要先登录 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182336273.png" alt="image-20230617165035460"></p>
+<p>所以我们有二种方案  第一种方案   就是先登录</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182336038.png" alt="image-20230617165728528"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182336654.png" alt="image-20230617165741304"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182336072.png" alt="image-20230617165813442"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182336442.png" alt="image-20230617165836111"></p>
+<p>第二种方案</p>
+<p>定义不需要处理的请求路径</p>
+<p>我们可以在 LoginCheckFilter 的doFilter方法中，在不需要处理的请求路径的数组中再加入请求路径 &#x2F;common&#x2F;** , 如下: </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182337366.png" alt="image-20230617165341503"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182338332.png" alt="image-20230617163836113"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line"></span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //将临时文件转存到指定位置</span><br><span class="line">            file.transferTo(new File(&quot;D:\\hello.jpg&quot;));</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341756.png" alt="image-20230617200248063"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190000401.png" alt="image-20230617200321069"></p>
+<p>现在是没有   </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341819.png" alt="image-20230617200419296"></p>
+<p>现在转存后</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341563.png" alt="image-20230617200445676"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190001566.png" alt="image-20230617200503743"></p>
+<p>动态转存</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341963.png" alt="image-20230617201959823"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;reggie.path&#125;&quot;)</span><br><span class="line">    private String basePath;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line"></span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //将临时文件转存到指定位置</span><br><span class="line">            file.transferTo(new File(basePath + &quot;hello.jpg&quot;));</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341515.png" alt="image-20230617201225568"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190001506.png" alt="image-20230617201406893"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341579.png" alt="image-20230617202024843"></p>
+<p>动态获取文件名</p>
+<p>方式一</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;reggie.path&#125;&quot;)</span><br><span class="line">    private String basePath;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line"></span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">        //原始文件名</span><br><span class="line">        String originalFilename = file.getOriginalFilename();//abc.jpg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //将临时文件转存到指定位置</span><br><span class="line">            file.transferTo(new File(basePath + originalFilename));</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341067.png" alt="image-20230617202626421"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190010589.png" alt="image-20230617202823013"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190001178.png" alt="image-20230617202836468"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182341747.png" alt="image-20230617202925888"></p>
+<p>方式2</p>
+<p>测试</p>
+<p>截取</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.test;</span><br><span class="line">import org.junit.jupiter.api.Test;</span><br><span class="line">public class UploadFileTest &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public  void test1()&#123;</span><br><span class="line">        String fileName = &quot;ererewe.jpg&quot;;</span><br><span class="line">        String suffix = fileName.substring(fileName.lastIndexOf(&quot;.&quot;));</span><br><span class="line">        System.out.println(suffix);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342635.png" alt="image-20230617204355802"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190011841.png" alt="image-20230617204412599"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用UUID重新生成文件名，防止文件名称重复造成文件覆盖</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.UUID;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;reggie.path&#125;&quot;)</span><br><span class="line">    private String basePath;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line"></span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">        //原始文件名</span><br><span class="line">        String originalFilename = file.getOriginalFilename();//abc.jpg</span><br><span class="line"></span><br><span class="line">        String suffix = originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;));</span><br><span class="line"></span><br><span class="line">        //使用UUID重新生成文件名，防止文件名称重复造成文件覆盖</span><br><span class="line">        String fileName = UUID.randomUUID().toString() + suffix;//dfsdfdfd.jpg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //将临时文件转存到指定位置</span><br><span class="line">            file.transferTo(new File(basePath + fileName));</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342043.png" alt="image-20230617204718852"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190001219.png" alt="image-20230617204812872"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190001674.png" alt="image-20230617204826396"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342331.png" alt="image-20230617204851635"></p>
+<p>把图片放在文件夹里面</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342835.png" alt="image-20230617205056176"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.controller;</span><br><span class="line">import com.itheima.reggie.common.R;</span><br><span class="line">import lombok.extern.slf4j.Slf4j;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line">import java.io.File;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.UUID;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 文件上传和下载</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/common&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class CommonController &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;reggie.path&#125;&quot;)</span><br><span class="line">    private String basePath;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 文件上传</span><br><span class="line">     * @param file</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    @PostMapping(&quot;/upload&quot;)</span><br><span class="line">    public R&lt;String&gt; upload(MultipartFile file)&#123;</span><br><span class="line"></span><br><span class="line">        log.info(file.toString());</span><br><span class="line"></span><br><span class="line">        //原始文件名</span><br><span class="line">        String originalFilename = file.getOriginalFilename();//abc.jpg</span><br><span class="line"></span><br><span class="line">        String suffix = originalFilename.substring(originalFilename.lastIndexOf(&quot;.&quot;));</span><br><span class="line"></span><br><span class="line">        //使用UUID重新生成文件名，防止文件名称重复造成文件覆盖</span><br><span class="line">        String fileName = UUID.randomUUID().toString() + suffix;//dfsdfdfd.jpg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        //创建一个目录对象</span><br><span class="line">        File dir = new File(basePath);</span><br><span class="line">        //判断当前目录是否存在</span><br><span class="line">        if(!dir.exists())&#123;</span><br><span class="line">            //目录不存在，需要创建</span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        try &#123;</span><br><span class="line">            //将临时文件转存到指定位置</span><br><span class="line">            file.transferTo(new File(basePath + fileName));</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342708.png" alt="image-20230617205415644"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342451.png" alt="image-20230617205510994"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190002866.png" alt="image-20230617205533747"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182342659.png" alt="image-20230617205552892"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190011322.png" alt="image-20230617205606090"></p>
+<h4 id="1-3-2-服务端实现"><a href="#1-3-2-服务端实现" class="headerlink" title="1.3.2 服务端实现"></a>1.3.2 服务端实现</h4><p><strong>1). application.yml</strong></p>
+<p>需要在application.yml中定义文件存储路径</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">reggie:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">D:\img\</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). CommonController</strong></p>
+<p>编写文件上传的方法, 通过MultipartFile类型的参数即可接收上传的文件, 方法形参的名称需要与页面的file域的name属性一致。</p>
+<p>所在包: com.itheima.reggie.controller</p>
+<p>上传逻辑: </p>
+<p>1). 获取文件的原始文件名, 通过原始文件名获取文件后缀</p>
+<p>2). 通过UUID重新声明文件名, 文件名称重复造成文件覆盖</p>
+<p>3). 创建文件存放目录</p>
+<p>4). 将上传的临时文件转存到指定位置</p>
+<p>代码实现:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.itheima.reggie.common.R;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.multipart.MultipartFile;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.UUID;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 文件上传和下载</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/common&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CommonController</span> &#123;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;reggie.path&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String basePath;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件上传</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/upload&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;String&gt; <span class="title function_">upload</span><span class="params">(MultipartFile file)</span>&#123;</span><br><span class="line">        <span class="comment">//file是一个临时文件，需要转存到指定位置，否则本次请求完成后临时文件会删除</span></span><br><span class="line">        log.info(file.toString());</span><br><span class="line">		</span><br><span class="line">        <span class="comment">//原始文件名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">originalFilename</span> <span class="operator">=</span> file.getOriginalFilename();<span class="comment">//abc.jpg</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">suffix</span> <span class="operator">=</span> originalFilename.substring(originalFilename.lastIndexOf(<span class="string">&quot;.&quot;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//使用UUID重新生成文件名，防止文件名称重复造成文件覆盖</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> UUID.randomUUID().toString() + suffix;<span class="comment">//dfsdfdfd.jpg</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">//创建一个目录对象</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">dir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(basePath);</span><br><span class="line">        <span class="comment">//判断当前目录是否存在</span></span><br><span class="line">        <span class="keyword">if</span>(!dir.exists())&#123;</span><br><span class="line">            <span class="comment">//目录不存在，需要创建</span></span><br><span class="line">            dir.mkdirs();</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//将临时文件转存到指定位置</span></span><br><span class="line">            file.transferTo(<span class="keyword">new</span> <span class="title class_">File</span>(basePath + fileName));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> R.success(fileName);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-3-3-测试"><a href="#1-3-3-测试" class="headerlink" title="1.3.3 测试"></a>1.3.3 测试</h4><p>代码编写完成之后，我们重新启动项目，访问上传页面 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/backend/page/demo/upload.html%EF%BC%8C%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%EF%BC%8C%E9%80%89%E6%8B%A9%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E6%97%B6%EF%BC%8C%E4%BC%9A%E5%8F%91%E7%8E%B0%E5%9B%BE%E7%89%87%E5%B9%B6%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E7%9A%84%E4%B8%8A%E4%BC%A0%EF%BC%8C%E8%80%8C%E4%B8%94%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E5%8F%AF%E4%BB%A5%E6%8A%93%E5%8F%96%E5%88%B0%E5%93%8D%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E4%BB%8E%E5%9B%BE%E4%B8%AD%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%88%A4%E6%96%AD%E5%87%BA%E9%9C%80%E8%A6%81%E7%99%BB%E5%BD%95%E6%89%8D%E5%8F%AF%E4%BB%A5%E6%93%8D%E4%BD%9C%E3%80%82">http://localhost:8080/backend/page/demo/upload.html，然后点击上传图片，选择图片上传时，会发现图片并不能正常的上传，而且在浏览器中可以抓取到响应的数据，从图中我们可以判断出需要登录才可以操作。</a></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022140963.png" alt="image-20210803232054156" style="zoom:80%;" /> 
+
+<p>而这样的话，就要求我们在测试时，每一次都需要先登录，登录完成后在进行图片上传的测试，为了简化我们的测试，我们可以在 LoginCheckFilter 的doFilter方法中，在不需要处理的请求路径的数组中再加入请求路径 &#x2F;common&#x2F;** , 如下: </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022141778.png" alt="image-20210803232433983" style="zoom:80%;" /> 
+
+<p>然后，我们在测试文件的上传功能时，就不需要登录就可以操作了。 </p>
+<p>我们在测试文件上传时，可以通过debug的形式来跟踪上传的整个过程，验证一下临时文件是否存在，以及上传完成之后，临时文件是否会自动删除。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022141130.png" alt="image-20210805160234154"> </p>
+<h3 id="1-4-下载代码实现"><a href="#1-4-下载代码实现" class="headerlink" title="1.4 下载代码实现"></a>1.4 下载代码实现</h3><h4 id="1-4-1-前端代码"><a href="#1-4-1-前端代码" class="headerlink" title="1.4.1 前端代码"></a>1.4.1 前端代码</h4><p>文件下载，前端页面可以使用<img>标签展示下载的图片。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">v-if</span>=<span class="string">&quot;imageUrl&quot;</span> <span class="attr">:src</span>=<span class="string">&quot;imageUrl&quot;</span> <span class="attr">class</span>=<span class="string">&quot;avatar&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182343163.png" alt="image-20230617210100925"></p>
+<p>当文件上传完成之后  就会回调handleAvatarSuccess（）方法</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182343795.png" alt="image-20230617210402606"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">      new Vue(&#123;</span><br><span class="line">        el: &#x27;#food-add-app&#x27;,</span><br><span class="line">        data() &#123;</span><br><span class="line">          return &#123;</span><br><span class="line">            imageUrl: &#x27;&#x27;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods: &#123;</span><br><span class="line">          handleAvatarSuccess (response, file, fileList) &#123;</span><br><span class="line">          //拿到返回的文件名称  然后给imageUrl赋值</span><br><span class="line">          //请求路径 把请求name参数带过去  而且这个name就是完成上传之后 动态生成的值fileName</span><br><span class="line">              this.imageUrl = `/common/download?name=$&#123;response.data&#125;` </span><br><span class="line">          &#125;,</span><br><span class="line">          beforeUpload (file) &#123;</span><br><span class="line">            if(file)&#123;</span><br><span class="line">              const suffix = file.name.split(&#x27;.&#x27;)[1]</span><br><span class="line">              const size = file.size / 1024 / 1024 &lt; 2</span><br><span class="line">              if([&#x27;png&#x27;,&#x27;jpeg&#x27;,&#x27;jpg&#x27;].indexOf(suffix) &lt; 0)&#123;</span><br><span class="line">                this.$message.error(&#x27;上传图片只支持 png、jpeg、jpg 格式！&#x27;)</span><br><span class="line">                this.$refs.upload.clearFiles()</span><br><span class="line">                return false</span><br><span class="line">              &#125;</span><br><span class="line">              if(!size)&#123;</span><br><span class="line">                this.$message.error(&#x27;上传文件大小不能超过 2MB!&#x27;)</span><br><span class="line">                return false</span><br><span class="line">              &#125;</span><br><span class="line">              return file</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>那么，通过<img>标签如何展示图片数据呢，接下来我们来解析一下具体的流程：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022141683.png" alt="image-20210803224818828"> </p>
+<p>在文件上传成功后，在 handleAvatarSuccess 方法中获取文件上传成功之后返回的数据(文件名)，然后调用 &#x2F;common&#x2F;download?name&#x3D;xxx 进行文件的下载。在这里，我们想让上传的照片能够在页面展示出来，所以我们就需要在服务端将文件以流的形式写回浏览器。</p>
+<h4 id="1-4-2-服务端代码"><a href="#1-4-2-服务端代码" class="headerlink" title="1.4.2 服务端代码"></a>1.4.2 服务端代码</h4><p>在 CommonController 中定义方法download，并接收页面传递的参数name，然后读取图片文件的数据，然后以流的形式写回浏览器。</p>
+<p>具体逻辑如下： </p>
+<p>1). 定义输入流，通过输入流读取文件内容</p>
+<p>2). 通过response对象，获取到输出流</p>
+<p>3). 通过response对象设置响应数据格式(image&#x2F;jpeg)</p>
+<p>4). 通过输入流读取文件数据，然后通过上述的输出流写回浏览器</p>
+<p>5). 关闭资源</p>
+<p>代码实现:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 文件下载</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> response</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/download&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">download</span><span class="params">(String name, HttpServletResponse response)</span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//输入流，通过输入流读取文件内容</span></span><br><span class="line">        <span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(basePath + name));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//输出流，通过输出流将文件写回浏览器</span></span><br><span class="line">        <span class="type">ServletOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line"></span><br><span class="line">        response.setContentType(<span class="string">&quot;image/jpeg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">while</span> ((len = fileInputStream.read(bytes)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            outputStream.write(bytes,<span class="number">0</span>,len);</span><br><span class="line">            outputStream.flush();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭资源</span></span><br><span class="line">        outputStream.close();</span><br><span class="line">        fileInputStream.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>代码解释1</p>
+<p>以上代码是一个用于文件下载的方法。该方法接收一个文件名（name）和 HttpServletResponse 对象作为参数。</p>
+<p>在方法中，首先创建一个 FileInputStream 对象，用于读取文件内容。该对象通过传入的文件名和基本路径（basePath）构建文件的完整路径。</p>
+<p>接下来，创建一个 ServletOutputStream 对象，用于将文件内容写回浏览器。这个对象通过调用 HttpServletResponse 对象的 getOutputStream() 方法获取。</p>
+<p>设置响应的内容类型为 “image&#x2F;jpeg”，这表示下载的文件类型为 JPEG 图片，可以根据实际情况修改为其他类型。</p>
+<p>然后，通过循环读取文件内容并写入输出流。循环的条件是每次读取的字节数不等于 -1（即文件还未读取完毕）。读取的内容存储在一个字节数组中，每次写入输出流并刷新。</p>
+<p>最后，在文件读取完成后，关闭输出流和输入流，释放资源。</p>
+<p>如果在执行过程中发生异常，将打印异常堆栈信息（e.printStackTrace()）。</p>
+<p>请注意，以上代码只是一个简单的文件下载示例，可能需要根据具体需求进行修改和完善。例如，可以添加异常处理、文件不存在的判断、设置下载文件的名称等。</p>
+<p>代码解释2</p>
+<p>当你在网页中点击下载按钮时，该方法会被调用，并将指定的文件发送给用户以供下载。下面是对每一行代码的详细解释：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/download&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">download</span><span class="params">(String name, HttpServletResponse response)</span>&#123;</span><br></pre></td></tr></table></figure>
+<p>这是一个使用@GetMapping注解的方法，它将处理来自”&#x2F;download”路径的GET请求。它接收一个名为”name”的参数，表示要下载的文件名。而”HttpServletResponse”对象则用于向浏览器发送响应。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(basePath + name));</span><br></pre></td></tr></table></figure>
+<p>在这里，我们创建了一个FileInputStream对象，它将用于从磁盘读取文件内容。通过将basePath和name连接在一起，我们构建了文件的完整路径。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">ServletOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> response.getOutputStream();</span><br></pre></td></tr></table></figure>
+<p>这一行代码创建了一个ServletOutputStream对象，用于将文件内容写回浏览器。我们通过调用response对象的getOutputStream()方法来获取输出流。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">response.setContentType(<span class="string">&quot;image/jpeg&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这一行代码设置了响应的内容类型为”image&#x2F;jpeg”，表示要下载的文件类型为JPEG图片。你可以根据实际情况修改这个内容类型，以适应其他文件类型的下载。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="type">byte</span>[] bytes = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line"><span class="keyword">while</span> ((len = fileInputStream.read(bytes)) != -<span class="number">1</span>)&#123;</span><br><span class="line">    outputStream.write(bytes,<span class="number">0</span>,len);</span><br><span class="line">    outputStream.flush();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是一个循环，用于逐块地从文件输入流读取文件内容，并将每块内容写入输出流。我们首先创建一个长度为1024的字节数组来存储每次读取的文件内容。</p>
+<p>循环的条件是每次读取的字节数不等于-1，这表示文件还没有完全读取。在循环中，我们使用outputStream.write()方法将每次读取的内容写入输出流，并使用outputStream.flush()方法刷新输出流，确保内容被发送给浏览器。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">outputStream.close();</span><br><span class="line">fileInputStream.close();</span><br></pre></td></tr></table></figure>
+<p>在文件读取和写入完成后，我们关闭了输出流和输入流，释放了与文件相关的资源。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这个catch块中，我们捕获任何可能发生的异常，并打印异常堆栈信息。这有助于调试和发现在文件下载过程中出现的问题。</p>
+<p>请注意，以上代码只是一个简单的文件下载示例，可能需要根据具体需求进行修改和完善。例如，可以添加异常处理、文件不存在的判断、设置下载文件的名称等。</p>
+<p>代码解释3</p>
+<p>以上代码是一个文件下载的控制器方法，定义了一个GetMapping请求映射，用于处理浏览器发起的文件下载请求。方法中包含两个参数：name和response。name是指被下载的文件名，response是指HttpServletResponse对象，用于操作HTTP响应。</p>
+<p>在方法中，首先创建了一个FileInputStream对象，通过该对象读取basePath下的指定文件内容。然后创建了一个ServletOutputStream对象，通过该对象将文件的内容写回浏览器。接着设置了响应的contentType类型为”image&#x2F;jpeg”，以便浏览器可以正确解析文件内容。</p>
+<p>最后，通过while循环读取文件内容，并将其通过输出流写回浏览器，直到文件读取完毕。关闭资源，结束文件下载操作。</p>
+<p>该方法适用于下载图片、PDF、Word文档等类型的文件，并且可以灵活配置basePath参数，以适应多种文件下载需求。</p>
+<h4 id="1-4-3-测试"><a href="#1-4-3-测试" class="headerlink" title="1.4.3 测试"></a>1.4.3 测试</h4><p>访问页面 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://localhost:8080/backend/page/demo/upload.html">http://localhost:8080/backend/page/demo/upload.html</a> , 点击上传图片 , 选择图片进行上传, 上传完毕之后, 查看图片是否可以展示出来。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022141026.png" alt="image-20210803231134157"  /> 
+
+<p>通过F12查询页面发起的请求及响应的数据：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022141690.png" alt="image-20210803231302464"> </p>
+<h2 id="2-菜品新增"><a href="#2-菜品新增" class="headerlink" title="2. 菜品新增"></a>2. 菜品新增</h2><h3 id="2-1-需求分析"><a href="#2-1-需求分析" class="headerlink" title="2.1 需求分析"></a>2.1 需求分析</h3><p>后台系统中可以管理菜品信息，通过 新增功能来添加一个新的菜品，在添加菜品时需要选择当前菜品所属的菜品分类，并且需要上传菜品图片，在移动端会按照菜品分类来展示对应的菜品信息 。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022142170.png" alt="image-20210803234122966"> </p>
+<h3 id="2-2-数据模型"><a href="#2-2-数据模型" class="headerlink" title="2.2 数据模型"></a>2.2 数据模型</h3><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022142082.png" alt="image-20210803235329340" style="zoom:80%;" /> 
+
+<p>新增菜品，其实就是将新增页面录入的菜品信息插入到dish表，如果添加了口味做法，还需要向dish_flavor表插入数据。所以在新增菜品时，涉及到两个表：</p>
+<table>
+<thead>
+<tr>
+<th>表结构</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dish</td>
+<td>菜品表</td>
+</tr>
+<tr>
+<td>dish_flavor</td>
+<td>菜品口味表</td>
+</tr>
+</tbody></table>
+<p><strong>1). 菜品表:dish</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022142171.png" alt="image-20210803235459347" style="zoom:80%;" /> 
+
+
+
+<p><strong>2). 菜品口味表:dish_flavor</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022142042.png" alt="image-20210803235749393" style="zoom:80%;" /> 
+
+
+
+<h3 id="2-3-准备工作"><a href="#2-3-准备工作" class="headerlink" title="2.3 准备工作"></a>2.3 准备工作</h3><p>在开发业务功能前，先将需要用到的类和接口基本结构创建好：</p>
+<p><strong>1). 实体类 DishFlavor</strong></p>
+<p>直接从课程资料中导入即可，Dish实体前面课程中已经导入过了</p>
+<p>所属包: com.itheima.reggie.entity</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.FieldFill;</span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.time.LocalDateTime;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">菜品口味</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishFlavor</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="comment">//菜品id</span></span><br><span class="line">    <span class="keyword">private</span> Long dishId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//口味名称</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//口味数据list</span></span><br><span class="line">    <span class="keyword">private</span> String value;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime updateTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT)</span></span><br><span class="line">    <span class="keyword">private</span> Long createUser;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@TableField(fill = FieldFill.INSERT_UPDATE)</span></span><br><span class="line">    <span class="keyword">private</span> Long updateUser;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是否删除</span></span><br><span class="line">    <span class="keyword">private</span> Integer isDeleted;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2). Mapper接口DishFlavorMapper</strong></p>
+<p>所属包: com.itheima.reggie.mapper</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.DishFlavor;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DishFlavorMapper</span> <span class="keyword">extends</span> <span class="title class_">BaseMapper</span>&lt;DishFlavor&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释1</p>
+<p>以上代码是一个Java接口文件，使用了MyBatis Plus框架的注解和继承关系。</p>
+<ol>
+<li><p><code>import com.baomidou.mybatisplus.core.mapper.BaseMapper;</code> 导入了 MyBatis Plus 框架的 <code>BaseMapper</code> 接口，该接口是 MyBatis Plus 提供的基础映射器接口，提供了常见的数据库操作方法。</p>
+</li>
+<li><p><code>import com.itheima.reggie.entity.DishFlavor;</code> 导入了一个名为 <code>DishFlavor</code> 的实体类，该类可能定义了与数据库表中某个表对应的实体属性。</p>
+</li>
+<li><p><code>import org.apache.ibatis.annotations.Mapper;</code> 导入了 MyBatis 的 <code>Mapper</code> 注解，用于将接口标记为 MyBatis 的映射器接口。</p>
+</li>
+<li><p><code>@Mapper</code> 注解标记在接口上，表示这个接口是 MyBatis 的映射器接口，用于定义数据库操作的方法。</p>
+</li>
+<li><p><code>public interface DishFlavorMapper extends BaseMapper&lt;DishFlavor&gt;</code> 表示 <code>DishFlavorMapper</code> 接口继承了 <code>BaseMapper&lt;DishFlavor&gt;</code> 接口，继承关系意味着 <code>DishFlavorMapper</code> 接口会继承 <code>BaseMapper</code> 接口中定义的数据库操作方法，并且指定了泛型参数为 <code>DishFlavor</code>，表示这个映射器接口处理的实体类是 <code>DishFlavor</code>。</p>
+</li>
+</ol>
+<p>综上所述，以上代码定义了一个 MyBatis Plus 的映射器接口 <code>DishFlavorMapper</code>，该接口继承了 <code>BaseMapper</code> 接口，并使用了 <code>@Mapper</code> 注解标记。这个接口可以用于对数据库中名为 <code>DishFlavor</code> 的表进行增删改查等数据库操作。</p>
+<p>代码解释2</p>
+<p>以上代码是一个Java接口定义，名为<code>DishFlavorMapper</code>，它扩展了一个名为<code>BaseMapper</code>的接口，并指定了泛型参数为<code>DishFlavor</code>。</p>
+<p>这个接口的作用是定义与数据库表”dish_flavor”相关的操作方法，以便在应用程序中进行数据库操作。通过继承<code>BaseMapper</code>接口，<code>DishFlavorMapper</code>接口可以继承和使用<code>BaseMapper</code>中定义的通用数据库操作方法，如插入、更新、删除和查询等。</p>
+<p>通常情况下，<code>BaseMapper</code>接口可能会定义一些基本的CRUD（创建、读取、更新、删除）方法，而<code>DishFlavorMapper</code>接口可以定义特定于”dish_flavor”表的定制方法，以满足具体业务需求。</p>
+<p>在这个接口中并没有提供具体的方法实现，而是只定义了接口的签名。实际的方法实现需要由具体的类来提供，通常是通过使用MyBatis、Hibernate等ORM（对象关系映射）框架来生成具体的实现代码。</p>
+<p>总之，以上代码定义了一个接口<code>DishFlavorMapper</code>，它扩展了<code>BaseMapper</code>接口，并定义了与”dish_flavor”表相关的数据库操作方法的契约。具体的方法实现将由其他类提供。</p>
+<p>@Mapper的解释</p>
+<p>使用<code>@Mapper</code>注解后，MyBatis会自动为该接口生成一个实现类，无需手动编写实现类的代码。</p>
+<p>当使用MyBatis框架时，<code>@Mapper</code>注解用于标识一个接口是一个Mapper接口。Mapper接口定义了与数据库交互的方法。使用<code>@Mapper</code>注解后，MyBatis会自动为该接口生成一个实现类，无需手动编写实现类的代码。</p>
+<p>具体来说，使用<code>@Mapper</code>注解的Mapper接口中的方法会与对应的XML文件中的SQL语句进行映射。XML文件中定义了与数据库交互的SQL语句，而Mapper接口中的方法命名和参数与这些SQL语句对应。当调用Mapper接口中的方法时，MyBatis会根据方法名和参数自动寻找对应的SQL语句并执行，然后返回结果。</p>
+<p>以下是一个示例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> &#123;</span><br><span class="line">    User <span class="title function_">getUserById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">insertUser</span><span class="params">(User user)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">updateUser</span><span class="params">(User user)</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">deleteUser</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述示例中，<code>UserMapper</code>接口被<code>@Mapper</code>注解标记为一个Mapper接口。它定义了与用户表相关的数据库操作方法，如根据用户ID获取用户信息、插入新用户、更新用户信息和删除用户等。</p>
+<p>MyBatis根据这些方法的命名和参数来映射对应的SQL语句，例如，<code>getUserById</code>方法对应查询某个用户的SQL语句，<code>insertUser</code>方法对应插入用户的SQL语句，以此类推。</p>
+<p>使用<code>@Mapper</code>注解后，还需要在配置类（或者使用<code>@SpringBootApplication</code>注解的主类）上添加<code>@MapperScan</code>注解，指定Mapper接口所在的包路径。这样，Spring会自动扫描并注册这些Mapper接口的实现类。</p>
+<p>总结来说，<code>@Mapper</code>注解用于标识一个接口是MyBatis的Mapper接口。MyBatis根据Mapper接口的方法与XML文件中的SQL语句进行映射，自动生成实现类来执行数据库操作。这样，开发者只需编写Mapper接口的方法，而无需编写具体的实现代码。</p>
+<p><strong>3). 业务层接口 DishFlavorService</strong></p>
+<p>所属包: com.itheima.reggie.service</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.IService;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.DishFlavor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">DishFlavorService</span> <span class="keyword">extends</span> <span class="title class_">IService</span>&lt;DishFlavor&gt; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释1</p>
+<p>以上代码是一个Java接口定义，名为<code>DishFlavorService</code>，它扩展了一个名为<code>IService</code>的接口，并指定了泛型参数为<code>DishFlavor</code>。</p>
+<p>这个接口的作用是定义与<code>DishFlavor</code>实体相关的服务方法，用于在应用程序中提供对<code>DishFlavor</code>对象的操作和处理。</p>
+<p><code>IService</code>接口通常用于定义通用的服务层接口，包含了对实体对象的常见操作，如创建、更新、删除和查询等。通过扩展<code>IService</code>接口，<code>DishFlavorService</code>接口可以继承和使用<code>IService</code>中定义的通用服务方法，以便在应用程序中对<code>DishFlavor</code>对象进行操作。</p>
+<p>在这个接口中并没有提供具体的方法实现，而是只定义了接口的签名。实际的方法实现需要由具体的类来提供，通常是通过创建一个实现了<code>DishFlavorService</code>接口的类，并在该类中编写具体的方法实现。</p>
+<p>总之，以上代码定义了一个接口<code>DishFlavorService</code>，它扩展了<code>IService</code>接口，并定义了与<code>DishFlavor</code>实体相关的服务方法的契约。具体的方法实现将由其他类提供。这样的设计模式可以帮助在应用程序中组织和管理对<code>DishFlavor</code>对象的操作和处理逻辑。</p>
+<p><strong>4). 业务层实现类 DishFlavorServiceImpl</strong></p>
+<p>所属包: com.itheima.reggie.service.impl</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.DishFlavor;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.mapper.DishFlavorMapper;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.DishFlavorService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishFlavorServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;DishFlavorMapper,DishFlavor&gt; <span class="keyword">implements</span> <span class="title class_">DishFlavorService</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释1</p>
+<p>以上代码是一个Java类的定义，它声明了一个名为”DishFlavorServiceImpl”的类，该类扩展了”ServiceImpl&lt;DishFlavorMapper,DishFlavor&gt;”类，并实现了”DishFlavorService”接口。</p>
+<p>在代码中使用了@Service注解，这是Spring框架中的注解之一，用于将该类标记为一个服务组件。@Service注解的作用是告诉Spring框架该类需要被扫描并注册为一个可用的服务组件，以便其他组件可以通过依赖注入的方式使用它。</p>
+<p>类的定义中还指定了两个泛型参数，即”DishFlavorMapper”和”DishFlavor”。这表明该类在实现业务逻辑时将使用一个名为”DishFlavorMapper”的对象来访问数据库，并操作类型为”DishFlavor”的实体对象。</p>
+<p>通过继承”ServiceImpl&lt;DishFlavorMapper,DishFlavor&gt;”类，该类继承了一些基本的服务实现方法，如增删改查等，这些方法可用于处理与”DishFlavor”实体相关的业务逻辑。</p>
+<p>最后，由于该类实现了”DishFlavorService”接口，它必须提供该接口中定义的所有方法的具体实现。这意味着除了继承的基本服务方法外，开发人员还需要根据接口的要求添加额外的方法实现。</p>
+<p>综上所述，以上代码定义了一个服务组件类”DishFlavorServiceImpl”，该类使用了Spring框架的@Service注解进行标记，并提供了基本的服务实现方法，以及根据”DishFlavorService”接口的要求添加了其他方法的实现。</p>
+<p><strong>5). 控制层 DishController</strong></p>
+<p>菜品及菜品口味的相关操作，我们统一使用这一个controller即可。</p>
+<p>所属包： com.itheima.reggie.controller</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.DishFlavorService;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.service.DishService;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 菜品管理</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/dish&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishController</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishService dishService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishFlavorService dishFlavorService;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure>
+
+<p>@RestController的理解 </p>
+<p><code>@RestController</code> 是一个 Spring 框架中的注解，它用于标识一个类是一个 RESTful Web 服务的控制器。</p>
+<p>在 Spring MVC 中，<code>@RestController</code> 注解与 <code>@Controller</code> 注解类似，但有一个关键的区别。<code>@Controller</code> 注解通常用于传统的基于视图的 Web 应用程序，其中控制器处理用户请求并返回视图。而 <code>@RestController</code> 注解则更适用于构建 RESTful Web 服务，其中控制器处理客户端的请求，并直接返回数据作为响应，而不是返回视图。</p>
+<p>当一个类被标记为 <code>@RestController</code> 时，Spring 框架会自动处理 HTTP 请求和响应，并将方法的返回值序列化为 JSON 或 XML 格式的数据。这样，你可以轻松地构建基于 RESTful 架构风格的 Web 服务，并使用各种 HTTP 方法（如 GET、POST、PUT、DELETE）处理不同的请求。</p>
+<p>以下是一个简单的使用 <code>@RestController</code> 的示例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyController</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@GetMapping(&quot;/hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">sayHello</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello, World!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的示例中，<code>@RestController</code> 标记了 <code>MyController</code> 类，表明它是一个 RESTful Web 服务的控制器。<code>@GetMapping(&quot;/hello&quot;)</code> 注解指定了处理 HTTP GET 请求的方法，并返回一个字符串 “Hello, World!” 作为响应。</p>
+<p>总而言之，<code>@RestController</code> 注解简化了构建 RESTful Web 服务的过程，使得处理客户端请求和返回数据变得更加直观和方便。</p>
+<p><code>@RestController</code> 注解也是用于将类交给 Spring 框架进行管理。当使用 <code>@RestController</code> 注解标记一个类时，Spring 会自动将该类实例化并管理其生命周期，使其成为应用程序的一个组件。</p>
+<p>与传统的基于视图的控制器不同，<code>@RestController</code> 注解的类专注于构建基于 RESTful 架构风格的 Web 服务，因此处理的是客户端请求和数据的返回，而不是返回视图。这意味着 <code>@RestController</code> 注解的类中的方法通常会返回数据，例如 JSON 或 XML 格式的数据，而不是渲染视图。</p>
+<p>通过 <code>@RestController</code> 注解，Spring 框架会自动处理 HTTP 请求和响应的细节，包括序列化和反序列化数据、处理异常等。这样，你可以专注于定义处理请求的方法和业务逻辑，而无需关心底层的请求和响应处理细节。</p>
+<p>总结来说，<code>@RestController</code> 注解将一个类声明为基于 RESTful Web 服务的控制器，让 Spring 框架自动管理该类，并处理与 RESTful 服务相关的请求和响应，使开发 RESTful Web 服务变得更加简单和高效。</p>
+<p>代码解释1</p>
+<p>这段代码是一个用于管理菜品的控制器（Controller）类。它使用了Spring框架的@RestController注解，表明这个类是一个RESTful风格的控制器，可以处理HTTP请求。</p>
+<p>@RequestMapping(“&#x2F;dish”)注解指定了处理该控制器下的URL路径，即”&#x2F;dish”。这意味着当客户端发送带有”&#x2F;dish”路径的HTTP请求时，该控制器将处理该请求。</p>
+<p>@Slf4j注解是用于生成日志的注解，它使用了一个名为”log”的日志记录器，可以用来在代码中打印日志信息。</p>
+<p>@Autowired注解是Spring框架的依赖注入注解，用于自动装配依赖。在这段代码中，它将DishService和DishFlavorService注入到了DishController类中。这意味着DishController可以使用这两个服务类中的方法和属性，而不需要手动创建它们的实例。</p>
+<p>综上所述，这段代码定义了一个用于管理菜品的RESTful控制器类，它通过自动装配DishService和DishFlavorService来实现对菜品和菜品口味的管理。</p>
+<p>代码解释2</p>
+<p>这段代码是一个用于管理菜品的控制器类。它的作用就像一个中介，负责接收来自其他程序或客户端的请求，并根据请求的内容进行相应的处理和返回结果。</p>
+<p>@RestController注解告诉框架这个类是一个用于处理网络请求的控制器。它允许我们使用常见的HTTP方法（例如GET、POST、PUT、DELETE）来处理不同的请求。</p>
+<p>@RequestMapping(“&#x2F;dish”)注解指定了这个控制器处理的URL路径，也就是以”&#x2F;dish”开头的路径。例如，如果客户端发送一个请求到”&#x2F;dish&#x2F;add”，那么这个控制器就会被调用来处理这个请求。</p>
+<p>@Slf4j注解是一个日志生成器，它允许我们在代码中打印日志信息。日志是一种记录程序运行过程中重要信息的方式，可以帮助开发人员调试和追踪问题。</p>
+<p>@Autowired注解是Spring框架的一个功能，它能够自动为我们创建对象的实例，并将其注入到需要使用它的地方。在这段代码中，它将DishService和DishFlavorService这两个服务类注入到DishController类中。服务类是用来处理具体的业务逻辑的，通过注入，我们可以直接使用这两个服务类提供的功能，可以使用DishService和DishFlavorService这两个服务类的属性和方法，而不需要手动创建它们的实例。</p>
+<p>总的来说，这段代码定义了一个控制器类，用于管理菜品。它可以接收并处理来自其他程序或客户端的请求，根据请求的内容调用相应的服务类来完成具体的业务逻辑，最后返回处理结果。通过自动注入服务类，我们可以方便地使用它们提供的功能，而无需手动创建实例。日志功能则可以帮助我们记录重要的运行信息，方便调试和追踪问题。</p>
+<h3 id="2-4-前端页面分析"><a href="#2-4-前端页面分析" class="headerlink" title="2.4 前端页面分析"></a>2.4 前端页面分析</h3><p>基本的准备工作我们已经做完了，那么接下来我们就需要来实现新增菜品功能，在开发代码之前，需要梳理一下新增菜品时前端页面和服务端的交互过程。</p>
+<p>1). 点击新建菜品按钮, 访问页面(backend&#x2F;page&#x2F;food&#x2F;add.html), 页面加载时发送ajax请求，请求服务端获取菜品分类数据并展示到下拉框中</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182343500.png" alt="image-20230618142932844"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190002449.png" alt="image-20230618144727052"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182343907.png" alt="image-20230618144816327"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190012730.png" alt="image-20230618144848150"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182343483.png" alt="image-20230618144939162"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182344539.png" alt="image-20230618145126568"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">params是&#x27;type&#x27;: 1  1是代表菜品分类</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182344035.png" alt="image-20230618145321942"></p>
+<p>查完之后  我们要给他一个响应   响应回来之后  会回调一个函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">回调这个函数</span><br><span class="line">then(res =&gt; &#123;</span><br><span class="line">              if (res.code === 1) &#123;</span><br><span class="line">                this.dishList = res.data    //给dishList进行赋值 </span><br><span class="line">              &#125; else &#123;</span><br><span class="line">                this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>dishList对应的就是我们页面上的下拉框</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182344388.png" alt="image-20230618145840131"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190003577.png" alt="image-20230618145936618"></p>
+<p>就可以通过数据绑定的方式进行显示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022142586.png" alt="image-20210804003343531"> </p>
+<p>2). 页面发送请求进行图片上传，请求服务端将图片保存到服务器(上传功能已实现)</p>
+<p>3). 页面发送请求进行图片下载，将上传的图片进行回显(下载功能已实现)</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022142187.png" alt="image-20210804003752632" style="zoom:80%;" /> 
+
+<p>测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182344043.png" alt="image-20230618152755938"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182344580.png" alt="image-20230618152835803"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182344971.png" alt="image-20230618152907261"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345371.png" alt="image-20230618153041058"></p>
+<p>4). 点击保存按钮，发送ajax请求，将菜品相关数据以json形式提交到服务端</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345186.png" alt="image-20230618154523528"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345387.png" alt="image-20230618154613078"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345075.png" alt="image-20230618154649140"></p>
+<p>我们输入的20是20元  数据库是以分为单位 所以变成了2000</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345123.png" alt="image-20230618155039756"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190003945.png" alt="image-20230618155133944"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345818.png" alt="image-20230618155329426"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190003066.png" alt="image-20230618155633822"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182345082.png" alt="image-20230618155650217"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">submitForm(formName, st) &#123;</span><br><span class="line">           this.$refs[formName].validate((valid) =&gt; &#123;   //校验</span><br><span class="line">             if (valid) &#123;</span><br><span class="line">               let params = &#123;...this.ruleForm&#125;    //如果校验通过 把表单的数据收集过来  然后封装到params上面</span><br><span class="line">               // params.flavors = this.dishFlavors</span><br><span class="line">               params.status = this.ruleForm ? 1 : 0</span><br><span class="line">               params.price *= 100</span><br><span class="line">               params.categoryId = this.ruleForm.categoryId</span><br><span class="line">               params.flavors = this.dishFlavors.map(obj =&gt; (&#123; ...obj, value: JSON.stringify(obj.value) &#125;))</span><br><span class="line">               delete params.dishFlavors</span><br><span class="line">               if(!this.imageUrl)&#123;</span><br><span class="line">                 this.$message.error(&#x27;请上传菜品图片&#x27;)</span><br><span class="line">                 return </span><br><span class="line">               &#125;</span><br><span class="line">               if (this.actionType == &#x27;add&#x27;) &#123;</span><br><span class="line">                 delete params.id</span><br><span class="line">                 addDish(params).then(res =&gt; &#123;    //发送请求</span><br><span class="line">                   if (res.code === 1) &#123;</span><br><span class="line">                     this.$message.success(&#x27;菜品添加成功！&#x27;)</span><br><span class="line">                     if (!st) &#123;</span><br><span class="line">                       this.goBack()</span><br><span class="line">                     &#125; else &#123;</span><br><span class="line">                       this.dishFlavors = []</span><br><span class="line">                       // this.dishFlavorsData = []</span><br><span class="line">                       this.imageUrl = &#x27;&#x27;</span><br><span class="line">                       this.ruleForm = &#123;</span><br><span class="line">                         &#x27;name&#x27;: &#x27;&#x27;,</span><br><span class="line">                         &#x27;id&#x27;: &#x27;&#x27;,</span><br><span class="line">                         &#x27;price&#x27;: &#x27;&#x27;,</span><br><span class="line">                         &#x27;code&#x27;: &#x27;&#x27;,</span><br><span class="line">                         &#x27;image&#x27;: &#x27;&#x27;,</span><br><span class="line">                         &#x27;description&#x27;: &#x27;&#x27;,</span><br><span class="line">                         &#x27;dishFlavors&#x27;: [],</span><br><span class="line">                         &#x27;status&#x27;: true,</span><br><span class="line">                         categoryId: &#x27;&#x27;</span><br><span class="line">                       &#125;</span><br><span class="line">                     &#125;</span><br><span class="line">                   &#125; else &#123;</span><br><span class="line">                     this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">                   &#125;</span><br><span class="line">                 &#125;).catch(err =&gt; &#123;</span><br><span class="line">                   this.$message.error(&#x27;请求出错了：&#x27; + err)</span><br><span class="line">                 &#125;)</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                 delete params.updateTime</span><br><span class="line">                 editDish(params).then(res =&gt; &#123;</span><br><span class="line">                   if (res.code === 1) &#123;</span><br><span class="line">                     this.$message.success(&#x27;菜品修改成功！&#x27;)</span><br><span class="line">                     this.goBack()</span><br><span class="line">                   &#125; else &#123;</span><br><span class="line">                     this.$message.error(res.msg || &#x27;操作失败&#x27;)</span><br><span class="line">                   &#125;</span><br><span class="line">                 &#125;).catch(err =&gt; &#123;</span><br><span class="line">                   this.$message.error(&#x27;请求出错了：&#x27; + err)</span><br><span class="line">                 &#125;)</span><br><span class="line">               &#125;</span><br><span class="line">             &#125; else &#123;</span><br><span class="line">               return false</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;)</span><br><span class="line">         &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p>页面代码:</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022143338.png" alt="image-20210804004529310" style="zoom:80%;" /> 
+
+<p>浏览器抓取请求:</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022143178.png" alt="image-20210804005030527" style="zoom:80%;" /> 
+
+
+
+<p>开发新增菜品功能，其实就是在服务端编写代码去处理前端页面发送的这4次请求(上传、下载已实现)即可。经过上述的分析，我们还需要在服务端实现两块功能：</p>
+<p>A. 菜品分类数据列表查询, 具体请求信息整理如下 : </p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;category&#x2F;list</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>?type&#x3D;1</td>
+</tr>
+</tbody></table>
+<p>B. 保存菜品信息, 具体请求信息整理如下 : </p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>POST</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;dish</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>json格式</td>
+</tr>
+</tbody></table>
+<p>下面呢,我们就需要根据这里分析的结果,分别来实现菜品分类列表的展示功能、保存菜品的功能 。</p>
+<h3 id="2-5-代码实现"><a href="#2-5-代码实现" class="headerlink" title="2.5 代码实现"></a>2.5 代码实现</h3><h4 id="2-5-1-菜品分类查询"><a href="#2-5-1-菜品分类查询" class="headerlink" title="2.5.1 菜品分类查询"></a>2.5.1 菜品分类查询</h4><p>在CategoryController中增加方法实现菜品分类查询，根据分类进行查询，并对查询的结果按照sort排序字段进行升序排序，如果sort相同，再按照修改时间倒序排序。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 根据条件查询分类数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;List&lt;Category&gt;&gt; <span class="title function_">list</span><span class="params">(Category category)</span>&#123;</span><br><span class="line">    <span class="comment">//条件构造器</span></span><br><span class="line">    LambdaQueryWrapper&lt;Category&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//添加条件</span></span><br><span class="line">    queryWrapper.eq(category.getType() != <span class="literal">null</span>,Category::getType,category.getType());</span><br><span class="line">    <span class="comment">//添加排序条件</span></span><br><span class="line">    queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);</span><br><span class="line"></span><br><span class="line">    List&lt;Category&gt; list = categoryService.list(queryWrapper);</span><br><span class="line">    <span class="keyword">return</span> R.success(list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码解释1</p>
+<p>这段代码是一个Java Spring Boot框架中的控制器方法，用于根据条件查询分类数据并返回结果。以下是对每一行代码的详细解释：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据条件查询分类数据</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> category</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个方法的注释，用于描述方法的功能。它指示该方法根据给定的条件查询分类数据。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/list&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个注解，表示该方法处理HTTP GET请求，并将其映射到路径”&#x2F;list”。当用户访问”&#x2F;list”时，该方法将被调用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> R&lt;List&lt;Category&gt;&gt; <span class="title function_">list</span><span class="params">(Category category)</span>&#123;</span><br></pre></td></tr></table></figure>
+
+<p>这是方法的签名，指定了方法名、返回类型和参数。方法名是<code>list</code>，返回类型是<code>R&lt;List&lt;Category&gt;&gt;</code>，表示返回一个带有泛型参数<code>List&lt;Category&gt;</code>的<code>R</code>对象。<code>R</code>对象可能是一个自定义的响应类，用于封装响应数据。</p>
+<p>这个方法接受一个<code>Category</code>对象作为参数，用于指定查询条件。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">LambdaQueryWrapper&lt;Category&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>这行代码创建了一个<code>LambdaQueryWrapper</code>对象，用于构建查询条件。<code>LambdaQueryWrapper</code>是MyBatis-Plus库提供的一个查询条件构造器。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">queryWrapper.eq(category.getType() != <span class="literal">null</span>, Category::getType, category.getType());</span><br></pre></td></tr></table></figure>
+
+<p>这行代码添加了一个条件到查询条件构造器中。它检查<code>category.getType()</code>是否不为<code>null</code>，如果是，则添加一个等于条件，比较的字段是<code>Category</code>对象的<code>type</code>属性，比较的值是<code>category.getType()</code>的返回值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码添加了排序条件到查询条件构造器中。它指定了两个排序条件，首先按照<code>Category</code>对象的<code>sort</code>属性进行升序排序，然后按照<code>Category</code>对象的<code>updateTime</code>属性进行降序排序。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;Category&gt; list = categoryService.list(queryWrapper);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码使用查询条件构造器执行查询操作，并将查询结果存储在名为<code>list</code>的<code>List&lt;Category&gt;</code>对象中。<code>categoryService</code>是一个服务类，执行实际的查询操作。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> R.success(list);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码将查询结果包装在一个<code>R</code>对象中，并将其作为方法的返回值返回。<code>R.success(list)</code>表示将查询结果<code>list</code>放入<code>R</code>对象中，并使用<code>success</code>方法表示查询成功。</p>
+<p>总结：这段代码是一个根据条件查询分类数据的控制器方法。它接受一个<code>Category</code>对象作为参数，使用查询条件构造器<code>LambdaQueryWrapper</code>构建查询条件，然后执行查询操作，并将结果封装在一个<code>R</code>对象中返回。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> //添加条件</span><br><span class="line">queryWrapper.eq(category.getType() != null,Category::getType,category.getType());</span><br><span class="line">//添加排序条件</span><br><span class="line">queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>以上二句话代码的详细解释：</p>
+<p>当你执行查询时，你通常希望根据特定的条件来过滤结果，并按照某个字段进行排序。以下是对这两行代码的详细解释：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">queryWrapper.eq(category.getType() != <span class="literal">null</span>, Category::getType, category.getType());</span><br></pre></td></tr></table></figure>
+
+<p>这行代码用于添加查询条件到查询条件构造器<code>queryWrapper</code>中。<code>eq</code>方法表示添加等于条件。参数解释如下：</p>
+<ul>
+<li><code>category.getType() != null</code>：这是一个条件判断表达式，检查<code>category</code>对象的<code>type</code>属性是否不为<code>null</code>。如果条件为<code>true</code>，则添加等于条件；如果条件为<code>false</code>，则不添加这个条件。</li>
+<li><code>Category::getType</code>：这是一个方法引用，指定了要进行比较的字段。它表示比较的字段是<code>Category</code>对象的<code>type</code>属性。</li>
+<li><code>category.getType()</code>：这是要进行比较的值，它是通过调用<code>category</code>对象的<code>getType()</code>方法获取的。</li>
+</ul>
+<p>因此，这行代码的意思是，如果<code>category</code>对象的<code>type</code>属性不为<code>null</code>，则添加一个等于条件，比较的字段是<code>Category</code>对象的<code>type</code>属性，比较的值是<code>category.getType()</code>的返回值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码用于添加排序条件到查询条件构造器<code>queryWrapper</code>中。<code>orderByAsc</code>和<code>orderByDesc</code>方法分别表示按照升序和降序进行排序。参数解释如下：</p>
+<ul>
+<li><code>Category::getSort</code>：这是一个方法引用，指定了要进行排序的字段。它表示按照<code>Category</code>对象的<code>sort</code>属性进行排序。</li>
+<li><code>Category::getUpdateTime</code>：这是另一个方法引用，指定了第二个排序条件。它表示按照<code>Category</code>对象的<code>updateTime</code>属性进行排序。</li>
+</ul>
+<p>因此，这行代码的意思是，首先按照<code>Category</code>对象的<code>sort</code>属性进行升序排序，然后按照<code>Category</code>对象的<code>updateTime</code>属性进行降序排序。</p>
+<p>综上所述，这两行代码用于添加查询条件和排序条件到查询条件构造器中，以便在执行查询操作时进行过滤和排序。</p>
+<p>代码解释2</p>
+<p>以上代码是一个简单的 RESTful API，用于根据传入的类别参数查询分类数据。</p>
+<p>具体解释如下:</p>
+<ol>
+<li><code>@GetMapping(&quot;/list&quot;)</code>:定义一个 GET 请求映射，用于返回分类数据。</li>
+<li><code>public R&lt;List&lt;Category&gt;&gt; list(Category category)</code>:定义一个方法<code>list</code>,接收一个参数<code>category</code>,并返回一个结果类型<code>R&lt;List&lt;Category&gt;&gt;&gt;</code>,其中<code>R</code>表示结果类型为抽象类型，<code>List&lt;Category&gt;</code>表示返回的结果为分类数据列表。</li>
+<li><code>LambdaQueryWrapper&lt;Category&gt;</code>:创建一个<code>LambdaQueryWrapper&lt;Category&gt;</code>对象，用于构建查询条件。</li>
+<li><code>eq(boolean expression, Function&lt;Category, T&gt; getter, T value)</code>:表示添加一个条件，其中<code>expression</code>表示条件表达式，<code>getter</code>表示用于获取值的函数，<code>value</code>表示条件值为指定的值。在本例中，<code>expression</code>为<code>category.getType() != null</code>,表示查询类型不为空的类别。<code>getter</code>为<code>Category::getType</code>,表示以类别对象自身的<code>getType</code>方法作为获取类型信息的函数。<code>value</code>为<code>category.getType()</code>,表示将类别对象的<code>getType</code>方法返回的值作为条件值。</li>
+<li><code>orderByAsc(Function&lt;Category, T&gt; getter)</code>和<code>OrderByDesc(Function&lt;Category, T&gt; getter)</code>:表示添加两个排序条件，其中<code>getter</code>表示用于获取值的函数。在本例中，<code>getter</code>分别为<code>Category::getSort</code>和<code>Category::getUpdateTime</code>,表示以类别对象自身的<code>getSort</code>方法和<code>getUpdateTime</code>方法作为获取排序信息的函数。排序条件分别为按类别名称升序排序和按类别更新时间降序排序。</li>
+<li><code>categoryService.list(queryWrapper)</code>:调用<code>categoryService</code>的<code>list</code>方法，并将<code>queryWrapper</code>作为参数传入。<code>categoryService</code>是定义在包级接口<code>Service</code>中的接口，实现了类<code>CategoryService</code>的具体实现。</li>
+<li><code>R.success(list)</code>:返回一个成功响应，将返回结果<code>list</code>作为响应内容返回。</li>
+</ol>
+<p>因此，以上代码实现了根据传入的类别参数查询分类数据的功能，并将查询结果返回给客户端。</p>
+<p>测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182346530.png" alt="image-20230618151030709"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182346810.png" alt="image-20230618151205638"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190003546.png" alt="image-20230618151240356"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182346426.png" alt="image-20230618151339725"></p>
+<p>代码编写完毕之后，我们可以打开新增菜品页面，查看响应的数据，及页面下拉列表的渲染情况： </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022143954.png" alt="image-20210804180408584" style="zoom:80%;" /> 
+
+
+
+
+
+<h4 id="2-5-2-保存菜品信息"><a href="#2-5-2-保存菜品信息" class="headerlink" title="2.5.2 保存菜品信息"></a>2.5.2 保存菜品信息</h4><p>在上述的分析中，我们可以看到在保存菜品时，页面传递过来的是json格式数据，格式如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;佛跳墙&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span><span class="number">88800</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;image&quot;</span><span class="punctuation">:</span><span class="string">&quot;da9e1c70-fc32-4781-9510-a1c4ccd2ff59.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span><span class="string">&quot;佛跳墙&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;categoryId&quot;</span><span class="punctuation">:</span><span class="string">&quot;1397844357980663809&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;flavors&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;辣度&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;[\&quot;不辣\&quot;,\&quot;微辣\&quot;,\&quot;中辣\&quot;,\&quot;重辣\&quot;]&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;showOption&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;忌口&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;[\&quot;不要葱\&quot;,\&quot;不要蒜\&quot;,\&quot;不要香菜\&quot;,\&quot;不要辣\&quot;]&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;showOption&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>在服务端我们应该如何来封装前端传递的数据呢，我们发现，如果使用菜品类Dish来封装，只能封装菜品的基本属性，flavors属性是无法封装的。那么这个时候，我们应该如何处理呢?</p>
+<p>这个时候，我们需要自定义一个实体类，然后继承自 Dish，并对Dish的属性进行拓展，增加 flavors 集合属性(内部封装DishFlavor)。清楚了这一点之后,接下来就进行功能开发。</p>
+<p><strong>1). 导入 DishDto 实体类</strong></p>
+<p>封装页面传递的请求参数。</p>
+<p>所属包: com.itheima.reggie.dto</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.Dish;</span><br><span class="line"><span class="keyword">import</span> com.itheima.reggie.entity.DishFlavor;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishDto</span> <span class="keyword">extends</span> <span class="title class_">Dish</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;DishFlavor&gt; flavors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">private</span> String categoryName;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">private</span> Integer copies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><font color='red'>拓展： 我们在做项目时，经常会涉及到各种类型的实体模型。基本包含以下几种</font> </p>
+<table>
+<thead>
+<tr>
+<th>实体模型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DTO</td>
+<td>Data Transfer Object(数据传输对象)，一般用于展示层与服务层之间的数据传输。</td>
+</tr>
+<tr>
+<td>Entity</td>
+<td>最常用实体类，基本和数据表一一对应，一个实体类对应一张表。</td>
+</tr>
+<tr>
+<td>VO</td>
+<td>Value Object(值对象), 主要用于封装前端页面展示的数据对象，用一个VO对象来封装整个页面展示所需要的对象数据</td>
+</tr>
+<tr>
+<td>PO</td>
+<td>Persistant Object(持久层对象), 是ORM(Objevt Relational Mapping)框架中Entity，PO属性和数据库中表的字段形成一一对应关系</td>
+</tr>
+</tbody></table>
+<p><strong>2). DishController定义方法新增菜品</strong></p>
+<p>在该Controller的方法中，不仅需要保存菜品的基本信息，还需要保存菜品的口味信息，需要操作两张表，所以我们需要在DishService接口中定义接口方法，在这个方法中需要保存上述的两部分数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 菜品管理</span><br><span class="line"> */</span><br><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/dish&quot;)</span><br><span class="line">@Slf4j</span><br><span class="line">public class DishController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private DishService dishService;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private DishFlavorService dishFlavorService;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 新增菜品</span><br><span class="line">     * @param dishDto</span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">   @PostMapping</span><br><span class="line">    public R&lt;String&gt; save(@RequestBody DishDto dishDto) &#123;</span><br><span class="line"></span><br><span class="line">        log.info(dishDto.toString());</span><br><span class="line">        </span><br><span class="line">        return null;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182346754.png" alt="image-20230618163146356"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182346467.png" alt="image-20230618162322453"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182346162.png" alt="image-20230618162358481"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182347970.png" alt="image-20230618163308647"></p>
+<p>发现并没有封装上   这是因为忘记加@RequestBody</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182347746.png" alt="image-20230618163355563"></p>
+<p>加上注解后</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 菜品管理</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/dish&quot;)</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishService dishService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> DishFlavorService dishFlavorService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 新增菜品</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dishDto</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;String&gt; <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span>  DishDto dishDto)</span> &#123;</span><br><span class="line"></span><br><span class="line">        log.info(dishDto.toString());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182347738.png" alt="image-20230618163745973"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182348451.png" alt="image-20230618164005958"></p>
+<p>完整的</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 新增菜品</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> dishDto</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">save</span><span class="params">(<span class="meta">@RequestBody</span> DishDto dishDto)</span>&#123;</span><br><span class="line">    log.info(dishDto.toString());</span><br><span class="line"></span><br><span class="line">    dishService.saveWithFlavor(dishDto);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.success(<span class="string">&quot;新增菜品成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182348114.png" alt="image-20230618170655027"></p>
+<p><strong>3). DishService中增加方法saveWithFlavor</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182348051.png" alt="image-20230618164238661"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//新增菜品，同时插入菜品对应的口味数据，需要操作两张表：dish、dish_flavor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">saveWithFlavor</span><span class="params">(DishDto dishDto)</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182348331.png" alt="image-20230618164528065"></p>
+<p><strong>4). DishServiceImpl中实现方法saveWithFlavor</strong></p>
+<p>页面传递的菜品口味信息，仅仅包含name 和 value属性，缺少一个非常重要的属性dishId， 所以在保存完菜品的基本信息后，我们需要获取到菜品ID，然后为菜品口味对象属性dishId赋值。</p>
+<p>具体逻辑如下：</p>
+<p>①. 保存菜品基本信息 ;</p>
+<p>②. 获取保存的菜品ID ;</p>
+<p>③. 获取菜品口味列表，遍历列表，为菜品口味对象属性dishId赋值;</p>
+<p>④. 批量保存菜品口味列表;</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182348851.png" alt="image-20230618170357409"></p>
+<p>代码实现如下: </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> DishFlavorService dishFlavorService;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 新增菜品，同时保存对应的口味数据</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> dishDto</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">saveWithFlavor</span><span class="params">(DishDto dishDto)</span> &#123;</span><br><span class="line">    <span class="comment">//保存菜品的基本信息到菜品表dish</span></span><br><span class="line">    <span class="built_in">this</span>.save(dishDto);</span><br><span class="line">	</span><br><span class="line">    <span class="type">Long</span> <span class="variable">dishId</span> <span class="operator">=</span> dishDto.getId();<span class="comment">//菜品id</span></span><br><span class="line">    <span class="comment">//菜品口味</span></span><br><span class="line">    List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();</span><br><span class="line">    flavors = flavors.stream().map((item) -&gt; &#123;</span><br><span class="line">        item.setDishId(dishId);</span><br><span class="line">        <span class="keyword">return</span> item;</span><br><span class="line">    &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//保存菜品口味数据到菜品口味表dish_flavor</span></span><br><span class="line">    dishFlavorService.saveBatch(flavors);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明: </p>
+<p>​	由于在 saveWithFlavor 方法中，进行了两次数据库的保存操作，操作了两张表，那么为了保证数据的一致性，我们需要在方法上加上注解 @Transactional来控制事务。</p>
+</blockquote>
+<p>代码解释1</p>
+<p>这段代码是一个Java类中的方法，主要用于保存菜品信息和相应的口味数据到数据库中。下面是对每一行代码的解释：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> DishFlavorService dishFlavorService;</span><br></pre></td></tr></table></figure>
+<p>这行代码使用了Spring框架的@Autowired注解，将DishFlavorService类的实例自动注入到当前类中的dishFlavorService变量中。这样就可以通过dishFlavorService变量访问DishFlavorService类的方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Transactional</span></span><br></pre></td></tr></table></figure>
+<p>这行代码使用了Spring框架的@Transactional注解，表示该方法需要在一个数据库事务中执行。数据库事务用于确保一组数据库操作要么全部成功提交，要么全部回滚，以保持数据的一致性和完整性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">saveWithFlavor</span><span class="params">(DishDto dishDto)</span> &#123;</span><br></pre></td></tr></table></figure>
+<p>这行代码定义了一个名为saveWithFlavor的方法，该方法接收一个类型为DishDto的参数dishDto。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.save(dishDto);</span><br></pre></td></tr></table></figure>
+<p>这行代码调用当前类中的save方法，将dishDto作为参数进行保存。这里使用了this关键字来调用当前类的方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Long</span> <span class="variable">dishId</span> <span class="operator">=</span> dishDto.getId();</span><br></pre></td></tr></table></figure>
+<p>这行代码从dishDto对象中获取菜品的id，并将其保存在一个Long类型的变量dishId中。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();</span><br></pre></td></tr></table></figure>
+<p>这行代码从dishDto对象中获取口味数据，将其保存在一个List<DishFlavor>类型的变量flavors中。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">flavors = flavors.stream().map((item) -&gt; &#123;</span><br><span class="line">    item.setDishId(dishId);</span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">&#125;).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
+<p>这行代码使用Java 8的Stream API对flavors列表进行处理。对于列表中的每个元素，将菜品id（dishId）设置为元素的dishId属性，并将处理后的元素重新收集到一个新的列表中。最终，flavors列表中的每个元素的dishId属性都被设置为dishId变量的值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">dishFlavorService.saveBatch(flavors);</span><br></pre></td></tr></table></figure>
+<p>这行代码调用dishFlavorService对象的saveBatch方法，将flavors列表作为参数进行保存。这样就将菜品口味数据保存到数据库中。</p>
+<p>总结来说，这段代码通过自动注入的dishFlavorService对象将菜品信息和相应的口味数据保存到数据库中。首先，它保存菜品的基本信息，然后将菜品id与口味数据关联起来，最后将口味数据保存到数据库中。整个过程都在一个数据库事务中执行，以确保数据的一致性。</p>
+<p>代码解释2</p>
+<p>以上代码是一个菜品管理类的保存菜品和口味数据的具体方法，其中涉及到两个实体类:DishDto 和 DishFlavor。</p>
+<p>首先，该方法接收一个 DishDto 对象作为参数，其中包含了菜品的基本信息，如名称、价格、描述等。然后，该方法执行以下步骤:</p>
+<ol>
+<li>将 DishDto 对象保存到菜品表中，以获取菜品的 ID，即 dishId。</li>
+<li>获取菜品口味列表，即 flavors。</li>
+<li>将 flavors 中的每个元素都设置成当前菜品的 ID，即将每个元素关联到当前菜品上。</li>
+<li>将 flavors 保存到菜品口味表中，以 batch 方式执行，提高效率。</li>
+</ol>
+<p>需要注意的是，该方法使用了 Spring 框架的事务管理，确保在多个方法之间执行的事务性操作是有效的。此外，该方法使用了 Lambda 表达式和 Stream API，使得代码更加简洁和易于理解。</p>
+<p>此外，该方法还使用了 Spring 的 AutoWired 注解，自动注入一个 DishFlavorService 服务类，以便保存菜品口味数据。该服务类实现了 I DishFlavorService 接口，其中包含一个 saveBatch() 方法，用于批量保存菜品口味数据。</p>
+<p>为了让 saveWithFlavor() 方法能够正确地保存菜品和口味数据，需要先注入 DishFlavorService 服务类，并在该方法中使用服务类的实例来调用 saveBatch() 方法。</p>
+<p>总的来说，该方法的主要功能是将菜品和口味数据一起保存到数据库中，同时使用 Stream API 和 Lambda 表达式简化了代码的编写。使用了 Spring 的事务管理，提高了代码的健壮性和可靠性。</p>
+<p>此外，该方法还需要注意处理一些特殊情况，比如当菜品没有口味时，需要自动添加一个默认的口味。</p>
+<p>具体来说，在将口味数据保存到菜品口味表中时，如果菜品没有口味，则需要在口味列表中自动添加一个默认的口味，该默认口味通常是菜品默认的口味。</p>
+<p>为了实现这个功能，可以在 DishDto 类中添加一个 getDefaultValueFlavor() 方法，用于获取菜品的默认口味。该方法可以根据实际情况进行实现，比如返回菜品所属的菜系中默认的口味等。</p>
+<p>在 saveWithFlavor() 方法中，可以在将口味数据保存到菜品口味表中时，调用 getDefaultValueFlavor() 方法获取默认口味，并将其添加到口味列表中。这样，当菜品没有口味时，就可以自动添加一个默认口味，提高了代码的可读性和可维护性。</p>
+<p>总的来说，saveWithFlavor() 方法是一个比较常用的方法，它实现了将菜品和口味数据一起保存到数据库中的功能，同时注意处理了一些特殊情况，提高了代码的健壮性和可靠性。</p>
+<p>最后，需要注意的是，如果菜品和口味数据是通过 API 接口发送到服务器的，那么在 saveWithFlavor() 方法中，需要将接收到的菜品和口味数据转换为对应的实体类对象。</p>
+<p>具体来说，如果传入的 DishDto 对象中包含了菜品和口味数据，则可以在 saveWithFlavor() 方法中先将该对象转换为对应的实体类对象 Dish，然后再将口味数据添加到 Dish 对象中。最后，将 Dish 对象保存到菜品表中即可。</p>
+<p>如果需要在 saveWithFlavor() 方法中处理传入的 DishDto 对象，则可以在该方法中添加相应的代码，将 DishDto 对象转换为对应的实体类对象。这样，就可以使 saveWithFlavor() 方法更加灵活，可以根据具体的数据格式进行相应的处理。</p>
+<p>总的来说，saveWithFlavor() 方法是一个比较常用的方法，它实现了将菜品和口味数据一起保存到数据库中的功能，同时注意处理了一些特殊情况，提高了代码的健壮性和可靠性。在实现该方法时，需要注意将接收到的数据转换为对应的实体类对象，以便更好地处理数据。</p>
+<p><strong>5). 在引导类上加注解 @EnableTransactionManagement</strong></p>
+<p>Service层方法上加的注解@Transactional要想生效，需要在引导类上加上注解 @EnableTransactionManagement， 开启对事务的支持。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349163.png" alt="image-20230618170437094"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ServletComponentScan</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span> <span class="comment">//开启对事物管理的支持</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReggieApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(ReggieApplication.class,args);</span><br><span class="line">        log.info(<span class="string">&quot;项目启动成功...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-6-功能测试"><a href="#2-6-功能测试" class="headerlink" title="2.6 功能测试"></a>2.6 功能测试</h3><p>代码编写完毕之后，我们重新启动服务，访问项目，然后登陆到系统中，进行菜品的新增测试，在测试时，我们可以通过debug断点跟踪的形式，查看我们传输的数据，及数据的封装。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022143154.png" alt="image-20210804174956706" style="zoom:80%;" /> 
+
+<p>debug跟踪数据的封装情况: </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022143378.png" alt="image-20210804175034622"> </p>
+<p>然后在测试完毕后, 我们可以检查一下数据库中的数据保存情况:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022143898.png" alt="image-20210804175658010"> </p>
+<p>视频解析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349667.png" alt="image-20230618171046393"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349331.png" alt="image-20230618171059770"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349427.png" alt="image-20230618171118871"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349139.png" alt="image-20230618171201069"></p>
+<p>F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349787.png" alt="image-20230618171246577"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349027.png" alt="image-20230618172613139"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182349196.png" alt="image-20230618172712623"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182350171.png" alt="image-20230618172817822"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182350547.png" alt="image-20230618172916588"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182350227.png" alt="image-20230618172932776"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182350251.png" alt="image-20230618173101532"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182350874.png" alt="image-20230618173150068"></p>
+<h2 id="3-菜品分页查询"><a href="#3-菜品分页查询" class="headerlink" title="3. 菜品分页查询"></a>3. 菜品分页查询</h2><h3 id="3-1-需求分析"><a href="#3-1-需求分析" class="headerlink" title="3.1 需求分析"></a>3.1 需求分析</h3><p>系统中的菜品数据很多的时候，如果在一个页面中全部展示出来会显得比较乱，不便于查看，所以一般的系统中都会以分页的方式来展示列表数据。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022145922.png" alt="image-20210804223703893" style="zoom:80%;" /> 
+
+<p>在菜品列表展示时，除了菜品的基本信息(名称、售价、售卖状态、更新时间)外，还有两个字段略微特殊，第一个是图片字段 ，我们从数据库查询出来的仅仅是图片的名字，图片要想在表格中回显展示出来，就需要下载这个图片。第二个是菜品分类，这里展示的是分类名称，而不是分类ID，此时我们就需要根据菜品的分类ID，去分类表中查询分类信息，然后在页面展示。</p>
+<h3 id="3-2-前端页面分析"><a href="#3-2-前端页面分析" class="headerlink" title="3.2 前端页面分析"></a>3.2 前端页面分析</h3><p>在开发代码之前，需要梳理一下菜品分页查询时前端页面和服务端的交互过程：</p>
+<p>1). 访问页面(backend&#x2F;page&#x2F;food&#x2F;list.html)时，发送ajax请求，将分页查询参数(page、pageSize、name)提交到服务端，获取分页数据</p>
+<p>2). 页面发送请求，请求服务端进行图片下载，用于页面图片展示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022146857.png" alt="image-20210804224842336"> </p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022146001.png" alt="image-20210804225259854" style="zoom:94%;" /> 
+
+
+
+<p>开发菜品信息分页查询功能，其实就是在服务端编写代码去处理前端页面发送的这2次请求即可，而前端发起的请求中， 图片文件下载回显的代码，我们已经实现了。所以，我们只需要开发分页查询的功能即可，分页查询具体的请求信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;dish&#x2F;page</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>?page&#x3D;1&amp;pageSize&#x3D;10&amp;name&#x3D;xxx</td>
+</tr>
+</tbody></table>
+<p>视频分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182350123.png" alt="image-20230618204454122"></p>
+<h3 id="3-3-代码实现"><a href="#3-3-代码实现" class="headerlink" title="3.3 代码实现"></a>3.3 代码实现</h3><h4 id="3-3-1-分析"><a href="#3-3-1-分析" class="headerlink" title="3.3.1 分析"></a>3.3.1 分析</h4><p>上述我们已经分析了分页查询的请求信息，那么接下来，我们就需要在 DishController中开发方法，来完成菜品的条件分页查询，在分页查询时还需要给页面返回分类的名称，而分类的名称前端在接收的时候是通过 categoryName 属性获取的，那么对应的服务端也应该封装到 categoryName 属性中。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">&quot;categoryName&quot;</span> <span class="attr">label</span>=<span class="string">&quot;菜品分类&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>而在我们的实体类 Dish 中，仅仅包含 categoryId， 不包含 categoryName，那么我们应该如何封装查询的数据呢？ 其实，这里我们可以返回DishDto对象，在该对象中我们可以拓展一个属性 categoryName，来封装菜品分类名称。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DishDto</span> <span class="keyword">extends</span> <span class="title class_">Dish</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;DishFlavor&gt; flavors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> String categoryName; <span class="comment">//菜品分类名称</span></span><br><span class="line">    <span class="keyword">private</span> Integer copies;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>具体逻辑为： </p>
+<p>1). 构造分页条件对象</p>
+<p>2). 构建查询及排序条件</p>
+<p>3). 执行分页条件查询</p>
+<p>4). 遍历分页查询列表数据，根据分类ID查询分类信息，从而获取该菜品的分类名称</p>
+<p>5). 封装数据并返回</p>
+<h4 id="3-3-2-实现"><a href="#3-3-2-实现" class="headerlink" title="3.3.2 实现"></a>3.3.2 实现</h4><p>分析了具体的实现思路之后，接下来就来完成具体的代码实现。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 菜品信息分页查询</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;Page&gt; <span class="title function_">page</span><span class="params">(<span class="type">int</span> page,<span class="type">int</span> pageSize,String name)</span>&#123;</span><br><span class="line">    <span class="comment">//构造分页构造器对象</span></span><br><span class="line">    Page&lt;Dish&gt; pageInfo = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(page,pageSize);</span><br><span class="line">    Page&lt;DishDto&gt; dishDtoPage = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//条件构造器</span></span><br><span class="line">    LambdaQueryWrapper&lt;Dish&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//添加过滤条件</span></span><br><span class="line">    queryWrapper.like(name != <span class="literal">null</span>,Dish::getName,name);</span><br><span class="line">    <span class="comment">//添加排序条件</span></span><br><span class="line">    queryWrapper.orderByDesc(Dish::getUpdateTime);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//执行分页查询</span></span><br><span class="line">    dishService.page(pageInfo,queryWrapper);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//对象拷贝</span></span><br><span class="line">    BeanUtils.copyProperties(pageInfo,dishDtoPage,<span class="string">&quot;records&quot;</span>);</span><br><span class="line">    List&lt;Dish&gt; records = pageInfo.getRecords();</span><br><span class="line">    List&lt;DishDto&gt; list = records.stream().map((item) -&gt; &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">DishDto</span> <span class="variable">dishDto</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DishDto</span>();</span><br><span class="line">        BeanUtils.copyProperties(item,dishDto);</span><br><span class="line">        <span class="type">Long</span> <span class="variable">categoryId</span> <span class="operator">=</span> item.getCategoryId();<span class="comment">//分类id</span></span><br><span class="line">        <span class="comment">//根据id查询分类对象</span></span><br><span class="line">        <span class="type">Category</span> <span class="variable">category</span> <span class="operator">=</span> categoryService.getById(categoryId);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(category != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">categoryName</span> <span class="operator">=</span> category.getName();</span><br><span class="line">            dishDto.setCategoryName(categoryName);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dishDto;</span><br><span class="line">    &#125;).collect(Collectors.toList());</span><br><span class="line">    dishDtoPage.setRecords(list);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> R.success(dishDtoPage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>数据库查询菜品信息时，获取到的分页查询结果 Page 的泛型为 Dish，而我们最终需要给前端页面返回的类型为 DishDto，所以这个时候就要进行转换，基本属性我们可以直接通过属性拷贝的形式对Page中的属性进行复制，而对于结果列表 records属性，我们是需要进行特殊处理的(需要封装菜品分类名称);</p>
+</blockquote>
+<p>视频分析</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 菜品信息分页查询</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> page</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageSize</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> name</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/page&quot;)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;Page&gt; <span class="title function_">page</span><span class="params">(<span class="type">int</span> page, <span class="type">int</span> pageSize, String name)</span>&#123;</span><br><span class="line">    <span class="comment">//构造分页构造器对象</span></span><br><span class="line">    Page&lt;Dish&gt; pageInfo = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;(page,pageSize);</span><br><span class="line">    Page&lt;DishDto&gt; dishDtoPage = <span class="keyword">new</span> <span class="title class_">Page</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//条件构造器</span></span><br><span class="line">    LambdaQueryWrapper&lt;Dish&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//添加过滤条件</span></span><br><span class="line">    queryWrapper.like(name != <span class="literal">null</span>,Dish::getName,name);</span><br><span class="line">    <span class="comment">//添加排序条件</span></span><br><span class="line">    queryWrapper.orderByDesc(Dish::getUpdateTime);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//执行分页查询</span></span><br><span class="line">    dishService.page(pageInfo,queryWrapper);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> R.success(pageInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182351155.png" alt="image-20230618205558687"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182351020.png" alt="image-20230618205751579"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182351099.png" alt="image-20230618205832886"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182351715.png" alt="image-20230618205814307"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182351666.png" alt="image-20230618205953972"></p>
+<p>响应回来的只是categoryId  所以没办法展示名称</p>
+<p>菜品分类对应的prop是categoryName </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182351922.png" alt="image-20230618210256074"></p>
+<p>而我们响应回来的没有prop&#x3D;”categoryName” 字段   所以展示不出来 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352818.png" alt="image-20230618210424608"></p>
+<p>而我们的菜品名称可以展示    因为我们响应回来的有name这个字段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352883.png" alt="image-20230618210536942"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352507.png" alt="image-20230618210625055"></p>
+<p>而我们dto里面有categoryName字段</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352563.png" alt="image-20230618210902383"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DishDto extends Dish</span><br></pre></td></tr></table></figure>
+
+<p>所以Dish里面的属性也都能够继承过来    也就是说DishDto有自己的属性  也可以用Dish的属性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352842.png" alt="image-20230618211105645"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DishDto在Dish的基础上拓展了categoryName</span><br></pre></td></tr></table></figure>
+
+<p>而categoryName刚好可以在菜品分类里面用于展示菜品名称用于展示用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352427.png" alt="image-20230618211401575"></p>
+<p>所以我们要有DishDto为泛型的对象，Page<DishDto> dishDtoPage &#x3D; new Page&lt;&gt;();</p>
+<h3 id="3-4-功能测试"><a href="#3-4-功能测试" class="headerlink" title="3.4 功能测试"></a>3.4 功能测试</h3><p>代码编写完毕之后，我们重新启动服务，访问项目，可以通过debug端点的形式跟踪，整个分页查询过程中，数据的转换和封装。 </p>
+<p>在测试的过程中，我们发现有一些菜品图片并没有展示出来，如下： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022146649.png" alt="image-20210805100944028"> </p>
+<p>这是因为我们在导入sql脚本时，导入了一部分菜品的数据，而菜品的图片在我们的磁盘目录中并不存在，所以才会出现图片展示不出来的情况，而我们后续自己添加的菜品信息是没有问题的。</p>
+<p>视频分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182352338.png" alt="image-20230618215423637"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353658.png" alt="image-20230618215407228"></p>
+<p>6次F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353634.png" alt="image-20230618215641139"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353330.png" alt="image-20230618215955487"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353826.png" alt="image-20230618220116780"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190005833.png" alt="image-20230618220151109"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353713.png" alt="image-20230618220306867"></p>
+<p>开始对象拷贝</p>
+<p>F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353970.png" alt="image-20230618220355900"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353890.png" alt="image-20230618220451942"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182353665.png" alt="image-20230618221257189"></p>
+<p>放行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182354929.png" alt="image-20230618221617702"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182354834.png" alt="image-20230618221633399"></p>
+<p>图片是怎么展示出来的</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182354002.png" alt="image-20230618221842484"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182354234.png" alt="image-20230618221924081"></p>
+<h2 id="4-菜品修改"><a href="#4-菜品修改" class="headerlink" title="4. 菜品修改"></a>4. 菜品修改</h2><h3 id="4-1-需求分析"><a href="#4-1-需求分析" class="headerlink" title="4.1 需求分析"></a>4.1 需求分析</h3><p>在菜品管理列表页面点击修改按钮，跳转到修改菜品页面，在修改页面回显菜品相关信息并进行修改，最后点击确定按钮完成修改操作。</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022146257.png" alt="image-20210804232447587" style="zoom:80%;" /> 
+
+
+
+<p>视频分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182354042.png" alt="image-20230618222447606"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182354593.png" alt="image-20230618222534926"></p>
+<h3 id="4-2-前端页面分析"><a href="#4-2-前端页面分析" class="headerlink" title="4.2 前端页面分析"></a>4.2 前端页面分析</h3><p>在开发代码之前，需要梳理一下修改菜品时前端页面（add.html）和服务端的交互过程：</p>
+<p>1). 点击菜品列表的中的修改按钮，携带菜品id跳转至add.html</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022147208.png" alt="image-20210804233459252" style="zoom:80%;" /> 
+
+
+
+<p>2). 进入add.html，页面发送ajax请求，请求服务端获取分类数据，用于菜品分类下拉框中数据展示(<strong>已实现</strong>)</p>
+<p>3). add.html获取id, 发送ajax请求，请求服务端，根据id查询当前菜品信息，用于菜品信息回显</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022148301.png" alt="image-20210804234104633" style="zoom:80%;" /> 
+
+
+
+<p>4). 页面发送请求，请求服务端进行图片下载，用于页图片回显(<strong>已实现</strong>)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022148012.png" alt="image-20210804234226201"> </p>
+<p>5). 点击保存按钮，页面发送ajax请求，将修改后的菜品相关数据以json形式提交到服务端</p>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022148765.png" alt="image-20210804234442923" style="zoom:80%;" /> 
+
+
+
+<p>经过上述的分析，我们发现，菜品分类下拉框的展示、图片的下载回显功能我们都已经实现了。我们只需要在这里实现两个功能即可，分别是： </p>
+<p><strong>1). 根据ID查询菜品及菜品口味信息</strong></p>
+<p>具体请求信息如下： </p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>GET</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;dish&#x2F;{id}</td>
+</tr>
+</tbody></table>
+<p><strong>2). 修改菜品及菜品口味信息</strong></p>
+<p>具体请求信息如下：</p>
+<table>
+<thead>
+<tr>
+<th>请求</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>请求方式</td>
+<td>PUT</td>
+</tr>
+<tr>
+<td>请求路径</td>
+<td>&#x2F;dish</td>
+</tr>
+<tr>
+<td>请求参数</td>
+<td>json格式数据</td>
+</tr>
+</tbody></table>
+<p>具体的json格式数据，我们可以通过浏览器抓取： </p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;1422783914845487106&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;佛跳墙&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;categoryId&quot;</span><span class="punctuation">:</span><span class="string">&quot;1397844357980663809&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;price&quot;</span><span class="punctuation">:</span><span class="number">88800</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span><span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;image&quot;</span><span class="punctuation">:</span><span class="string">&quot;da9e1c70-fc32-4781-9510-a1c4ccd2ff59.jpg&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;description&quot;</span><span class="punctuation">:</span><span class="string">&quot;佛跳墙&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;status&quot;</span><span class="punctuation">:</span><span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;sort&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;createTime&quot;</span><span class="punctuation">:</span><span class="string">&quot;2021-08-04 12:58:14&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;createUser&quot;</span><span class="punctuation">:</span><span class="string">&quot;1412578435737350122&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;updateUser&quot;</span><span class="punctuation">:</span><span class="string">&quot;1412578435737350122&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;flavors&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;1422783914883235842&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dishId&quot;</span><span class="punctuation">:</span><span class="string">&quot;1422783914845487106&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;辣度&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;[\&quot;不辣\&quot;,\&quot;微辣\&quot;,\&quot;中辣\&quot;,\&quot;重辣\&quot;]&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;createTime&quot;</span><span class="punctuation">:</span><span class="string">&quot;2021-08-04 12:58:14&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;updateTime&quot;</span><span class="punctuation">:</span><span class="string">&quot;2021-08-04 12:58:14&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;createUser&quot;</span><span class="punctuation">:</span><span class="string">&quot;1412578435737350122&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;updateUser&quot;</span><span class="punctuation">:</span><span class="string">&quot;1412578435737350122&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;isDeleted&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;showOption&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;id&quot;</span><span class="punctuation">:</span><span class="string">&quot;1422783914895818754&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dishId&quot;</span><span class="punctuation">:</span><span class="string">&quot;1422783914845487106&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span><span class="string">&quot;忌口&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;value&quot;</span><span class="punctuation">:</span><span class="string">&quot;[\&quot;不要葱\&quot;,\&quot;不要蒜\&quot;,\&quot;不要香菜\&quot;,\&quot;不要辣\&quot;]&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;createTime&quot;</span><span class="punctuation">:</span><span class="string">&quot;2021-08-04 12:58:14&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;updateTime&quot;</span><span class="punctuation">:</span><span class="string">&quot;2021-08-04 12:58:14&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;createUser&quot;</span><span class="punctuation">:</span><span class="string">&quot;1412578435737350122&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;updateUser&quot;</span><span class="punctuation">:</span><span class="string">&quot;1412578435737350122&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;isDeleted&quot;</span><span class="punctuation">:</span><span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;showOption&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-3-功能实现"><a href="#4-3-功能实现" class="headerlink" title="4.3 功能实现"></a>4.3 功能实现</h3><h4 id="4-3-1-根据ID查询菜品信息"><a href="#4-3-1-根据ID查询菜品信息" class="headerlink" title="4.3.1 根据ID查询菜品信息"></a>4.3.1 根据ID查询菜品信息</h4><h5 id="4-3-1-1-代码实现"><a href="#4-3-1-1-代码实现" class="headerlink" title="4.3.1.1 代码实现"></a>4.3.1.1 代码实现</h5><p>页面发送ajax请求，请求服务端，根据id查询当前菜品信息和对应的口味信息，用于修改页面中菜品信息回显。</p>
+<p>1). 在DishService接口中扩展getByIdWithFlavor方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//根据id查询菜品信息和对应的口味信息</span></span><br><span class="line"><span class="keyword">public</span> DishDto <span class="title function_">getByIdWithFlavor</span><span class="params">(Long id)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355498.png" alt="image-20230618225153037"></p>
+<p>2). 在DishService实现类中实现此方法</p>
+<p>具体逻辑为: </p>
+<p>A. 根据ID查询菜品的基本信息 </p>
+<p>B. 根据菜品的ID查询菜品口味列表数据</p>
+<p>C. 组装数据并返回</p>
+<p>代码实现: </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 根据id查询菜品信息和对应的口味信息</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> DishDto <span class="title function_">getByIdWithFlavor</span><span class="params">(Long id)</span> &#123;</span><br><span class="line">    <span class="comment">//查询菜品基本信息，从dish表查询</span></span><br><span class="line">    <span class="type">Dish</span> <span class="variable">dish</span> <span class="operator">=</span> <span class="built_in">this</span>.getById(id);</span><br><span class="line">	</span><br><span class="line">    <span class="type">DishDto</span> <span class="variable">dishDto</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DishDto</span>();</span><br><span class="line">    BeanUtils.copyProperties(dish,dishDto);</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//查询当前菜品对应的口味信息，从dish_flavor表查询</span></span><br><span class="line">    LambdaQueryWrapper&lt;DishFlavor&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>&lt;&gt;();</span><br><span class="line">    queryWrapper.eq(DishFlavor::getDishId,dish.getId());</span><br><span class="line">    List&lt;DishFlavor&gt; flavors = dishFlavorService.list(queryWrapper);</span><br><span class="line">    dishDto.setFlavors(flavors);</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> dishDto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355810.png" alt="image-20230618225237718"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355441.png" alt="image-20230618225959762"></p>
+<p>3). 在DishController中创建get方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 根据id查询菜品信息和对应的口味信息</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> R&lt;DishDto&gt; <span class="title function_">get</span><span class="params">(<span class="meta">@PathVariable</span> Long id)</span>&#123;</span><br><span class="line">    <span class="type">DishDto</span> <span class="variable">dishDto</span> <span class="operator">=</span> dishService.getByIdWithFlavor(id);</span><br><span class="line">    <span class="keyword">return</span> R.success(dishDto);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>@PathVariable : 该注解可以用来提取url路径中传递的请求参数。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355898.png" alt="image-20230618230105872"></p>
+<p>问题</p>
+<p>问题1</p>
+<p>@PathVariable的理解 </p>
+<p>当使用Spring框架处理HTTP请求时，有时候我们需要从URL路径中获取一些动态的参数值。例如，我们有一个处理特定用户请求的方法，并且URL路径的格式是<code>/users/&#123;userId&#125;</code>，其中<code>&#123;userId&#125;</code>表示用户的唯一标识符。我们希望能够在方法中获取这个<code>userId</code>的值。</p>
+<p>为了实现这个目的，我们可以在方法参数上使用<code>@PathVariable</code>注解。这个注解告诉Spring框架将URL路径中的变量值绑定到对应的方法参数上。</p>
+<p>让我们来看一个简单的例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/users/&#123;userId&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> ResponseEntity&lt;User&gt; <span class="title function_">getUserById</span><span class="params">(<span class="meta">@PathVariable</span> Long userId)</span> &#123;</span><br><span class="line">    <span class="comment">// 处理根据用户ID获取用户的逻辑</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> ResponseEntity.ok(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，我们定义了一个处理HTTP GET请求的方法，它的路径是<code>/users/&#123;userId&#125;</code>。方法参数<code>userId</code>使用了<code>@PathVariable</code>注解，这告诉Spring框架将URL路径中的变量值绑定到<code>userId</code>参数上。</p>
+<p>当有一个请求URL为<code>/users/123</code>时，Spring框架会自动将路径中的<code>123</code>这个值赋给<code>userId</code>参数。然后我们就可以在方法中使用这个参数值，比如根据用户ID从数据库中获取用户信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355546.png" alt="image-20230618224806435"></p>
+<p>问题2</p>
+<p>这里面的泛型为什么要用DishDto   而不是写Dish实体</p>
+<p>因为 我们页面要回显的除了菜品名称和菜品价格 菜品描述之后    还要回显口味</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355329.png" alt="image-20230618223251653"></p>
+<p>而在Dish实体里面 并没有口味相当的属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.itheima.reggie.entity;</span><br><span class="line"></span><br><span class="line">import com.baomidou.mybatisplus.annotation.FieldFill;</span><br><span class="line">import com.baomidou.mybatisplus.annotation.IdType;</span><br><span class="line">import com.baomidou.mybatisplus.annotation.TableField;</span><br><span class="line">import com.baomidou.mybatisplus.annotation.TableId;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import java.io.Serializable;</span><br><span class="line">import java.math.BigDecimal;</span><br><span class="line">import java.time.LocalDateTime;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> 菜品</span><br><span class="line"> */</span><br><span class="line">@Data</span><br><span class="line">public class Dish implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">    private Long id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //菜品名称</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //菜品分类id</span><br><span class="line">    private Long categoryId;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //菜品价格</span><br><span class="line">    private BigDecimal price;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //商品码</span><br><span class="line">    private String code;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //图片</span><br><span class="line">    private String image;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //描述信息</span><br><span class="line">    private String description;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //0 停售 1 起售</span><br><span class="line">    private Integer status;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //顺序</span><br><span class="line">    private Integer sort;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @TableField(fill = FieldFill.INSERT)</span><br><span class="line">    private LocalDateTime createTime;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @TableField(fill = FieldFill.INSERT_UPDATE)</span><br><span class="line">    private LocalDateTime updateTime;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @TableField(fill = FieldFill.INSERT)</span><br><span class="line">    private Long createUser;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @TableField(fill = FieldFill.INSERT_UPDATE)</span><br><span class="line">    private Long updateUser;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355507.png" alt="image-20230618223515139"></p>
+<p>所以 我们要使用 DishDto   为什么使用 DishDto</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DishDto extends Dish </span><br><span class="line">DishDto继承Dish</span><br></pre></td></tr></table></figure>
+
+<p>DishDto有Dish是里面的普通属性  同样DishDto自己也拓展了flavors属性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private List&lt;DishFlavor&gt; flavors = new ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182355866.png" alt="image-20230618224004885"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182356274.png" alt="image-20230618224033670"></p>
+<h5 id="4-3-1-2-功能测试"><a href="#4-3-1-2-功能测试" class="headerlink" title="4.3.1.2 功能测试"></a>4.3.1.2 功能测试</h5><p>编写完代码后，重启服务进行测试，点击列表的修改按钮，查询数据回显情况。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202304022148701.png" alt="image-20210805101812209"> </p>
+<p>视频分析测试</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182356362.png" alt="image-20230618230608360"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182356122.png" alt="image-20230618230644906"></p>
+<p>F8</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182356802.png" alt="image-20230618230901248"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">==&gt;  Preparing: SELECT id,type,name,sort,create_time,update_time,create_user,update_user FROM category WHERE (type = ?) ORDER BY sort ASC,update_time DESC</span><br><span class="line">==&gt; Parameters: 1(Integer)</span><br><span class="line">==&gt; Parameters: 1413384757047271425(Long)</span><br><span class="line">&lt;==    Columns: id, type, name, sort, create_time, update_time, create_user, update_user</span><br><span class="line">&lt;==        Row: 1670333885730369537, 1, 川菜, 1, 2023-06-18 15:33:26, 2023-06-18 15:33:26, 1, 1</span><br><span class="line">&lt;==        Row: 1669764699085991938, 1, 湘菜, 2, 2023-06-17 01:51:42, 2023-06-18 15:34:18, 1, 1</span><br><span class="line">&lt;==        Row: 1670335016523116546, 1, 鲁菜, 4, 2023-06-18 15:37:56, 2023-06-18 15:37:56, 1, 1</span><br><span class="line">&lt;==        Row: 1670335311277830145, 1, 粤菜, 7, 2023-06-18 15:39:06, 2023-06-18 15:39:06, 1, 1</span><br><span class="line">&lt;==        Row: 1670335376541200386, 1, 闽菜, 8, 2023-06-18 15:39:22, 2023-06-18 15:39:22, 1, 1</span><br><span class="line">&lt;==        Row: 1670335445776576513, 1, 苏菜, 9, 2023-06-18 15:39:38, 2023-06-18 15:39:38, 1, 1</span><br><span class="line">&lt;==        Row: 1670335522934992898, 1, 浙菜, 10, 2023-06-18 15:39:57, 2023-06-18 15:39:57, 1, 1</span><br><span class="line">&lt;==        Row: 1413341197421846529, 1, 饮品, 11, 2021-07-09 11:36:15, 2021-07-09 14:39:15, 1, 1</span><br><span class="line">&lt;==    Columns: id, name, category_id, price, code, image, description, status, sort, create_time, update_time, create_user, update_user</span><br><span class="line">&lt;==        Row: 1413384954989060097, 1, 主食, 12, 2021-07-09 14:30:07, 2021-07-09 14:39:19, 1, 1</span><br><span class="line">&lt;==      Total: 9</span><br><span class="line">Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3fbb30c3]</span><br><span class="line">&lt;==        Row: 1413384757047271425, 王老吉, 1413341197421846529, 500.00, , 00874a5e-0df2-446b-8f69-a30eb7d88ee8.png, , 1, 0, 2021-07-09 14:29:20, 2021-07-12 09:09:16, 1, 1</span><br><span class="line">&lt;==      Total: 1</span><br><span class="line">Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1933fa81]</span><br><span class="line">Creating a new SqlSession</span><br><span class="line">SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72c4116c] was not registered for synchronization because synchronization is not active</span><br><span class="line">JDBC Connection [com.mysql.cj.jdbc.ConnectionImpl@79383ff6] will not be managed by Spring</span><br><span class="line">==&gt;  Preparing: SELECT id,dish_id,name,value,create_time,update_time,create_user,update_user,is_deleted FROM dish_flavor WHERE (dish_id = ?)</span><br><span class="line">==&gt; Parameters: 1413384757047271425(Long)</span><br><span class="line">&lt;==    Columns: id, dish_id, name, value, create_time, update_time, create_user, update_user, is_deleted</span><br><span class="line">&lt;==        Row: 1413389540592263169, 1413384757047271425, 温度, [&quot;常温&quot;,&quot;冷藏&quot;], 2021-07-12 09:09:16, 2021-07-12 09:09:16, 1, 1, 0</span><br><span class="line">&lt;==      Total: 1</span><br><span class="line">Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@72c4116c]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182358698.png" alt="image-20230618230955437"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190005193.png" alt="image-20230618231108801"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182358057.png" alt="image-20230618231149338"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190005584.png" alt="image-20230618231210127"></p>
+<h4 id="4-3-2-修改菜品信息"><a href="#4-3-2-修改菜品信息" class="headerlink" title="4.3.2 修改菜品信息"></a>4.3.2 修改菜品信息</h4><h5 id="4-3-2-1-代码实现"><a href="#4-3-2-1-代码实现" class="headerlink" title="4.3.2.1 代码实现"></a>4.3.2.1 代码实现</h5><p>点击保存按钮，页面发送ajax请求，将修改后的菜品相关数据以json形式提交到服务端。在修改菜品信息时需要注意，除了要更新dish菜品表，还需要更新dish_flavor菜品口味表。</p>
+<p>1). 在DishService接口中扩展方法updateWithFlavor</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//更新菜品信息，同时更新对应的口味信息</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateWithFlavor</span><span class="params">(DishDto dishDto)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182358009.png" alt="image-20230618231757330"></p>
+<p>2). 在DishServiceImpl中实现方法updateWithFlavor</p>
+<p>在该方法中，我们既需要更新dish菜品基本信息表，还需要更新dish_flavor菜品口味表。而页面再操作时，关于菜品的口味，有修改，有新增，也有可能删除，我们应该如何更新菜品口味信息呢，其实，无论菜品口味信息如何变化，我们只需要保持一个原则： 先删除，后添加。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="meta">@Transactional</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateWithFlavor</span><span class="params">(DishDto dishDto)</span> &#123;</span><br><span class="line">    <span class="comment">//更新dish表基本信息</span></span><br><span class="line">    <span class="built_in">this</span>.updateById(dishDto);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//清理当前菜品对应口味数据---dish_flavor表的delete操作</span></span><br><span class="line">    LambdaQueryWrapper&lt;DishFlavor&gt; queryWrapper = <span class="keyword">new</span> <span class="title class_">LambdaQueryWrapper</span>();</span><br><span class="line">    queryWrapper.eq(DishFlavor::getDishId,dishDto.getId());</span><br><span class="line"></span><br><span class="line">    dishFlavorService.remove(queryWrapper);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加当前提交过来的口味数据---dish_flavor表的insert操作</span></span><br><span class="line">    List&lt;DishFlavor&gt; flavors = dishDto.getFlavors();</span><br><span class="line"></span><br><span class="line">    flavors = flavors.stream().map((item) -&gt; &#123;</span><br><span class="line">        item.setDishId(dishDto.getId());</span><br><span class="line">        <span class="keyword">return</span> item;</span><br><span class="line">    &#125;).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    dishFlavorService.saveBatch(flavors);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182359177.png" alt="image-20230618231950294"></p>
+<p>3). 在DishController中创建update方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 修改菜品</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> dishDto</span></span><br><span class="line"><span class="comment">* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> R&lt;String&gt; <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> DishDto dishDto)</span>&#123;</span><br><span class="line">    log.info(dishDto.toString());</span><br><span class="line">    dishService.updateWithFlavor(dishDto);</span><br><span class="line">    <span class="keyword">return</span> R.success(<span class="string">&quot;修改菜品成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182359618.png" alt="image-20230618232045940"></p>
+<h5 id="4-3-2-2-功能测试"><a href="#4-3-2-2-功能测试" class="headerlink" title="4.3.2.2 功能测试"></a>4.3.2.2 功能测试</h5><p>代码编写完成之后，重启服务，然后按照前面分析的操作流程进行测试，查看数据是否正常修改即可。</p>
+<p>视频分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182359105.png" alt="image-20230618231438499"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182359402.png" alt="image-20230618231524440"></p>
+<p>测试</p>
+<p>原来</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182359553.png" alt="image-20230618233159812"></p>
+<p>修改</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306182359057.png" alt="image-20230618233303287"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/day04/202306190000721.png" alt="image-20230618233320565"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zyziga.github.io">姜小白</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zyziga.github.io/archives/3.html">https://zyziga.github.io/archives/3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zyziga.github.io" target="_blank">姜小白程序</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/2.html" title="瑞吉外卖-Day03"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">瑞吉外卖-Day03</div></div></a></div><div class="next-post pull-right"><a href="/archives/4.html" title="瑞吉外卖-Day05"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">瑞吉外卖-Day05</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/milos.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">姜小白</div><div class="author-info__description">姜小白程序</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zyziga/zyziga.github.io"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zyziga" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Hexo.zyziga.github.io" target="_blank" title="博客"><i class="fas fa-thin fa-truck"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到姜小白的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%91%9E%E5%90%89%E5%A4%96%E5%8D%96-Day04"><span class="toc-text">瑞吉外卖-Day04</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="toc-text">课程内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD"><span class="toc-text">1. 文件上传下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%B8%8A%E4%BC%A0%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1 上传介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E6%A6%82%E8%BF%B0"><span class="toc-text">1.1.1 概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%89%8D%E7%AB%AF%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1.2 前端介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.1.3 服务端介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%B8%8B%E8%BD%BD%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.2 下载介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.3 上传代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">1.3.1 前端代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.3.2 服务端实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E6%B5%8B%E8%AF%95"><span class="toc-text">1.3.3 测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">1.4 下载代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">1.4.1 前端代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%BB%A3%E7%A0%81"><span class="toc-text">1.4.2 服务端代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-%E6%B5%8B%E8%AF%95"><span class="toc-text">1.4.3 测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%8F%9C%E5%93%81%E6%96%B0%E5%A2%9E"><span class="toc-text">2. 菜品新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">2.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">2.2 数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">2.3 准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">2.4 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">2.5 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-%E8%8F%9C%E5%93%81%E5%88%86%E7%B1%BB%E6%9F%A5%E8%AF%A2"><span class="toc-text">2.5.1 菜品分类查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-%E4%BF%9D%E5%AD%98%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-text">2.5.2 保存菜品信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">2.6 功能测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%8F%9C%E5%93%81%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">3. 菜品分页查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">3.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">3.2 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.3 代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E5%88%86%E6%9E%90"><span class="toc-text">3.3.1 分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E5%AE%9E%E7%8E%B0"><span class="toc-text">3.3.2 实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">3.4 功能测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%8F%9C%E5%93%81%E4%BF%AE%E6%94%B9"><span class="toc-text">4. 菜品修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">4.1 需求分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%88%86%E6%9E%90"><span class="toc-text">4.2 前端页面分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.3 功能实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E6%A0%B9%E6%8D%AEID%E6%9F%A5%E8%AF%A2%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-text">4.3.1 根据ID查询菜品信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1-1-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.3.1.1 代码实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-1-2-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">4.3.1.2 功能测试</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-%E4%BF%AE%E6%94%B9%E8%8F%9C%E5%93%81%E4%BF%A1%E6%81%AF"><span class="toc-text">4.3.2 修改菜品信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-2-1-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">4.3.2.1 代码实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-3-2-2-%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-text">4.3.2.2 功能测试</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/16.html" title="Nacos集群搭建"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos集群搭建"/></a><div class="content"><a class="title" href="/archives/16.html" title="Nacos集群搭建">Nacos集群搭建</a><time datetime="2023-07-12T09:24:45.000Z" title="发表于 2023-07-12 17:24:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/15.html" title="Nacos安装指南"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos安装指南"/></a><div class="content"><a class="title" href="/archives/15.html" title="Nacos安装指南">Nacos安装指南</a><time datetime="2023-07-12T02:50:45.000Z" title="发表于 2023-07-12 10:50:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/14.html" title="SpringCloud02"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud02"/></a><div class="content"><a class="title" href="/archives/14.html" title="SpringCloud02">SpringCloud02</a><time datetime="2023-07-04T02:50:45.000Z" title="发表于 2023-07-04 10:50:45">2023-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/13.html" title="SpringCloud01"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud01"/></a><div class="content"><a class="title" href="/archives/13.html" title="SpringCloud01">SpringCloud01</a><time datetime="2023-07-03T02:50:45.000Z" title="发表于 2023-07-03 10:50:45">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/12.html" title="瑞吉外卖项目优化-Day03"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="瑞吉外卖项目优化-Day03"/></a><div class="content"><a class="title" href="/archives/12.html" title="瑞吉外卖项目优化-Day03">瑞吉外卖项目优化-Day03</a><time datetime="2023-07-01T09:42:45.000Z" title="发表于 2023-07-01 17:42:45">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 姜小白</div><div class="footer_custom_text"><div>很高兴认识你</div><div>欢迎来到我的博客</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script data-pjax defer src="https://npm.elemecdn.com/tzy-blog/lib/js/theme/chocolate.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

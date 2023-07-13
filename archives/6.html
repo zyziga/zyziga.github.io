@@ -1,0 +1,841 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Git课程讲义 | 姜小白程序</title><meta name="author" content="姜小白"><meta name="copyright" content="姜小白"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Git 分布式版本控制工具课程内容 Git概述 Git代码托管服务 Git常用命令 在IDEA中使用Git  1. 前言1.1 什么是GitGit是一个分布式版本控制工具，主要用于管理开发过程中的源代码文件（Java类、xml文件、html页面等），在软件开发过程中被广泛使用。 在IDEA开发工具中可以集成Git（后面会讲解Git安装和集成过程）：  集成后在IDEA中可以看到Git相关图标： 可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git课程讲义">
+<meta property="og:url" content="https://zyziga.github.io/archives/6.html">
+<meta property="og:site_name" content="姜小白程序">
+<meta property="og:description" content="Git 分布式版本控制工具课程内容 Git概述 Git代码托管服务 Git常用命令 在IDEA中使用Git  1. 前言1.1 什么是GitGit是一个分布式版本控制工具，主要用于管理开发过程中的源代码文件（Java类、xml文件、html页面等），在软件开发过程中被广泛使用。 在IDEA开发工具中可以集成Git（后面会讲解Git安装和集成过程）：  集成后在IDEA中可以看到Git相关图标： 可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png">
+<meta property="article:published_time" content="2023-06-22T01:50:00.000Z">
+<meta property="article:modified_time" content="2023-07-02T11:02:23.021Z">
+<meta property="article:author" content="姜小白">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zyziga.github.io/archives/6.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"该文章创建于","messageNext":"天前，请以最新文章为准."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 姜小白","link":"链接: ","source":"来源: 姜小白程序","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Git课程讲义',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-07-02 19:02:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/style.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-categories-card/lib/categorybar.css"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/./img/milos.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="姜小白程序"><span class="site-name">姜小白程序</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Git课程讲义</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-22T01:50:00.000Z" title="发表于 2023-06-22 09:50:00">2023-06-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-02T11:02:23.021Z" title="更新于 2023-07-02 19:02:23">2023-07-02</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Git课程讲义"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Git-分布式版本控制工具"><a href="#Git-分布式版本控制工具" class="headerlink" title="Git 分布式版本控制工具"></a>Git 分布式版本控制工具</h1><h2 id="课程内容"><a href="#课程内容" class="headerlink" title="课程内容"></a>课程内容</h2><ul>
+<li>Git概述</li>
+<li>Git代码托管服务</li>
+<li>Git常用命令</li>
+<li>在IDEA中使用Git</li>
+</ul>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><h3 id="1-1-什么是Git"><a href="#1-1-什么是Git" class="headerlink" title="1.1 什么是Git"></a>1.1 什么是Git</h3><p>Git是一个分布式版本控制工具，主要用于管理开发过程中的源代码文件（Java类、xml文件、html页面等），在软件开发过程中被广泛使用。</p>
+<p>在IDEA开发工具中可以集成Git（后面会讲解Git安装和集成过程）：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220929893.png" alt="image-20210924171926037"></p>
+<p>集成后在IDEA中可以看到Git相关图标：<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220954345.png" alt="image-20210924172028329"></p>
+<p>可以通过启动两个IDEA窗口模拟两个开发人员来展示Git的使用：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220931576.png" alt="image-20210926080623416"></p>
+<p>其他的版本控制工具：</p>
+<ul>
+<li>SVN</li>
+<li>CVS</li>
+<li>VSS</li>
+</ul>
+<h3 id="1-2-使用Git能做什么"><a href="#1-2-使用Git能做什么" class="headerlink" title="1.2 使用Git能做什么"></a>1.2 使用Git能做什么</h3><ul>
+<li>代码回溯：Git在管理文件过程中会记录日志，方便回退到历史版本</li>
+<li>版本切换：Git存在分支的概念，一个项目可以有多个分支（版本），可以任意切换</li>
+<li>多人协作：Git支持多人协作，即一个团队共同开发一个项目，每个团队成员负责一部分代码，通过Git就可以管理和协调</li>
+<li>远程备份：Git通过仓库管理文件，在Git中存在远程仓库，如果本地文件丢失还可以从远程仓库获取</li>
+</ul>
+<h2 id="2-Git概述"><a href="#2-Git概述" class="headerlink" title="2. Git概述"></a>2. Git概述</h2><h3 id="2-1-Git简介"><a href="#2-1-Git简介" class="headerlink" title="2.1 Git简介"></a>2.1 Git简介</h3><p>Git 是一个分布式版本控制工具，通常用来对软件开发过程中的源代码文件进行管理。通过Git 仓库来存储和管理这些文件，Git 仓库分为两种：</p>
+<ul>
+<li>本地仓库：开发人员自己电脑上的 Git 仓库</li>
+<li>远程仓库：远程服务器上的 Git 仓库</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220931929.png" alt="image-20210924173708313" style="zoom: 50%;" />
+
+<p>解释说明：</p>
+<blockquote>
+<p>commit：提交,将本地文件和版本信息保存到本地仓库</p>
+<p>push：推送,将本地仓库文件和版本信息上传到远程仓库</p>
+<p>pull：拉取,将远程仓库文件和版本信息下载到本地仓库</p>
+</blockquote>
+<h3 id="2-2-Git下载与安装"><a href="#2-2-Git下载与安装" class="headerlink" title="2.2 Git下载与安装"></a>2.2 Git下载与安装</h3><p>下载地址： <a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/download">https://git-scm.com/download</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220931816.png" alt="image-20210924174639182"></p>
+<p>下载完成后得到安装文件：<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932736.png" alt="image-20210924174717172"></p>
+<p>直接双击完成安装即可，安装完成后可以在任意目录下点击鼠标右键，如果能够看到如下菜单则说明安装成功：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932751.png" alt="image-20210924174934683"></p>
+<p>Git GUI Here：打开Git 图形界面</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932232.png" alt="image-20210924175209242"></p>
+<p>Git Bash Here：打开Git 命令行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932911.png" alt="image-20210924175314485"></p>
+<p>Git安装目录结构如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932191.png" alt="image-20210926094227522"></p>
+<h2 id="3-Git代码托管服务"><a href="#3-Git代码托管服务" class="headerlink" title="3. Git代码托管服务"></a>3. Git代码托管服务</h2><h3 id="3-1-常用的Git代码托管服务"><a href="#3-1-常用的Git代码托管服务" class="headerlink" title="3.1 常用的Git代码托管服务"></a>3.1 常用的Git代码托管服务</h3><p>Git中存在两种类型的仓库，即<strong>本地仓库</strong>和<strong>远程仓库</strong>。那么我们如何搭建Git<strong>远程仓库</strong>呢？</p>
+<p>我们可以借助互联网上提供的一些代码托管服务来实现，其中比较常用的有GitHub、码云、GitLab等。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>网址</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>gitHub</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/">https://github.com/</a></td>
+<td>一个面向开源及私有软件项目的托管平台，因为只支持Git 作为唯一的版本库格式进行托管，故名gitHub</td>
+</tr>
+<tr>
+<td>码云</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://gitee.com/">https://gitee.com/</a></td>
+<td>国内的一个代码托管平台，由于服务器在国内，所以相比于GitHub，码云速度会更快</td>
+</tr>
+<tr>
+<td>GitLab</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://about.gitlab.com/">https://about.gitlab.com/</a></td>
+<td>一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务</td>
+</tr>
+<tr>
+<td>BitBucket</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="https://bitbucket.org/">https://bitbucket.org/</a></td>
+<td>一家源代码托管网站，采用Mercurial和Git作为分布式版本控制系统，同时提供商业计划和免费账户</td>
+</tr>
+</tbody></table>
+<h3 id="3-2-码云代码托管服务"><a href="#3-2-码云代码托管服务" class="headerlink" title="3.2 码云代码托管服务"></a>3.2 码云代码托管服务</h3><p>码云网址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://gitee.com/">https://gitee.com/</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932775.png" alt="image-20210926082758518"></p>
+<p>使用码云的操作流程如下：</p>
+<ol>
+<li>注册码云账号</li>
+<li>登录码云</li>
+<li>创建远程仓库</li>
+<li>邀请其他用户成为仓库成员</li>
+</ol>
+<h4 id="3-2-1-注册码云账号"><a href="#3-2-1-注册码云账号" class="headerlink" title="3.2.1 注册码云账号"></a>3.2.1 注册码云账号</h4><p>注册网址： <a target="_blank" rel="noopener external nofollow noreferrer" href="https://gitee.com/signup">https://gitee.com/signup</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932687.png" alt="image-20210926083229013"></p>
+<h4 id="3-2-2-登录码云"><a href="#3-2-2-登录码云" class="headerlink" title="3.2.2 登录码云"></a>3.2.2 登录码云</h4><p>注册完成后可以使用刚刚注册的邮箱进行登录（地址： <a target="_blank" rel="noopener external nofollow noreferrer" href="https://gitee.com/login">https://gitee.com/login</a> ）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935047.png" alt="image-20210926083328306"></p>
+<h4 id="3-2-3-创建远程仓库"><a href="#3-2-3-创建远程仓库" class="headerlink" title="3.2.3 创建远程仓库"></a>3.2.3 创建远程仓库</h4><p>登录成功后可以创建远程仓库，操作方式如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932343.png" alt="image-20210926083510298"></p>
+<p>页面跳转到新建仓库页面：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932639.png" alt="image-20210926083629924"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231344840.png" alt="image-20230622130312636"></p>
+<p>解释说明：</p>
+<blockquote>
+<p>仓库名称：必填，每个仓库都需要有一个名称，同一个码云账号下的仓库名称不能重复</p>
+<p>路径：访问远程仓库时会使用到，一般无需手动指定，和仓库名称自动保持一致</p>
+<p>开源：所有人都可以查看此仓库</p>
+<p>私有：只有此仓库的成员可见，其他人不可见</p>
+</blockquote>
+<p>创建完成后可以查看仓库信息：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932183.png" alt="image-20210926090131032"></p>
+<p><strong>注意</strong>：每个Git远程仓库都会对应一个网络地址，点击【克隆&#x2F;下载】按钮，在弹出窗口点击【复制】按钮即可复制网络地址，地址如下：</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://gitee.com/ChuanZhiBoKe/myGitRepo.git">https://gitee.com/ChuanZhiBoKe/myGitRepo.git</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231344836.png" alt="image-20230622130503786"></p>
+<p>查看仓库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345212.png" alt="image-20230622130606846"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345019.png" alt="image-20230622130628414"></p>
+<h4 id="3-2-4-邀请其他用户成为仓库成员"><a href="#3-2-4-邀请其他用户成为仓库成员" class="headerlink" title="3.2.4 邀请其他用户成为仓库成员"></a>3.2.4 邀请其他用户成为仓库成员</h4><p>前面已经在码云上创建了自己的远程仓库，目前仓库成员只有自己一个人（身份为管理员）。在企业实际开发中，一个项目往往是由多个人共同开发完成的，为了使多个参与者都有权限操作远程仓库，就需要邀请其他项目参与者成为当前仓库的成员。</p>
+<p>点击管理按钮进入仓库管理页面，左侧菜单中可以看到【仓库成员管理】：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345489.png" alt="image-20230622130735843"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231412899.png" alt="image-20230622130803498"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220932679.png" alt="image-20210926090608272"></p>
+<p>点击【开发者】菜单，跳转到如下页面：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935568.png" alt="image-20210926091027151"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345729.png" alt="image-20230622130834027"></p>
+<p>点击【添加仓库成员】菜单下的【邀请用户】菜单，跳转到如下页面：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345526.png" alt="image-20230622130956119"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935128.png" alt="image-20210926091204422"></p>
+<p>可以看到邀请用户有多种方式：链接邀请、直接添加、通过仓库邀请成员</p>
+<p><strong>注意</strong>：被邀请用户必须为码云的注册用户，否则无法成为仓库成员</p>
+<h2 id="4-Git常用命令"><a href="#4-Git常用命令" class="headerlink" title="4. Git常用命令"></a>4. Git常用命令</h2><h3 id="4-1-Git全局设置"><a href="#4-1-Git全局设置" class="headerlink" title="4.1 Git全局设置"></a>4.1 Git全局设置</h3><p>当安装Git后首先要做的事情是设置用户名称和email地址。这是非常重要的，因为每次Git提交都会使用该用户信息。在Git 命令行中执行下面命令：</p>
+<p><strong>设置用户信息</strong> </p>
+<p>  git config –global user.name “itcast”</p>
+<p>  git config –global user.email “<a href="mailto:&#104;&#x65;&#108;&#x6c;&#x6f;&#64;&#105;&#x74;&#x63;&#97;&#x73;&#116;&#46;&#x63;&#x6e;" rel="external nofollow noreferrer">&#104;&#x65;&#108;&#x6c;&#x6f;&#64;&#105;&#x74;&#x63;&#97;&#x73;&#116;&#46;&#x63;&#x6e;</a>“</p>
+<p><strong>查看配置信息</strong></p>
+<p>  git config –list</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935064.png" alt="image-20210926092820321"></p>
+<p>注意：上面设置的user.name和user.email并不是我们在注册码云账号时使用的用户名和邮箱，此处可以任意设置。</p>
+<h3 id="4-2-获取Git仓库"><a href="#4-2-获取Git仓库" class="headerlink" title="4.2 获取Git仓库"></a>4.2 获取Git仓库</h3><p>要使用Git对我们的代码进行管理，首先需要获得Git仓库。</p>
+<p>获取Git仓库通常有两种方式：</p>
+<ul>
+<li>在本地初始化Git仓库（不常用）</li>
+<li>从远程仓库克隆（常用）</li>
+</ul>
+<h4 id="4-2-1-在本地初始化Git仓库"><a href="#4-2-1-在本地初始化Git仓库" class="headerlink" title="4.2.1 在本地初始化Git仓库"></a>4.2.1 在本地初始化Git仓库</h4><p><strong>操作步骤如下</strong>：</p>
+<ol>
+<li>在任意目录下创建一个空目录（例如repo1）作为我们的本地Git仓库</li>
+<li>进入这个目录中，点击右键打开Git bash窗口</li>
+<li>执行命令<strong>git</strong> <strong>init</strong></li>
+</ol>
+<p>如果在当前目录中看到.git文件夹（此文件夹为隐藏文件夹）则说明Git仓库创建成功</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935647.png" alt="image-20210926093721515"></p>
+<h4 id="4-2-2-从远程仓库克隆"><a href="#4-2-2-从远程仓库克隆" class="headerlink" title="4.2.2 从远程仓库克隆"></a>4.2.2 从远程仓库克隆</h4><p>可以通过Git提供的命令从远程仓库进行克隆，将远程仓库克隆到本地</p>
+<p><strong>命令格式</strong>：git clone 远程仓库地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935455.png" alt="image-20210926094404332"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345447.png" alt="image-20230622131900717"></p>
+<p>第一次要输入gitee的用户名和密码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345306.png" alt="image-20230622131955386"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231345837.png" alt="image-20230622132118278"></p>
+<h3 id="4-3-工作区、暂存区、版本库"><a href="#4-3-工作区、暂存区、版本库" class="headerlink" title="4.3 工作区、暂存区、版本库"></a>4.3 工作区、暂存区、版本库</h3><p>为了更好的学习Git，我们需要了解Git相关的一些概念，这些概念在后面的学习中会经常提到。</p>
+<p><strong>版本库</strong>：前面看到的.git隐藏文件夹就是版本库，版本库中存储了很多配置信息、日志信息和文件版本信息等</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231413042.png" alt="image-20230622132350064"></p>
+<p><strong>工作区</strong>：包含.git文件夹的目录就是工作区，也称为工作目录，主要用于存放开发的代码</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231346362.png" alt="image-20230622132414304"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231346534.png" alt="image-20230622132456537"></p>
+<p><strong>暂存区</strong>：.git文件夹中有很多文件，其中有一个index文件就是暂存区，也可以叫做stage。暂存区是一个临时保存修改文件的地方</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935487.png" alt="image-20210926094831386"></p>
+<p>创建文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231346170.png" alt="image-20230622132801927"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231346902.png" alt="image-20230622132825190"></p>
+<h3 id="4-4-Git工作区中文件的状态"><a href="#4-4-Git工作区中文件的状态" class="headerlink" title="4.4 Git工作区中文件的状态"></a>4.4 Git工作区中文件的状态</h3><p>Git工作区中的文件存在两种状态：</p>
+<ul>
+<li><p>untracked 未跟踪（未被纳入版本控制）</p>
+</li>
+<li><p>tracked 已跟踪（被纳入版本控制）</p>
+<p>​     1）Unmodified 未修改状态</p>
+<p>​     2）Modified 已修改状态</p>
+<p>​     3）Staged 已暂存状态</p>
+</li>
+</ul>
+<p><strong>注意</strong>：文件的状态会随着我们执行Git的命令发生变化</p>
+<h3 id="4-5-本地仓库操作"><a href="#4-5-本地仓库操作" class="headerlink" title="4.5 本地仓库操作"></a>4.5 本地仓库操作</h3><p>本地仓库常用命令如下：</p>
+<ul>
+<li>git status 查看文件状态</li>
+<li>git add 将文件的修改加入暂存区</li>
+<li>git reset 将暂存区的文件取消暂存或者是切换到指定版本</li>
+<li>git commit 将暂存区的文件修改提交到版本库</li>
+<li>git log  查看日志</li>
+</ul>
+<h4 id="4-5-1-git-status"><a href="#4-5-1-git-status" class="headerlink" title="4.5.1 git status"></a>4.5.1 git status</h4><p>git status 命令用于查看文件状态</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935279.png" alt="image-20210926095623297"></p>
+<p>注意：由于工作区中文件状态的不同，执行 git status 命令后的输出也会不同</p>
+<h4 id="4-5-2-git-add"><a href="#4-5-2-git-add" class="headerlink" title="4.5.2 git add"></a>4.5.2 git add</h4><p>git add 命令的作用是将文件的修改加入暂存区，命令格式：git add fileName</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935039.png" alt="image-20210926100003056"></p>
+<p>加入暂存区后再执行 git status 命令，可以发现文件的状态已经发生变化。</p>
+<p>视频分析</p>
+<p>理解    Staged 已暂存状态</p>
+<ul>
+<li>git status 查看文件状态</li>
+<li>git add 将文件的修改加入暂存区</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231346987.png" alt="image-20230622133320994"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231413481.png" alt="image-20230622133550605"></p>
+<p>现在我们让git管理   状态变成Staged 已暂存状态</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231346741.png" alt="image-20230622133738508"></p>
+<h4 id="4-5-3-git-reset"><a href="#4-5-3-git-reset" class="headerlink" title="4.5.3 git reset"></a>4.5.3 git reset</h4><p>git reset 命令的作用是将暂存区的文件<strong>取消暂存</strong>或者是<strong>切换到指定版本</strong></p>
+<p>取消暂存命令格式：git reset 文件名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935439.png" alt="image-20210926101346514"></p>
+<p>切换到指定版本命令格式：git reset –hard 版本号</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220935399.png" alt="image-20210926101401721"></p>
+<p>注意：每次Git提交都会产生新的版本号，通过版本号就可以回到历史版本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347595.png" alt="image-20230622134533222"></p>
+<h4 id="4-5-4-git-commit"><a href="#4-5-4-git-commit" class="headerlink" title="4.5.4 git commit"></a>4.5.4 git commit</h4><p>git commit 命令的作用是将暂存区的文件修改提交到版本库，命令格式：git commit -m msg 文件名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936423.png" alt="image-20210926101859601"></p>
+<p>解释说明：</p>
+<blockquote>
+<p>-m：代表message，每次提交时需要设置，会记录到日志中</p>
+<p>可以使用通配符*一次提交多个文件</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347378.png" alt="image-20230622134915912"></p>
+<p>现在的User.java处于Unmodified 未修改状态</p>
+<p>现在修改User.java</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347355.png" alt="image-20230622135151421"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347431.png" alt="image-20230622135251499"></p>
+<p>把User.java放在暂存区并提交</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347381.png" alt="image-20230622140157665"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231413658.png" alt="image-20230622140004779"></p>
+<p>把user.xml放在暂存区并提交</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347811.png" alt="image-20230622140459197"></p>
+<p>现在的user.xml已经让git管理    并处理Unmodified 未修改状态</p>
+<h4 id="4-5-5-git-log"><a href="#4-5-5-git-log" class="headerlink" title="4.5.5 git log"></a>4.5.5 git log</h4><p>git log 命令的作用是查看提交日志</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936471.png" alt="image-20210926102305539"></p>
+<p>通过git log命令查看日志，可以发现每次提交都会产生一个版本号，提交时设置的message、提交人、邮箱、提交时间等信息都会记录到日志中 </p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347310.png" alt="image-20230622145913337"></p>
+<p>回到以前版本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231413114.png" alt="image-20230622150132095"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347122.png" alt="image-20230622150226291"></p>
+<p>回到另一个版本  有修改 有user.xml的版本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231347665.png" alt="image-20230622151455535"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231348955.png" alt="image-20230622151518829"></p>
+<h3 id="4-6-远程仓库操作"><a href="#4-6-远程仓库操作" class="headerlink" title="4.6 远程仓库操作"></a>4.6 远程仓库操作</h3><p>前面执行的命令操作都是针对的本地仓库，本节我们会学习关于远程仓库的一些操作，具体包括：</p>
+<ul>
+<li>git remote  查看远程仓库</li>
+<li>git remote add 添加远程仓库</li>
+<li>git clone 从远程仓库克隆</li>
+<li>git pull 从远程仓库拉取</li>
+<li>git push 推送到远程仓库</li>
+</ul>
+<h4 id="4-6-1-git-remote"><a href="#4-6-1-git-remote" class="headerlink" title="4.6.1 git remote"></a>4.6.1 git remote</h4><p>如果要查看已经配置的远程仓库服务器，可以执行 git remote 命令，它会列出每一个远程服务器的简称。</p>
+<p>如果已经克隆了远程仓库，那么至少应该能看到 origin ，这是 Git 克隆的仓库服务器的默认名字。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936664.png" alt="image-20210926103746721"></p>
+<p>解释说明：</p>
+<blockquote>
+<p>可以通过-v参数查看远程仓库更加详细的信息</p>
+<p>本地仓库配置的远程仓库都需要一个简称，后续在和远程仓库交互时会使用到这个简称</p>
+</blockquote>
+<p>视频分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231348180.png" alt="image-20230622152009899"></p>
+<p>如果仓库在本地初始化   在本地创建的仓库     没有远程仓库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231348822.png" alt="image-20230622152143961"></p>
+<h4 id="4-6-2-git-remote-add"><a href="#4-6-2-git-remote-add" class="headerlink" title="4.6.2 git remote add"></a>4.6.2 git remote add</h4><p>添加远程仓库命令格式：git remote add 简称 远程仓库地址</p>
+<p>在本地初始化的仓库和远程仓库没有关系  我们可以通过这个命令来把本地初始化的仓库添加到远程</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936232.png" alt="image-20210926104723901"></p>
+<p>注意：一个本地仓库可以关联多个远程仓库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231348858.png" alt="image-20230622152907268"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231348393.png" alt="image-20230622154500263"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231413418.png" alt="image-20230622154611240"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231413441.png" alt="image-20230622155310318"></p>
+<h4 id="4-6-3-git-clone"><a href="#4-6-3-git-clone" class="headerlink" title="4.6.3 git clone"></a>4.6.3 git clone</h4><p>如果你想获得一份已经存在了的 Git 远程仓库的拷贝，这时就要用到 git clone 命令。 Git 克隆的是该 Git 仓库服务器上的几乎所有数据（包括日志信息、历史记录等）。</p>
+<p>克隆仓库的命令格式： git clone 远程仓库地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942561.png" alt="image-20210926105017148"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414953.png" alt="image-20230622155518892"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414625.png" alt="image-20230622155608754"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414185.png" alt="image-20230622155736397"></p>
+<h4 id="4-6-4-git-push"><a href="#4-6-4-git-push" class="headerlink" title="4.6.4 git push"></a>4.6.4 git push</h4><p>将本地仓库内容推送到远程仓库，命令格式：git push 远程仓库简称 分支名称</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936936.png" alt="image-20210926105413681"></p>
+<p>在使用git push命令将本地文件推送至码云远程仓库时，如果是第一次操作，需要进行身份认证，认证通过才可以推送，如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936600.png" alt="image-20210926105913504"></p>
+<p>注意：上面的用户名和密码对应的就是我们在码云上注册的用户名和密码，认证通过后会将用户名和密码保存到windows系统中（如下图），后续再推送则无需重复输入用户名和密码。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942239.png" alt="image-20210926110810630"></p>
+<p>推送完成后可以到远程仓库中查看文件的变化。</p>
+<p>解释说明：</p>
+<blockquote>
+<p>一个仓库可以有多个分支，默认情况下在创建仓库后会自动创建一个master分支</p>
+<p>后面会讲解分支相关的操作</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414778.png" alt="image-20230622160611361"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414913.png" alt="image-20230622160629072"></p>
+<p>现在我们修改一下文件内容在重新保存到暂存区（     <code>git add  test.txt</code>    ）  重新提交到本地仓库（     <code>git commit -m &quot;edit test.txt&quot; test.txt                                        </code>    ）  在重新推送到远程仓库（     <code>git push origin  master                                                       </code>    ）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414553.png" alt="image-20230622160838170"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414241.png" alt="image-20230622161143343"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414610.png" alt="image-20230622161348760"></p>
+<h4 id="4-6-5-git-pull"><a href="#4-6-5-git-pull" class="headerlink" title="4.6.5 git pull"></a>4.6.5 git pull</h4><p><strong>git</strong> <strong>pull</strong> 命令的作用是从远程仓库获取最新版本并合并到本地仓库</p>
+<p>命令格式：git pull 远程仓库简称 分支名称</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220939182.png" alt="image-20210926111013002"></p>
+<p><strong>注意</strong>：如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库拉取文件的时候会报错（fatal: refusing to merge unrelated histories ）</p>
+<p>解决此问题可以在git pull命令后加入参数–allow-unrelated-histories</p>
+<p>视频解析</p>
+<p>准备工作</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414746.png" alt="image-20230622210710614"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414929.png" alt="image-20230622162658842"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414753.png" alt="image-20230622162906848"></p>
+<p>关联</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414155.png" alt="image-20230622211041797"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231604052.png" alt="image-20230622211306234"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414609.png" alt="image-20230622211526163"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231603419.png" alt="image-20230622211601233"></p>
+<p>拉取</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414449.png" alt="image-20230622211716016"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414729.png" alt="image-20230622211838760"></p>
+<p>如果远程仓库和本地仓库一样的话  就不用更新  则拉取时报以下提示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231603860.png" alt="image-20230622211938099"></p>
+<p>现在我们让小黑修改代码并推送到远程仓库让小白去拉</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231414144.png" alt="image-20230622212306916"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231603237.png" alt="image-20230622212825860"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415193.png" alt="image-20230622212910859"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415833.png" alt="image-20230622212938731"></p>
+<p>小白拉取</p>
+<p>还没拉取前</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415232.png" alt="image-20230622213140745"></p>
+<p>拉取</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415728.png" alt="image-20230622214112140"></p>
+<p>上面的例子是我自己在本地初始化init的  所以合并时 会报错    所以应该在git pull命令后加入参数–allow-unrelated-histories</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415585.png" alt="image-20230622214843414"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415385.png" alt="image-20230622215037287"></p>
+<p><strong>注意</strong>：如果当前本地仓库不是从远程仓库克隆，而是本地创建的仓库，并且仓库中存在文件，此时再从远程仓库拉取文件的时候会报错（fatal: refusing to merge unrelated histories ）</p>
+<p>解决此问题可以在git pull命令后加入参数–allow-unrelated-histories</p>
+<h3 id="4-7-分支操作"><a href="#4-7-分支操作" class="headerlink" title="4.7 分支操作"></a>4.7 分支操作</h3><p>分支是Git 使用过程中非常重要的概念。使用分支意味着你可以把你的工作从开发主线上分离开来，以免影响开发主线。</p>
+<p>本地仓库和远程仓库中都有分支，同一个仓库可以有多个分支，各个分支相互独立，互不干扰。</p>
+<p>通过git init 命令创建本地仓库时默认会创建一个master分支。</p>
+<p>视频分析</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415442.png" alt="image-20230622215456234"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415633.png" alt="image-20230622215613161"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415689.png" alt="image-20230622215721636"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415449.png" alt="image-20230622215953188"></p>
+<p>本节我们会学习关于分支的相关命令，具体命令如下：</p>
+<ul>
+<li>git branch                                     查看分支</li>
+<li>git branch [name]                       创建分支</li>
+<li>git checkout [name]                    切换分支</li>
+<li>git push [shortName] [name]   推送至远程仓库分支</li>
+<li>git merge [name]                        合并分支</li>
+</ul>
+<h4 id="4-7-1-查看分支"><a href="#4-7-1-查看分支" class="headerlink" title="4.7.1 查看分支"></a>4.7.1 查看分支</h4><p>查看分支命令：git branch</p>
+<p>git branch 		列出所有本地分支</p>
+<p>git branch -r 	列出所有远程分支</p>
+<p>git branch -a 	列出所有本地分支和远程分支</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220939878.png" alt="image-20210926124843275"></p>
+<h4 id="4-7-2-创建分支"><a href="#4-7-2-创建分支" class="headerlink" title="4.7.2 创建分支"></a>4.7.2 创建分支</h4><p>创建分支命令格式：git branch 分支名称</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220940942.png" alt="image-20210926125053711"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415818.png" alt="image-20230622220242853"></p>
+<h4 id="4-7-3-切换分支"><a href="#4-7-3-切换分支" class="headerlink" title="4.7.3 切换分支"></a>4.7.3 切换分支</h4><p>一个仓库中可以有多个分支，切换分支命令格式：git checkout 分支名称</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942424.png" alt="image-20210926125259155"></p>
+<p>注意：在命令行中会显示出当前所在分支，如上图所示。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231415960.png" alt="image-20230622220506722"></p>
+<h4 id="4-7-4-推送至远程仓库分支"><a href="#4-7-4-推送至远程仓库分支" class="headerlink" title="4.7.4 推送至远程仓库分支"></a>4.7.4 推送至远程仓库分支</h4><p>推送至远程仓库分支命令格式：git push 远程仓库简称 分支命令</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220940166.png" alt="image-20210926125628894"></p>
+<p>推送完成后可以查看远程仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942640.png" alt="image-20210926125810878"></p>
+<p>现在只有一个分支</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231416746.png" alt="image-20230622220608814"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231431771.png" alt="image-20230622220654640"></p>
+<p>现在把本地仓库b1 b2这二个分支推送到远程仓库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231416481.png" alt="image-20230622220852456"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353426.png" alt="image-20230622220939716"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353337.png" alt="image-20230622221157911"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353514.png" alt="image-20230622221137827"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353201.png" alt="image-20230622221341512"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353897.png" alt="image-20230622221455744"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353065.png" alt="image-20230622221530776"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353779.png" alt="image-20230622221700671"></p>
+<p>现在切换到b1分支</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353235.png" alt="image-20230622221746005"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353195.png" alt="image-20230622221905708"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353192.png" alt="image-20230622222115071"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353497.png" alt="image-20230622222133325"></p>
+<p>现在切换到b2分支</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353649.png" alt="image-20230622222329527"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353976.png" alt="image-20230622222512713"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231353802.png" alt="image-20230622222542938"></p>
+<h4 id="4-7-5-合并分支"><a href="#4-7-5-合并分支" class="headerlink" title="4.7.5 合并分支"></a>4.7.5 合并分支</h4><p>合并分支就是将两个分支的文件进行合并处理，命令格式：git merge 分支命令</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220940294.png" alt="image-20210926130213015"></p>
+<p>注意：分支合并时需注意合并的方向，如上图所示，在Master分支执行操作，结果就是将b3分支合并到Master分支。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350617.png" alt="image-20230622222945917"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350720.png" alt="image-20230622223024188"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350273.png" alt="image-20230622223059486"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350562.png" alt="image-20230622223222646"></p>
+<p>分支合并时冲突解决</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350163.png" alt="image-20230622224320824"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231352393.png" alt="image-20230622224544846"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350914.png" alt="image-20230622224723129"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231352027.png" alt="image-20230622224928064"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231352337.png" alt="image-20230622225003441"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231352609.png" alt="image-20230622225129297"></p>
+<p>现在我们想把b1分支合并到时master分支上</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231352747.png" alt="image-20230622225256272"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231350394.png" alt="image-20230622225406553"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231351536.png" alt="image-20230622225429092"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231351793.png" alt="image-20230622225949005"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231352106.png" alt="image-20230622230013272"></p>
+<h3 id="4-8-标签操作"><a href="#4-8-标签操作" class="headerlink" title="4.8 标签操作"></a>4.8 标签操作</h3><p>Git 中的标签，指的是某个分支某个特定时间点的状态。通过标签，可以很方便的切换到标记时的状态。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231416105.png" alt="image-20230623135511437"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417137.png" alt="image-20230623135547818"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417954.png" alt="image-20230623135629090"></p>
+<p>比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 、v1.2等）。下面是mybatis-plus的标签：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220940125.png" alt="image-20210926130452557"></p>
+<p>在本节中，我们将学习如下和标签相关的命令：</p>
+<ul>
+<li>git tag                                                查看标签</li>
+<li>git tag [name]                                  创建标签</li>
+<li>git push [shortName] [name]       将标签推送至远程仓库</li>
+<li>git checkout -b [branch] [name]   检出标签</li>
+</ul>
+<h4 id="4-8-1-查看标签"><a href="#4-8-1-查看标签" class="headerlink" title="4.8.1 查看标签"></a>4.8.1 查看标签</h4><p>查看标签命令：git tag</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942992.png" alt="image-20210926151333473"></p>
+<h4 id="4-8-2-创建标签"><a href="#4-8-2-创建标签" class="headerlink" title="4.8.2 创建标签"></a>4.8.2 创建标签</h4><p>创建标签命令：git tag 标签名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942191.png" alt="image-20210926151452581"></p>
+<h4 id="4-8-3-将标签推送至远程仓库"><a href="#4-8-3-将标签推送至远程仓库" class="headerlink" title="4.8.3 将标签推送至远程仓库"></a>4.8.3 将标签推送至远程仓库</h4><p>将标签推送至远程仓库命令：git push 远程仓库简称 标签名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220946432.png" alt="image-20210926151621286"></p>
+<p>推送完成后可以在远程仓库中查看标签。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417601.png" alt="image-20230623140051655"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417866.png" alt="image-20230623140131440"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417169.png" alt="image-20230623140606812"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417289.png" alt="image-20230623140657782"></p>
+<h4 id="4-8-4-检出标签"><a href="#4-8-4-检出标签" class="headerlink" title="4.8.4 检出标签"></a>4.8.4 检出标签</h4><p>检出标签时需要新建一个分支来指向某个标签，检出标签的命令格式：git checkout -b 分支名 标签名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942807.png" alt="image-20210926152111514"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417929.png" alt="image-20230623140935571"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231417913.png" alt="image-20230623141024840"></p>
+<p>标签与分支的区别 ：标签是静态的  比如照相    照下就不会在发生变化   分支可以接着修改</p>
+<h2 id="5-在IDEA中使用Git"><a href="#5-在IDEA中使用Git" class="headerlink" title="5. 在IDEA中使用Git"></a>5. 在IDEA中使用Git</h2><p>通过Git命令可以完成Git相关操作，为了简化操作过程，我们可以在IEDA中配置Git，配置好后就可以在IDEA中通过图形化的方式来操作Git。</p>
+<h3 id="5-1-在IDEA中配置Git"><a href="#5-1-在IDEA中配置Git" class="headerlink" title="5.1 在IDEA中配置Git"></a>5.1 在IDEA中配置Git</h3><p>在IDEA中使用Git，本质上还是使用的本地安装的Git软件，所以需要提前安装好Git并在IDEA中配置Git。</p>
+<p>Git安装目录：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942600.png" alt="image-20210926152847948"></p>
+<p>解释说明：</p>
+<blockquote>
+<p>git.exe：Git安装目录下的可执行文件，前面执行的git命令，其实就是执行的这个文件</p>
+</blockquote>
+<p>IDEA中的配置：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942327.png" alt="image-20210926152950420"></p>
+<p>说明：如果Git安装在默认目录中（C:\Program Files\Git），则IDEA中无需再手动配置，直接就可以使用。</p>
+<h3 id="5-2-获取Git仓库"><a href="#5-2-获取Git仓库" class="headerlink" title="5.2 获取Git仓库"></a>5.2 获取Git仓库</h3><p>在IDEA中获取Git仓库有两种方式：</p>
+<ul>
+<li>本地初始化仓库，本质就是执行 git init 命令</li>
+<li>从远程仓库克隆，本质就是执行 git clone 命令</li>
+</ul>
+<h4 id="5-2-1-本地初始化仓库"><a href="#5-2-1-本地初始化仓库" class="headerlink" title="5.2.1 本地初始化仓库"></a>5.2.1 本地初始化仓库</h4><p>在IDEA中通过如下操作可以在本地初始化一个本地仓库，其实底层就是执行的 git init 命令。操作过程如下：</p>
+<p>1）依次选择菜单【VCS】—【Import into Version Control】—【Create Git Repository】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942407.png" alt="image-20210926153806414"></p>
+<p>2）在弹出的【Create Git Repository】对话框中选择当前项目根目录，点击【OK】按钮：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220942943.png" alt="image-20210926154201744"></p>
+<p>操作完成后可以看到当前项目根目录下出现了.git隐藏目录：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220946911.png" alt="image-20210926154757082"></p>
+<p>操作完成后可以在IDEA的工具栏中看到Git的相关操作图标：<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220957735.png" alt="image-20210926154933876"></p>
+<h4 id="5-2-2-从远程仓库克隆"><a href="#5-2-2-从远程仓库克隆" class="headerlink" title="5.2.2 从远程仓库克隆"></a>5.2.2 从远程仓库克隆</h4><p>在IDEA中从远程仓库克隆本质就是执行的 git clone 命令，具体操作过程如下：</p>
+<p>1）在IDEA开始窗口中点击【Get from Version Control】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943703.png" alt="image-20210926155434202"></p>
+<p>2）在弹出的【Get from Version Control】窗口中输入远程仓库的URL地址和对应的本地仓库存放目录，点击【Clone】按钮进行仓库克隆操作</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943592.png" alt="image-20210926155750107"></p>
+<p>另一种打开方式</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601291.png" alt="image-20230623144315913"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601092.png" alt="image-20230623144515661"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601691.png" alt="image-20230623144627534"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601131.png" alt="image-20230623144821303"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601747.png" alt="image-20230623144847752"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601901.png" alt="image-20230623144903559"></p>
+<h3 id="5-3-Git忽略文件"><a href="#5-3-Git忽略文件" class="headerlink" title="5.3 Git忽略文件"></a>5.3 Git忽略文件</h3><p>在Git工作区中有一个特殊的文件 .gitignore，通过此文件可以指定工作区中的哪些文件不需要Git管理。我们在码云上创建Git远程仓库时可以指定生成此文件，如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943671.png" alt="image-20210926161050169"></p>
+<p>创建完成后效果如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943639.png" alt="image-20210926161233052"></p>
+<p>解释说明：</p>
+<blockquote>
+<p>1）我们在使用Git管理项目代码时，并不是所有文件都需要Git管理，例如Java项目中编译的.class文件、开发工具自带的配置文件等，这些文件没有必要交给Git管理，所以也就不需要提交到Git版本库中</p>
+<p>2）注意忽略文件的名称是固定的，不能修改</p>
+<p>3）添加到忽略列表中的文件后续Git工具就会忽略它</p>
+</blockquote>
+<p>一个参考的.gitignore文件内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.git</span><br><span class="line">logs</span><br><span class="line">rebel.xml</span><br><span class="line">target/</span><br><span class="line">!.mvn/wrapper/maven-wrapper.jar</span><br><span class="line">log.path_IS_UNDEFINED</span><br><span class="line">.DS_Store</span><br><span class="line">offline_user.md</span><br><span class="line">*.class</span><br><span class="line"></span><br><span class="line">### IntelliJ IDEA ###</span><br><span class="line">.idea</span><br><span class="line">*.iws</span><br><span class="line">*.iml</span><br><span class="line">*.ipr</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-4-本地仓库操作"><a href="#5-4-本地仓库操作" class="headerlink" title="5.4 本地仓库操作"></a>5.4 本地仓库操作</h3><p>本地仓库操作：</p>
+<ul>
+<li>将文件加入暂存区，本质就是执行 git add 命令</li>
+<li>将暂存区的文件提交到版本库，本质就是执行 git commit 命令</li>
+<li>查看日志，本质就是执行 git log 命令</li>
+</ul>
+<h4 id="5-4-1-将文件加入暂存区"><a href="#5-4-1-将文件加入暂存区" class="headerlink" title="5.4.1 将文件加入暂存区"></a>5.4.1 将文件加入暂存区</h4><p>当在Git工作区新增文件或者对已有文件修改后，就需要将文件的修改加入暂存区，具体操作如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943447.png" alt="image-20210926162515597"></p>
+<h4 id="5-4-2-将暂存区文件提交到版本库"><a href="#5-4-2-将暂存区文件提交到版本库" class="headerlink" title="5.4.2 将暂存区文件提交到版本库"></a>5.4.2 将暂存区文件提交到版本库</h4><p>将暂存区文件提交到版本库，可以选择一个文件进行提交，也可以选择整个项目提交多个文件。在IEDA中对文件的提交进行了简化操作，也就是如果文件修改后，无需再加入暂存区，可以直接提交。</p>
+<p>1）提交一个文件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943759.png" alt="image-20210926162809740"></p>
+<p>可以看到，如果选中一个文件提交，则菜单名称为【Commit File…】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601828.png" alt="image-20230623145839186"></p>
+<p>2）提交多个文件：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943943.png" alt="image-20210926162843891"></p>
+<p>可以看到，如果提交多个文件，则菜单名称为【Commit Directory…】</p>
+<p>由于提交操作属于高频操作，所以为了进一步方便操作，在IDEA的工具栏中提供了提交操作的快捷按钮：<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220957455.png" alt="image-20210926163535277"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601580.png" alt="image-20230623150112848"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601638.png" alt="image-20230623150311657"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306231601262.png" alt="image-20230623150645021"></p>
+<h4 id="5-4-3-查看日志"><a href="#5-4-3-查看日志" class="headerlink" title="5.4.3 查看日志"></a>5.4.3 查看日志</h4><p>查看日志，既可以查看整个仓库的提交日志，也可以查看某个文件的提交日志。</p>
+<p>1）查看整个项目的提交日志：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943079.png" alt="image-20210926163902184"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943751.png" alt="image-20210926164138430"></p>
+<p>2）查看某个文件的提交日志</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943599.png" alt="image-20210926164210056"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943535.png" alt="image-20210926164233935"></p>
+<h3 id="5-5-远程仓库操作"><a href="#5-5-远程仓库操作" class="headerlink" title="5.5 远程仓库操作"></a>5.5 远程仓库操作</h3><p>远程仓库操作：</p>
+<ul>
+<li>查看远程仓库，本质就是执行 git remote 命令</li>
+<li>添加远程仓库，本质就是执行 git remote add 命令</li>
+<li>推送至远程仓库，本质就是执行 git push 命令</li>
+<li>从远程仓库拉取，本质就是执行 git pull 命令</li>
+</ul>
+<h4 id="5-5-1-查看远程仓库"><a href="#5-5-1-查看远程仓库" class="headerlink" title="5.5.1 查看远程仓库"></a>5.5.1 查看远程仓库</h4><p>操作过程如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943183.png" alt="image-20210926165935756"></p>
+<p>在弹出的【Git Remotes】窗口中可以看到配置的远程仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220944247.png" alt="image-20210926170143160"></p>
+<h4 id="5-5-2-添加远程仓库"><a href="#5-5-2-添加远程仓库" class="headerlink" title="5.5.2 添加远程仓库"></a>5.5.2 添加远程仓库</h4><p>一个本地仓库可以配置多个远程仓库，在【Git Remotes】窗口中点击【+】来添加一个新的远程仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220943487.png" alt="image-20210926170653126"></p>
+<h4 id="5-5-3-推送至远程仓库"><a href="#5-5-3-推送至远程仓库" class="headerlink" title="5.5.3 推送至远程仓库"></a>5.5.3 推送至远程仓库</h4><p>可以通过如下操作将本地仓库文件推送至远程仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220944901.png" alt="image-20210926170908769"></p>
+<p>在弹出的【Push Commits】窗口中可以看到本次推送的文件，点击【Push】按钮即可推送至远程仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220944079.png" alt="image-20210926171058705"></p>
+<p>由于推送至远程仓库操作属于高频操作，所以可以通过IDEA工具栏中的提交快捷按钮同时完成提交和推送：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220947696.png" alt="image-20210926171408649"></p>
+<p>点击【Commit and Push…】按钮同时完成提交和推送操作</p>
+<h4 id="5-5-4-从远程仓库拉取"><a href="#5-5-4-从远程仓库拉取" class="headerlink" title="5.5.4 从远程仓库拉取"></a>5.5.4 从远程仓库拉取</h4><p>可以通过如下操作从远程仓库拉取：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220938976.png" alt="image-20210926171646041"></p>
+<p>由于从远程仓库拉取文件属于高频操作，所以在IDEA的工具栏中提供了对应的快捷按钮：<img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220956567.png" alt="image-20210926171919288"></p>
+<p>在弹出的【Update Project】窗口中点击【OK】：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937856.png" alt="image-20210926171950911"></p>
+<h3 id="5-6-分支操作"><a href="#5-6-分支操作" class="headerlink" title="5.6 分支操作"></a>5.6 分支操作</h3><p>分支操作：</p>
+<ul>
+<li>查看分支，本质就是执行 git branch 命令</li>
+<li>创建分支，本质就是执行 git branch 分支名 命令</li>
+<li>切换分支，本质就是执行 git checkout 命令</li>
+<li>将分支推送到远程仓库，本质就是执行 git push 命令</li>
+<li>合并分支，本质就是执行 git merge 命令</li>
+</ul>
+<h4 id="5-6-1-查看分支"><a href="#5-6-1-查看分支" class="headerlink" title="5.6.1 查看分支"></a>5.6.1 查看分支</h4><p>可以通过如下操作查看分支：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937903.png" alt="image-20210926172752562"></p>
+<p>在弹出的窗口中可以看到本地分支和远程分支：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937215.png" alt="image-20210926172903493"></p>
+<p>由于分支操作属于高频操作，所以在IDEA的状态栏中提供了分支操作的快捷按钮：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937031.png" alt="image-20210926173622605"></p>
+<p>点击【master】快捷按钮即可弹出【Git Branches】分支窗口：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937727.png" alt="image-20210926173744979"></p>
+<h4 id="5-6-2-创建分支"><a href="#5-6-2-创建分支" class="headerlink" title="5.6.2 创建分支"></a>5.6.2 创建分支</h4><p>在【Git Branches】分支窗口中点击【New Branch】，弹出如下窗口：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937078.png" alt="image-20210926173903894"></p>
+<p>在弹出的【Create New Branch】窗口中输入新分支的名称，点击【Create】按钮完成分支创建</p>
+<h4 id="5-6-3-切换分支"><a href="#5-6-3-切换分支" class="headerlink" title="5.6.3 切换分支"></a>5.6.3 切换分支</h4><p>通过如下操作可以切换分支：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937456.png" alt="image-20210926174358500"></p>
+<h4 id="5-6-4-将分支推送到远程仓库"><a href="#5-6-4-将分支推送到远程仓库" class="headerlink" title="5.6.4 将分支推送到远程仓库"></a>5.6.4 将分支推送到远程仓库</h4><p>通过如下操作可以将分支推送到远程仓库：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220937952.png" alt="image-20210926175004502"></p>
+<h4 id="5-6-5-合并分支"><a href="#5-6-5-合并分支" class="headerlink" title="5.6.5 合并分支"></a>5.6.5 合并分支</h4><p>通过下面操作可以进行分支的合并：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zyziga/picodemo/takeaway/Git/202306220936746.png" alt="image-20210926175216197"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://zyziga.github.io">姜小白</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://zyziga.github.io/archives/6.html">https://zyziga.github.io/archives/6.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://zyziga.github.io" target="_blank">姜小白程序</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/archives/5.html" title="瑞吉外卖-Day06"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">瑞吉外卖-Day06</div></div></a></div><div class="next-post pull-right"><a href="/archives/7.html" title="Linux-Day01"><img class="cover" src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux-Day01</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/./img/milos.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">姜小白</div><div class="author-info__description">姜小白程序</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/zyziga/zyziga.github.io"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zyziga" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="/Hexo.zyziga.github.io" target="_blank" title="博客"><i class="fas fa-thin fa-truck"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到姜小白的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-%E5%88%86%E5%B8%83%E5%BC%8F%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%B7%A5%E5%85%B7"><span class="toc-text">Git 分布式版本控制工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="toc-text">课程内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-text">1. 前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AFGit"><span class="toc-text">1.1 什么是Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%BD%BF%E7%94%A8Git%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">1.2 使用Git能做什么</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Git%E6%A6%82%E8%BF%B0"><span class="toc-text">2. Git概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Git%E7%AE%80%E4%BB%8B"><span class="toc-text">2.1 Git简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Git%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-text">2.2 Git下载与安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Git%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1"><span class="toc-text">3. Git代码托管服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%B8%B8%E7%94%A8%E7%9A%84Git%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1"><span class="toc-text">3.1 常用的Git代码托管服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E7%A0%81%E4%BA%91%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1"><span class="toc-text">3.2 码云代码托管服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%B3%A8%E5%86%8C%E7%A0%81%E4%BA%91%E8%B4%A6%E5%8F%B7"><span class="toc-text">3.2.1 注册码云账号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E7%99%BB%E5%BD%95%E7%A0%81%E4%BA%91"><span class="toc-text">3.2.2 登录码云</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E5%88%9B%E5%BB%BA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">3.2.3 创建远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-4-%E9%82%80%E8%AF%B7%E5%85%B6%E4%BB%96%E7%94%A8%E6%88%B7%E6%88%90%E4%B8%BA%E4%BB%93%E5%BA%93%E6%88%90%E5%91%98"><span class="toc-text">3.2.4 邀请其他用户成为仓库成员</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-text">4. Git常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Git%E5%85%A8%E5%B1%80%E8%AE%BE%E7%BD%AE"><span class="toc-text">4.1 Git全局设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E8%8E%B7%E5%8F%96Git%E4%BB%93%E5%BA%93"><span class="toc-text">4.2 获取Git仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%88%9D%E5%A7%8B%E5%8C%96Git%E4%BB%93%E5%BA%93"><span class="toc-text">4.2.1 在本地初始化Git仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86"><span class="toc-text">4.2.2 从远程仓库克隆</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E3%80%81%E7%89%88%E6%9C%AC%E5%BA%93"><span class="toc-text">4.3 工作区、暂存区、版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Git%E5%B7%A5%E4%BD%9C%E5%8C%BA%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-text">4.4 Git工作区中文件的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">4.5 本地仓库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-1-git-status"><span class="toc-text">4.5.1 git status</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-2-git-add"><span class="toc-text">4.5.2 git add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-3-git-reset"><span class="toc-text">4.5.3 git reset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-4-git-commit"><span class="toc-text">4.5.4 git commit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-5-git-log"><span class="toc-text">4.5.5 git log</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">4.6 远程仓库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-1-git-remote"><span class="toc-text">4.6.1 git remote</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-2-git-remote-add"><span class="toc-text">4.6.2 git remote add</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-3-git-clone"><span class="toc-text">4.6.3 git clone</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-4-git-push"><span class="toc-text">4.6.4 git push</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-5-git-pull"><span class="toc-text">4.6.5 git pull</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">4.7 分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-1-%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-text">4.7.1 查看分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-2-%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-text">4.7.2 创建分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-3-%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-text">4.7.3 切换分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-4-%E6%8E%A8%E9%80%81%E8%87%B3%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%88%86%E6%94%AF"><span class="toc-text">4.7.4 推送至远程仓库分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-5-%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-text">4.7.5 合并分支</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-%E6%A0%87%E7%AD%BE%E6%93%8D%E4%BD%9C"><span class="toc-text">4.8 标签操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-8-1-%E6%9F%A5%E7%9C%8B%E6%A0%87%E7%AD%BE"><span class="toc-text">4.8.1 查看标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-8-2-%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE"><span class="toc-text">4.8.2 创建标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-8-3-%E5%B0%86%E6%A0%87%E7%AD%BE%E6%8E%A8%E9%80%81%E8%87%B3%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">4.8.3 将标签推送至远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-8-4-%E6%A3%80%E5%87%BA%E6%A0%87%E7%AD%BE"><span class="toc-text">4.8.4 检出标签</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%9C%A8IDEA%E4%B8%AD%E4%BD%BF%E7%94%A8Git"><span class="toc-text">5. 在IDEA中使用Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%9C%A8IDEA%E4%B8%AD%E9%85%8D%E7%BD%AEGit"><span class="toc-text">5.1 在IDEA中配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E8%8E%B7%E5%8F%96Git%E4%BB%93%E5%BA%93"><span class="toc-text">5.2 获取Git仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-%E6%9C%AC%E5%9C%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E4%BB%93%E5%BA%93"><span class="toc-text">5.2.1 本地初始化仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86"><span class="toc-text">5.2.2 从远程仓库克隆</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-Git%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6"><span class="toc-text">5.3 Git忽略文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">5.4 本地仓库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-1-%E5%B0%86%E6%96%87%E4%BB%B6%E5%8A%A0%E5%85%A5%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="toc-text">5.4.1 将文件加入暂存区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-2-%E5%B0%86%E6%9A%82%E5%AD%98%E5%8C%BA%E6%96%87%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%88%B0%E7%89%88%E6%9C%AC%E5%BA%93"><span class="toc-text">5.4.2 将暂存区文件提交到版本库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-3-%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="toc-text">5.4.3 查看日志</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="toc-text">5.5 远程仓库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-1-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">5.5.1 查看远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-2-%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">5.5.2 添加远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-3-%E6%8E%A8%E9%80%81%E8%87%B3%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">5.5.3 推送至远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-4-%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8B%89%E5%8F%96"><span class="toc-text">5.5.4 从远程仓库拉取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C"><span class="toc-text">5.6 分支操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-1-%E6%9F%A5%E7%9C%8B%E5%88%86%E6%94%AF"><span class="toc-text">5.6.1 查看分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-2-%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF"><span class="toc-text">5.6.2 创建分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-3-%E5%88%87%E6%8D%A2%E5%88%86%E6%94%AF"><span class="toc-text">5.6.3 切换分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-4-%E5%B0%86%E5%88%86%E6%94%AF%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-text">5.6.4 将分支推送到远程仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-5-%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="toc-text">5.6.5 合并分支</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/archives/16.html" title="Nacos集群搭建"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos集群搭建"/></a><div class="content"><a class="title" href="/archives/16.html" title="Nacos集群搭建">Nacos集群搭建</a><time datetime="2023-07-12T09:24:45.000Z" title="发表于 2023-07-12 17:24:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/15.html" title="Nacos安装指南"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nacos安装指南"/></a><div class="content"><a class="title" href="/archives/15.html" title="Nacos安装指南">Nacos安装指南</a><time datetime="2023-07-12T02:50:45.000Z" title="发表于 2023-07-12 10:50:45">2023-07-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/14.html" title="SpringCloud02"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud02"/></a><div class="content"><a class="title" href="/archives/14.html" title="SpringCloud02">SpringCloud02</a><time datetime="2023-07-04T02:50:45.000Z" title="发表于 2023-07-04 10:50:45">2023-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/13.html" title="SpringCloud01"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringCloud01"/></a><div class="content"><a class="title" href="/archives/13.html" title="SpringCloud01">SpringCloud01</a><time datetime="2023-07-03T02:50:45.000Z" title="发表于 2023-07-03 10:50:45">2023-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/archives/12.html" title="瑞吉外卖项目优化-Day03"><img src="https://file.crazywong.com/gh/jerryc127/CDN@latest/cover/default_bg3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="瑞吉外卖项目优化-Day03"/></a><div class="content"><a class="title" href="/archives/12.html" title="瑞吉外卖项目优化-Day03">瑞吉外卖项目优化-Day03</a><time datetime="2023-07-01T09:42:45.000Z" title="发表于 2023-07-01 17:42:45">2023-07-01</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 姜小白</div><div class="footer_custom_text"><div>很高兴认识你</div><div>欢迎来到我的博客</div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script data-pjax defer src="https://npm.elemecdn.com/tzy-blog/lib/js/theme/chocolate.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 380px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 320px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
